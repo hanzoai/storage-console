@@ -27,8 +27,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/minio/console/pkg/auth/token"
-	"github.com/minio/console/pkg/auth/utils"
+	"github.com/hanzoai/storage-console/pkg/auth/token"
+	"github.com/hanzoai/storage-console/pkg/auth/utils"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 	"github.com/minio/minio-go/v7/pkg/set"
 	"github.com/minio/pkg/v3/env"
