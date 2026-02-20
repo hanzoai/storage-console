@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0a0a;
+  color: #fafafa;
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input.removeArrows::-webkit-outer-spin-button,
+input.removeArrows::-webkit-inner-spin-button,
+.removeArrows input::-webkit-outer-spin-button,
+.removeArrows input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input.removeArrows[type="number"],
+.removeArrows input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Hanzo Space — Dark theme overrides for MDS components */
+:root {
+  --color-primary: #fd4444;
+  --color-primary-light: #ff6b6b;
+  --color-primary-dark: #dc2626;
+  --color-background: #0a0a0a;
+  --color-background-alt: #111111;
+  --color-surface: #171717;
+  --color-border: #262626;
+  --color-text: #fafafa;
+  --color-text-muted: #a3a3a3;
+  --color-text-dim: #737373;
+}
