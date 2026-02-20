@@ -1,0 +1,300 @@
+import React from "react";
+
+const colors = {
+  bg: "#09090b",
+  card: "#111113",
+  cardHover: "#18181b",
+  text: "#fafafa",
+  muted: "#a1a1aa",
+  dim: "#71717a",
+  brand: "#fd4444",
+  brandDim: "rgba(253, 68, 68, 0.12)",
+};
+
+const font =
+  "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+
+const HanzoMark = ({ size = 28 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="64" height="64" rx="8" fill="#000000"/>
+    <g transform="translate(8, 8) scale(0.716)">
+      <path d="M22.21 67V44.6369H0V67H22.21Z" fill="#ffffff"/>
+      <path d="M66.7038 22.3184H22.2534L0.0878906 44.6367H44.4634L66.7038 22.3184Z" fill="#ffffff"/>
+      <path d="M22.21 0H0V22.3184H22.21V0Z" fill="#ffffff"/>
+      <path d="M66.7198 0H44.5098V22.3184H66.7198V0Z" fill="#ffffff"/>
+      <path d="M66.7198 67V44.6369H44.5098V67H66.7198Z" fill="#ffffff"/>
+    </g>
+  </svg>
+);
+
+const sections = [
+  {
+    title: "Getting Started",
+    items: [
+      { label: "Quick Start Guide", href: "https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-single-node-single-drive.html", desc: "Deploy in minutes with a single command" },
+      { label: "Console Guide", href: "https://min.io/docs/minio/linux/administration/minio-console.html", desc: "Navigate the web console" },
+      { label: "Authentication (SSO)", href: "https://min.io/docs/minio/linux/operations/external-iam/configure-openid-external-identity-management.html", desc: "Configure Hanzo ID OIDC single sign-on" },
+    ],
+  },
+  {
+    title: "S3 API Reference",
+    items: [
+      { label: "Bucket Operations", href: "https://min.io/docs/minio/linux/reference/s3-api/s3-api-operations.html", desc: "Create, list, delete buckets" },
+      { label: "Object Operations", href: "https://min.io/docs/minio/linux/reference/s3-api/s3-api-operations.html#object-operations", desc: "Put, get, delete objects" },
+      { label: "Presigned URLs", href: "https://min.io/docs/minio/linux/reference/s3-api/s3-api-operations.html#presigned-operations", desc: "Generate temporary access links" },
+    ],
+  },
+  {
+    title: "SDKs & Tools",
+    items: [
+      { label: "JavaScript SDK", href: "https://min.io/docs/minio/linux/developers/javascript/minio-javascript.html", desc: "npm install minio" },
+      { label: "Python SDK", href: "https://min.io/docs/minio/linux/developers/python/minio-py.html", desc: "pip install minio" },
+      { label: "Go SDK", href: "https://min.io/docs/minio/linux/developers/go/minio-go.html", desc: "go get github.com/minio/minio-go/v7" },
+      { label: "mc CLI", href: "https://min.io/docs/minio/linux/reference/minio-mc.html", desc: "Command-line client for S3 operations" },
+    ],
+  },
+  {
+    title: "Security & Access",
+    items: [
+      { label: "Access Management", href: "https://min.io/docs/minio/linux/administration/identity-access-management.html", desc: "IAM policies, users, and groups" },
+      { label: "Encryption", href: "https://min.io/docs/minio/linux/operations/server-side-encryption.html", desc: "Server-side encryption at rest" },
+      { label: "Bucket Policies", href: "https://min.io/docs/minio/linux/administration/identity-access-management/policy-based-access-control.html", desc: "Fine-grained access control" },
+    ],
+  },
+];
+
+const Docs = () => {
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundColor: colors.bg,
+        color: colors.text,
+        fontFamily: font,
+        WebkitFontSmoothing: "antialiased",
+      }}
+    >
+      {/* Nav */}
+      <nav
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 50,
+          backgroundColor: "rgba(9, 9, 11, 0.85)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 960,
+            margin: "0 auto",
+            padding: "0 24px",
+            height: 56,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <a
+            href="/login"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              textDecoration: "none",
+              color: colors.text,
+            }}
+          >
+            <HanzoMark size={24} />
+            <span style={{ fontSize: 15, fontWeight: 600, letterSpacing: "-0.02em" }}>
+              Hanzo Space
+            </span>
+          </a>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <a
+              href="/login"
+              style={{
+                color: colors.muted,
+                textDecoration: "none",
+                fontSize: 13,
+                fontWeight: 500,
+              }}
+            >
+              Home
+            </a>
+            <a
+              href="/login"
+              style={{
+                backgroundColor: colors.text,
+                color: colors.bg,
+                border: "none",
+                borderRadius: 8,
+                padding: "8px 18px",
+                fontSize: 13,
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              Sign In
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Header */}
+      <div style={{ maxWidth: 960, margin: "0 auto", padding: "64px 24px 48px" }}>
+        <h1
+          style={{
+            fontSize: 36,
+            fontWeight: 700,
+            letterSpacing: "-0.035em",
+            margin: "0 0 12px",
+          }}
+        >
+          Documentation
+        </h1>
+        <p style={{ fontSize: 16, color: colors.dim, margin: 0, lineHeight: 1.6 }}>
+          Hanzo Space is fully S3-compatible. Use any AWS S3 SDK, CLI tool, or integration.
+        </p>
+      </div>
+
+      {/* Quick connect */}
+      <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 24px 48px" }}>
+        <div
+          style={{
+            backgroundColor: colors.card,
+            borderRadius: 12,
+            padding: "24px 28px",
+          }}
+        >
+          <h3 style={{ fontSize: 14, fontWeight: 600, margin: "0 0 16px", letterSpacing: "-0.01em" }}>
+            Quick Connect
+          </h3>
+          <pre
+            style={{
+              margin: 0,
+              padding: "16px 20px",
+              backgroundColor: colors.bg,
+              borderRadius: 8,
+              fontSize: 13,
+              lineHeight: 1.7,
+              overflow: "auto",
+              color: colors.muted,
+              fontFamily: "'Geist Mono', 'SF Mono', 'Fira Code', monospace",
+            }}
+          >
+{`# Configure mc CLI
+mc alias set hanzo https://s3.hanzo.space ACCESS_KEY SECRET_KEY
+
+# Or use AWS CLI
+aws configure set default.s3.endpoint_url https://s3.hanzo.space
+aws s3 ls
+
+# JavaScript
+import { Client } from 'minio'
+const client = new Client({
+  endPoint: 's3.hanzo.space',
+  useSSL: true,
+  accessKey: 'YOUR_ACCESS_KEY',
+  secretKey: 'YOUR_SECRET_KEY',
+})`}
+          </pre>
+        </div>
+      </div>
+
+      {/* Sections */}
+      <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 24px 96px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
+          {sections.map((section) => (
+            <div key={section.title}>
+              <h2
+                style={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                  margin: "0 0 16px",
+                  letterSpacing: "-0.02em",
+                  color: colors.brand,
+                }}
+              >
+                {section.title}
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                {section.items.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "block",
+                      padding: "14px 16px",
+                      backgroundColor: colors.card,
+                      borderRadius: 10,
+                      textDecoration: "none",
+                      transition: "background-color 0.15s ease",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.backgroundColor = colors.cardHover)
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.backgroundColor = colors.card)
+                    }
+                  >
+                    <div
+                      style={{
+                        fontSize: 14,
+                        fontWeight: 600,
+                        color: colors.text,
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      {item.label}
+                      <span style={{ fontSize: 11, color: colors.dim, marginLeft: 6 }}>↗</span>
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 12,
+                        color: colors.dim,
+                        marginTop: 2,
+                      }}
+                    >
+                      {item.desc}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer style={{ padding: "24px" }}>
+        <div
+          style={{
+            maxWidth: 960,
+            margin: "0 auto",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <span style={{ fontSize: 12, color: colors.dim }}>
+            Hanzo AI — hanzo.space
+          </span>
+          <a
+            href="https://github.com/hanzoai/storage"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: 12, color: colors.dim, textDecoration: "none" }}
+          >
+            GitHub
+          </a>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Docs;

@@ -1,6 +1,12 @@
 <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="30" cy="30" r="24" stroke="#262626" stroke-width="4"/>
-  <path d="M30 6a24 24 0 0 1 24 24" stroke="#fd4444" stroke-width="4" stroke-linecap="round">
+  <g transform-origin="30 30">
     <animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="1s" repeatCount="indefinite"/>
-  </path>
+    <g transform="translate(10, 10) scale(0.625)">
+      <path d="M22.21 67V44.6369H0V67H22.21Z" fill="#fd4444"/>
+      <path d="M66.7038 22.3184H22.2534L0.0878906 44.6367H44.4634L66.7038 22.3184Z" fill="#fd4444"/>
+      <path d="M22.21 0H0V22.3184H22.21V0Z" fill="#fd4444"/>
+      <path d="M66.7198 0H44.5098V22.3184H66.7198V0Z" fill="#fd4444"/>
+      <path d="M66.7198 67V44.6369H44.5098V67H66.7198Z" fill="#fd4444"/>
+    </g>
+  </g>
 </svg>

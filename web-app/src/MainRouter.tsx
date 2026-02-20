@@ -23,6 +23,7 @@ import { baseUrl } from "./history";
 
 const Login = React.lazy(() => import("./screens/LoginPage/Login"));
 const Logout = React.lazy(() => import("./screens/LogoutPage/LogoutPage"));
+const Docs = React.lazy(() => import("./screens/DocsPage/Docs"));
 
 const MainRouter = () => {
   return (
@@ -41,6 +42,14 @@ const MainRouter = () => {
           element={
             <Suspense fallback={<LoadingComponent />}>
               <Login />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/docs"
+          element={
+            <Suspense fallback={<LoadingComponent />}>
+              <Docs />
             </Suspense>
           }
         />

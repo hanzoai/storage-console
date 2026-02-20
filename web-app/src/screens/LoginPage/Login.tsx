@@ -24,14 +24,15 @@ export const getTargetPath = () => {
 /* ─── icons ─── */
 
 const HanzoMark = ({ size = 28 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 512 512" fill="none">
-    <rect width="512" height="512" rx="96" fill="#fd4444" />
-    <path
-      d="M160 144v224M352 144v224M160 256h192"
-      stroke="#fff"
-      strokeWidth="48"
-      strokeLinecap="round"
-    />
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="64" height="64" rx="8" fill="#000000"/>
+    <g transform="translate(8, 8) scale(0.716)">
+      <path d="M22.21 67V44.6369H0V67H22.21Z" fill="#ffffff"/>
+      <path d="M66.7038 22.3184H22.2534L0.0878906 44.6367H44.4634L66.7038 22.3184Z" fill="#ffffff"/>
+      <path d="M22.21 0H0V22.3184H22.21V0Z" fill="#ffffff"/>
+      <path d="M66.7198 0H44.5098V22.3184H66.7198V0Z" fill="#ffffff"/>
+      <path d="M66.7198 67V44.6369H44.5098V67H66.7198Z" fill="#ffffff"/>
+    </g>
   </svg>
 );
 
