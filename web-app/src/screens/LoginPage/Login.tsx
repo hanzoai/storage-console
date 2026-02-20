@@ -247,7 +247,7 @@ const Login = () => {
     ...btnHero,
     backgroundColor: "transparent",
     color: colors.text,
-    border: `1px solid ${colors.border}`,
+    border: `1px solid rgba(255,255,255,0.15)`,
   };
 
   return (
@@ -266,7 +266,7 @@ const Login = () => {
           position: "sticky",
           top: 0,
           zIndex: 50,
-          borderBottom: `1px solid ${colors.border}`,
+          borderBottom: "none",
           backgroundColor: "rgba(9, 9, 11, 0.85)",
           backdropFilter: "blur(16px)",
           WebkitBackdropFilter: "blur(16px)",
@@ -340,7 +340,7 @@ const Login = () => {
               style={{
                 width: 1,
                 height: 20,
-                backgroundColor: colors.border,
+                backgroundColor: "rgba(255,255,255,0.1)",
                 margin: "0 8px",
               }}
             />
@@ -397,7 +397,7 @@ const Login = () => {
               gap: 8,
               padding: "5px 14px 5px 8px",
               borderRadius: 100,
-              border: `1px solid ${colors.border}`,
+              border: "none",
               backgroundColor: colors.card,
               fontSize: 12,
               fontWeight: 500,
@@ -498,8 +498,7 @@ const Login = () => {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 1,
-            backgroundColor: colors.border,
+            gap: 0,
             borderRadius: 12,
             overflow: "hidden",
           }}
@@ -579,8 +578,7 @@ const Login = () => {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 1,
-            backgroundColor: colors.border,
+            gap: 0,
             borderRadius: 12,
             overflow: "hidden",
           }}
@@ -679,15 +677,15 @@ const Login = () => {
               style={{
                 padding: "20px",
                 borderRadius: 10,
-                border: `1px solid ${colors.border}`,
+                border: "none",
                 backgroundColor: colors.card,
-                transition: "border-color 0.15s ease",
+                transition: "background-color 0.15s ease",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = colors.borderHover)
+                (e.currentTarget.style.backgroundColor = colors.cardHover)
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.borderColor = colors.border)
+                (e.currentTarget.style.backgroundColor = colors.card)
               }
             >
               <h3
@@ -728,7 +726,7 @@ const Login = () => {
           style={{
             padding: "56px 32px",
             borderRadius: 16,
-            border: `1px solid ${colors.border}`,
+            border: "none",
             backgroundColor: colors.card,
             position: "relative",
             overflow: "hidden",
@@ -790,7 +788,7 @@ const Login = () => {
       {/* ─── Footer ─── */}
       <footer
         style={{
-          borderTop: `1px solid ${colors.border}`,
+          borderTop: "none",
           padding: "24px",
         }}
       >
