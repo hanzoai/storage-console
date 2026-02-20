@@ -1,10 +1,8 @@
-// Hanzo Space — Marketing Landing Page + OIDC Login
-// Replaces MinIO Console login with branded landing experience
+// Hanzo Space — Landing Page + OIDC Login
 
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Loader } from "mds";
-import { loginStrategyType } from "./login.types";
 import { AppState, useAppDispatch } from "../../store";
 import { useSelector } from "react-redux";
 import { getFetchConfigurationAsync } from "./loginThunks";
@@ -23,166 +21,140 @@ export const getTargetPath = () => {
   return targetPath;
 };
 
-const HanzoLogo = () => (
-  <svg
-    width="32"
-    height="32"
-    viewBox="0 0 512 512"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+/* ─── icons ─── */
+
+const HanzoMark = ({ size = 28 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 512 512" fill="none">
+    <rect width="512" height="512" rx="96" fill="#fd4444" />
     <path
-      d="M256 0L467.7 122.9V368.1L256 491L44.3 368.1V122.9L256 0Z"
-      fill="#fd4444"
-    />
-    <path
-      d="M176 160v192M336 160v192M176 256h160"
-      stroke="white"
-      strokeWidth="40"
+      d="M160 144v224M352 144v224M160 256h192"
+      stroke="#fff"
+      strokeWidth="48"
       strokeLinecap="round"
     />
   </svg>
 );
 
-const S3Icon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+const BucketIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <ellipse cx="12" cy="5" rx="9" ry="3" />
     <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
   </svg>
 );
 
-const ShieldIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+const ShieldCheckIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <path d="M9 12l2 2 4-4" />
   </svg>
 );
 
-const UsersIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+const LayersIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+    <polyline points="2 17 12 22 22 17" />
+    <polyline points="2 12 12 17 22 12" />
+  </svg>
+);
+
+const ZapIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+  </svg>
+);
+
+const LockIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
   </svg>
 );
 
 const GlobeIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
     <line x1="2" y1="12" x2="22" y2="12" />
     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
   </svg>
 );
 
-const LockIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+const ArrowRightIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12" />
+    <polyline points="12 5 19 12 12 19" />
   </svg>
 );
 
-const HistoryIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M3 3v5h5" />
-    <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8" />
-    <path d="M12 7v5l4 2" />
-  </svg>
-);
+/* ─── data ─── */
+
+const stats = [
+  { value: "S3", label: "API Compatible", sub: "Every tool, SDK, and client" },
+  { value: "11×9s", label: "Durability", sub: "99.999999999% data protection" },
+  { value: "<50ms", label: "Latency", sub: "Low-latency reads and writes" },
+  { value: "∞", label: "Scalable", sub: "Bytes to petabytes" },
+];
 
 const features = [
   {
-    icon: <S3Icon />,
+    icon: <BucketIcon />,
     title: "S3-Compatible API",
-    desc: "Drop-in replacement for Amazon S3. Works with every S3 client, SDK, and tool.",
+    desc: "Drop-in replacement for Amazon S3. Use the same SDKs, CLI tools, and integrations you already rely on — zero migration friction.",
   },
   {
-    icon: <ShieldIcon />,
-    title: "SSO via Hanzo ID",
-    desc: "Enterprise single sign-on through hanzo.id with OIDC. No separate credentials needed.",
+    icon: <ShieldCheckIcon />,
+    title: "Enterprise SSO",
+    desc: "Authenticate with Hanzo ID via OIDC. Centralized identity, fine-grained access policies, and audit logging out of the box.",
   },
   {
-    icon: <UsersIcon />,
-    title: "Multi-Org Buckets",
-    desc: "Isolated storage per organization with fine-grained access policies and quotas.",
+    icon: <LayersIcon />,
+    title: "Multi-Tenant Isolation",
+    desc: "Per-organization buckets with independent access controls, quotas, and lifecycle policies. Built for teams and platforms.",
   },
   {
-    icon: <GlobeIcon />,
-    title: "Global CDN Ready",
-    desc: "Edge-cached delivery through Cloudflare for static assets and media files.",
+    icon: <ZapIcon />,
+    title: "AI-Optimized Workloads",
+    desc: "Purpose-built for model weights, training datasets, embeddings, and inference artifacts. High-throughput parallel uploads.",
   },
   {
     icon: <LockIcon />,
-    title: "Server-Side Encryption",
-    desc: "AES-256 encryption at rest with KMS integration for key management.",
+    title: "Encryption & Compliance",
+    desc: "AES-256 server-side encryption at rest, TLS in transit, and KMS-managed keys. SOC 2 and GDPR ready.",
   },
   {
-    icon: <HistoryIcon />,
-    title: "Object Versioning",
-    desc: "Full version history for every object. Roll back changes and recover deleted files.",
+    icon: <GlobeIcon />,
+    title: "Edge Delivery",
+    desc: "Serve assets globally through Cloudflare's edge network. Automatic caching, custom domains, and signed URLs.",
   },
 ];
 
-const stats = [
-  { value: "S3", label: "Compatible" },
-  { value: "Multi", label: "Tenant" },
-  { value: "99.9%", label: "Uptime" },
-  { value: "\u221E", label: "Scale" },
+const useCases = [
+  { title: "AI & ML", desc: "Store and version training data, model checkpoints, and embeddings at any scale." },
+  { title: "Media & Assets", desc: "Host images, video, and documents with CDN delivery and on-the-fly transforms." },
+  { title: "Data Lakes", desc: "Centralize structured and unstructured data for analytics and batch processing." },
+  { title: "Backup & Archive", desc: "Durable, cost-effective long-term storage with lifecycle management." },
 ];
+
+/* ─── styles ─── */
+
+const colors = {
+  bg: "#09090b",
+  card: "#111113",
+  cardHover: "#18181b",
+  border: "#27272a",
+  borderHover: "#3f3f46",
+  text: "#fafafa",
+  muted: "#a1a1aa",
+  dim: "#71717a",
+  brand: "#fd4444",
+  brandDim: "rgba(253, 68, 68, 0.12)",
+  brandGlow: "rgba(253, 68, 68, 0.06)",
+};
+
+const font =
+  "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+
+/* ─── component ─── */
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -216,7 +188,6 @@ const Login = () => {
 
   const handleSignIn = () => {
     setSigningIn(true);
-    // Use OIDC redirect from server-provided redirect rules
     if (
       loginStrategy.redirectRules &&
       loginStrategy.redirectRules.length > 0
@@ -227,7 +198,6 @@ const Login = () => {
         return;
       }
     }
-    // Fallback: try the /login/oauth endpoint directly
     window.location.href = "/login/oauth";
   };
 
@@ -240,7 +210,7 @@ const Login = () => {
           justifyContent: "center",
           width: "100vw",
           height: "100vh",
-          backgroundColor: "#0a0a0a",
+          backgroundColor: colors.bg,
         }}
       >
         <Loader style={{ width: 40, height: 40 }} />
@@ -248,80 +218,142 @@ const Login = () => {
     );
   }
 
+  const btnPrimary: React.CSSProperties = {
+    backgroundColor: colors.text,
+    color: colors.bg,
+    border: "none",
+    borderRadius: 8,
+    padding: "10px 22px",
+    fontSize: 14,
+    fontWeight: 600,
+    fontFamily: font,
+    cursor: signingIn ? "wait" : "pointer",
+    transition: "all 0.15s ease",
+    opacity: signingIn ? 0.6 : 1,
+    letterSpacing: "-0.01em",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 6,
+  };
+
+  const btnHero: React.CSSProperties = {
+    ...btnPrimary,
+    padding: "12px 28px",
+    fontSize: 15,
+    borderRadius: 10,
+  };
+
+  const btnOutline: React.CSSProperties = {
+    ...btnHero,
+    backgroundColor: "transparent",
+    color: colors.text,
+    border: `1px solid ${colors.border}`,
+  };
+
   return (
     <div
       style={{
         minHeight: "100vh",
-        backgroundColor: "#0a0a0a",
-        color: "#fafafa",
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+        backgroundColor: colors.bg,
+        color: colors.text,
+        fontFamily: font,
+        WebkitFontSmoothing: "antialiased",
       }}
     >
-      {/* Nav */}
+      {/* ─── Nav ─── */}
       <nav
         style={{
           position: "sticky",
           top: 0,
           zIndex: 50,
-          borderBottom: "1px solid #262626",
-          backgroundColor: "rgba(10, 10, 10, 0.8)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
+          borderBottom: `1px solid ${colors.border}`,
+          backgroundColor: "rgba(9, 9, 11, 0.85)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
         }}
       >
         <div
           style={{
-            maxWidth: 1200,
+            maxWidth: 1120,
             margin: "0 auto",
             padding: "0 24px",
-            height: 64,
+            height: 56,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <HanzoLogo />
-            <span style={{ fontSize: 18, fontWeight: 600, letterSpacing: "-0.02em" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <HanzoMark size={24} />
+            <span
+              style={{
+                fontSize: 15,
+                fontWeight: 600,
+                letterSpacing: "-0.02em",
+              }}
+            >
               Hanzo Space
             </span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
             <a
               href="https://docs.hanzo.ai/storage"
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: "#a3a3a3",
+                color: colors.muted,
                 textDecoration: "none",
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: 500,
-                padding: "8px 16px",
-                borderRadius: 8,
-                transition: "color 0.2s",
+                padding: "6px 12px",
+                borderRadius: 6,
+                transition: "color 0.15s",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#fafafa")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#a3a3a3")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = colors.text)}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = colors.muted)
+              }
             >
               Docs
             </a>
+            <a
+              href="https://hanzo.ai/pricing"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: colors.muted,
+                textDecoration: "none",
+                fontSize: 13,
+                fontWeight: 500,
+                padding: "6px 12px",
+                borderRadius: 6,
+                transition: "color 0.15s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = colors.text)}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = colors.muted)
+              }
+            >
+              Pricing
+            </a>
+            <div
+              style={{
+                width: 1,
+                height: 20,
+                backgroundColor: colors.border,
+                margin: "0 8px",
+              }}
+            />
             <button
               onClick={handleSignIn}
               disabled={signingIn}
-              style={{
-                backgroundColor: "#fafafa",
-                color: "#0a0a0a",
-                border: "none",
-                borderRadius: 8,
-                padding: "8px 20px",
-                fontSize: 14,
-                fontWeight: 600,
-                cursor: signingIn ? "wait" : "pointer",
-                transition: "opacity 0.2s",
-                opacity: signingIn ? 0.7 : 1,
+              style={btnPrimary}
+              onMouseEnter={(e) => {
+                if (!signingIn) e.currentTarget.style.opacity = "0.8";
               }}
-              onMouseEnter={(e) => { if (!signingIn) e.currentTarget.style.opacity = "0.85"; }}
-              onMouseLeave={(e) => { if (!signingIn) e.currentTarget.style.opacity = "1"; }}
+              onMouseLeave={(e) => {
+                if (!signingIn) e.currentTarget.style.opacity = "1";
+              }}
             >
               {signingIn ? "Redirecting..." : "Sign In"}
             </button>
@@ -329,246 +361,364 @@ const Login = () => {
         </div>
       </nav>
 
-      {/* Hero */}
+      {/* ─── Hero ─── */}
       <section
         style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "96px 24px 64px",
-          textAlign: "center",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <h1
-          style={{
-            fontSize: "clamp(40px, 6vw, 72px)",
-            fontWeight: 700,
-            letterSpacing: "-0.04em",
-            lineHeight: 1.1,
-            margin: "0 0 24px",
-          }}
-        >
-          Hanzo{" "}
-          <span style={{ color: "#fd4444" }}>Space</span>
-        </h1>
-        <p
-          style={{
-            fontSize: "clamp(18px, 2.5vw, 24px)",
-            color: "#a3a3a3",
-            fontWeight: 500,
-            margin: "0 0 16px",
-            letterSpacing: "-0.01em",
-          }}
-        >
-          Unified Object Storage for AI Infrastructure
-        </p>
-        <p
-          style={{
-            fontSize: 16,
-            color: "#737373",
-            maxWidth: 600,
-            margin: "0 auto 48px",
-            lineHeight: 1.6,
-          }}
-        >
-          S3-compatible object storage with enterprise SSO, multi-tenant isolation,
-          and global CDN delivery. Built for teams that ship.
-        </p>
+        {/* Glow */}
         <div
           style={{
-            display: "flex",
-            gap: 16,
-            justifyContent: "center",
-            flexWrap: "wrap",
+            position: "absolute",
+            top: -200,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 800,
+            height: 600,
+            background: `radial-gradient(ellipse at center, ${colors.brandGlow} 0%, transparent 70%)`,
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
+            maxWidth: 1120,
+            margin: "0 auto",
+            padding: "100px 24px 80px",
+            textAlign: "center",
           }}
         >
-          <button
-            onClick={handleSignIn}
-            disabled={signingIn}
+          <div
             style={{
-              backgroundColor: "#fd4444",
-              color: "#fff",
-              border: "none",
-              borderRadius: 12,
-              padding: "14px 32px",
-              fontSize: 16,
-              fontWeight: 600,
-              cursor: signingIn ? "wait" : "pointer",
-              transition: "opacity 0.2s, transform 0.2s",
-              opacity: signingIn ? 0.7 : 1,
-            }}
-            onMouseEnter={(e) => {
-              if (!signingIn) {
-                e.currentTarget.style.opacity = "0.9";
-                e.currentTarget.style.transform = "translateY(-1px)";
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!signingIn) {
-                e.currentTarget.style.opacity = "1";
-                e.currentTarget.style.transform = "translateY(0)";
-              }
-            }}
-          >
-            {signingIn ? "Redirecting..." : "Sign In with Hanzo ID"}
-          </button>
-          <a
-            href="https://docs.hanzo.ai/storage"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              backgroundColor: "transparent",
-              color: "#fafafa",
-              border: "1px solid #404040",
-              borderRadius: 12,
-              padding: "14px 32px",
-              fontSize: 16,
-              fontWeight: 600,
-              textDecoration: "none",
-              transition: "border-color 0.2s",
               display: "inline-flex",
               alignItems: "center",
+              gap: 8,
+              padding: "5px 14px 5px 8px",
+              borderRadius: 100,
+              border: `1px solid ${colors.border}`,
+              backgroundColor: colors.card,
+              fontSize: 12,
+              fontWeight: 500,
+              color: colors.muted,
+              marginBottom: 32,
+              letterSpacing: "0.01em",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#737373")}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#404040")}
           >
-            Documentation
-          </a>
+            <span
+              style={{
+                backgroundColor: colors.brandDim,
+                color: colors.brand,
+                padding: "2px 8px",
+                borderRadius: 100,
+                fontSize: 11,
+                fontWeight: 600,
+              }}
+            >
+              S3
+            </span>
+            Fully compatible with Amazon S3 API
+          </div>
+
+          <h1
+            style={{
+              fontSize: "clamp(36px, 5vw, 56px)",
+              fontWeight: 700,
+              letterSpacing: "-0.035em",
+              lineHeight: 1.1,
+              margin: "0 0 20px",
+              maxWidth: 720,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Object storage built for
+            <br />
+            <span style={{ color: colors.muted }}>scale, speed, and security</span>
+          </h1>
+
+          <p
+            style={{
+              fontSize: "clamp(15px, 2vw, 17px)",
+              color: colors.dim,
+              maxWidth: 540,
+              margin: "0 auto 40px",
+              lineHeight: 1.65,
+            }}
+          >
+            Store and retrieve any amount of data, anytime, from anywhere.
+            S3-compatible, enterprise-grade, with SSO and multi-tenant
+            isolation built in.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              gap: 12,
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <button
+              onClick={handleSignIn}
+              disabled={signingIn}
+              style={btnHero}
+              onMouseEnter={(e) => {
+                if (!signingIn) e.currentTarget.style.opacity = "0.8";
+              }}
+              onMouseLeave={(e) => {
+                if (!signingIn) e.currentTarget.style.opacity = "1";
+              }}
+            >
+              {signingIn ? "Redirecting..." : "Get started"}
+              {!signingIn && <ArrowRightIcon />}
+            </button>
+            <a
+              href="https://docs.hanzo.ai/storage"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={btnOutline}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.borderColor = colors.borderHover)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.borderColor = colors.border)
+              }
+            >
+              Documentation
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 24px 80px",
-        }}
-      >
+      {/* ─── Stats ─── */}
+      <section style={{ maxWidth: 1120, margin: "0 auto", padding: "0 24px 80px" }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-            gap: 24,
-            maxWidth: 700,
-            margin: "0 auto",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: 1,
+            backgroundColor: colors.border,
+            borderRadius: 12,
+            overflow: "hidden",
           }}
         >
-          {stats.map((stat) => (
+          {stats.map((s) => (
             <div
-              key={stat.label}
+              key={s.label}
               style={{
+                backgroundColor: colors.card,
+                padding: "28px 20px",
                 textAlign: "center",
-                padding: "24px 16px",
-                borderRadius: 16,
-                backgroundColor: "rgba(17, 17, 17, 0.95)",
-                border: "1px solid #262626",
               }}
             >
               <div
                 style={{
-                  fontSize: 32,
+                  fontSize: 24,
                   fontWeight: 700,
-                  color: "#fd4444",
                   letterSpacing: "-0.02em",
+                  color: colors.text,
+                  fontFamily:
+                    "'Geist Mono', 'SF Mono', 'Fira Code', monospace",
                 }}
               >
-                {stat.value}
+                {s.value}
               </div>
-              <div style={{ fontSize: 13, color: "#a3a3a3", marginTop: 4 }}>
-                {stat.label}
+              <div
+                style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: colors.muted,
+                  marginTop: 4,
+                }}
+              >
+                {s.label}
+              </div>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: colors.dim,
+                  marginTop: 2,
+                }}
+              >
+                {s.sub}
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 24px 96px",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: 32,
-            fontWeight: 700,
-            textAlign: "center",
-            margin: "0 0 48px",
-            letterSpacing: "-0.03em",
-          }}
-        >
-          Everything you need
-        </h2>
+      {/* ─── Features ─── */}
+      <section style={{ maxWidth: 1120, margin: "0 auto", padding: "0 24px 96px" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <h2
+            style={{
+              fontSize: 28,
+              fontWeight: 700,
+              letterSpacing: "-0.03em",
+              margin: "0 0 12px",
+            }}
+          >
+            Everything you need to store data at scale
+          </h2>
+          <p
+            style={{
+              fontSize: 15,
+              color: colors.dim,
+              maxWidth: 480,
+              margin: "0 auto",
+              lineHeight: 1.6,
+            }}
+          >
+            Industry-leading durability, security, and performance —
+            without the complexity.
+          </p>
+        </div>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: 24,
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 1,
+            backgroundColor: colors.border,
+            borderRadius: 12,
+            overflow: "hidden",
           }}
         >
-          {features.map((feature) => (
+          {features.map((f) => (
             <div
-              key={feature.title}
+              key={f.title}
               style={{
-                padding: "32px 28px",
-                borderRadius: 16,
-                backgroundColor: "rgba(17, 17, 17, 0.95)",
-                border: "1px solid #262626",
-                transition: "border-color 0.3s",
+                backgroundColor: colors.card,
+                padding: "28px 24px",
+                transition: "background-color 0.15s ease",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(253, 68, 68, 0.3)")
+                (e.currentTarget.style.backgroundColor = colors.cardHover)
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.borderColor = "#262626")
+                (e.currentTarget.style.backgroundColor = colors.card)
               }
             >
               <div
                 style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 10,
-                  backgroundColor: "rgba(253, 68, 68, 0.1)",
+                  width: 36,
+                  height: 36,
+                  borderRadius: 8,
+                  backgroundColor: colors.brandDim,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#fd4444",
-                  marginBottom: 16,
+                  color: colors.brand,
+                  marginBottom: 14,
                 }}
               >
-                {feature.icon}
+                {f.icon}
               </div>
               <h3
                 style={{
-                  fontSize: 17,
+                  fontSize: 14,
                   fontWeight: 600,
-                  margin: "0 0 8px",
+                  margin: "0 0 6px",
                   letterSpacing: "-0.01em",
                 }}
               >
-                {feature.title}
+                {f.title}
               </h3>
               <p
                 style={{
-                  fontSize: 14,
-                  color: "#a3a3a3",
+                  fontSize: 13,
+                  color: colors.dim,
                   margin: 0,
-                  lineHeight: 1.6,
+                  lineHeight: 1.55,
                 }}
               >
-                {feature.desc}
+                {f.desc}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ─── Use Cases ─── */}
+      <section style={{ maxWidth: 1120, margin: "0 auto", padding: "0 24px 96px" }}>
+        <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <h2
+            style={{
+              fontSize: 28,
+              fontWeight: 700,
+              letterSpacing: "-0.03em",
+              margin: "0 0 12px",
+            }}
+          >
+            Built for any workload
+          </h2>
+          <p
+            style={{
+              fontSize: 15,
+              color: colors.dim,
+              maxWidth: 440,
+              margin: "0 auto",
+              lineHeight: 1.6,
+            }}
+          >
+            From training data to production assets,
+            Hanzo Space handles it all.
+          </p>
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: 12,
+          }}
+        >
+          {useCases.map((uc) => (
+            <div
+              key={uc.title}
+              style={{
+                padding: "20px",
+                borderRadius: 10,
+                border: `1px solid ${colors.border}`,
+                backgroundColor: colors.card,
+                transition: "border-color 0.15s ease",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.borderColor = colors.borderHover)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.borderColor = colors.border)
+              }
+            >
+              <h3
+                style={{
+                  fontSize: 14,
+                  fontWeight: 600,
+                  margin: "0 0 6px",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {uc.title}
+              </h3>
+              <p
+                style={{
+                  fontSize: 12,
+                  color: colors.dim,
+                  margin: 0,
+                  lineHeight: 1.55,
+                }}
+              >
+                {uc.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── CTA ─── */}
       <section
         style={{
-          maxWidth: 1200,
+          maxWidth: 1120,
           margin: "0 auto",
           padding: "0 24px 96px",
           textAlign: "center",
@@ -576,65 +726,77 @@ const Login = () => {
       >
         <div
           style={{
-            padding: "64px 32px",
-            borderRadius: 24,
-            backgroundColor: "rgba(17, 17, 17, 0.95)",
-            border: "1px solid #262626",
+            padding: "56px 32px",
+            borderRadius: 16,
+            border: `1px solid ${colors.border}`,
+            backgroundColor: colors.card,
+            position: "relative",
+            overflow: "hidden",
           }}
         >
+          <div
+            style={{
+              position: "absolute",
+              top: -100,
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: 500,
+              height: 300,
+              background: `radial-gradient(ellipse at center, ${colors.brandGlow} 0%, transparent 70%)`,
+              pointerEvents: "none",
+            }}
+          />
           <h2
             style={{
-              fontSize: 28,
+              position: "relative",
+              fontSize: 24,
               fontWeight: 700,
-              margin: "0 0 12px",
+              margin: "0 0 8px",
               letterSpacing: "-0.02em",
             }}
           >
-            Ready to get started?
+            Start storing data in seconds
           </h2>
           <p
             style={{
-              fontSize: 16,
-              color: "#a3a3a3",
-              margin: "0 0 32px",
+              position: "relative",
+              fontSize: 14,
+              color: colors.dim,
+              margin: "0 0 28px",
             }}
           >
-            Sign in with your Hanzo ID to access your storage.
+            Sign in with your Hanzo ID. No credit card, no setup wizard.
           </p>
           <button
             onClick={handleSignIn}
             disabled={signingIn}
             style={{
-              backgroundColor: "#fafafa",
-              color: "#0a0a0a",
-              border: "none",
-              borderRadius: 12,
-              padding: "14px 32px",
-              fontSize: 16,
-              fontWeight: 600,
-              cursor: signingIn ? "wait" : "pointer",
-              transition: "opacity 0.2s",
-              opacity: signingIn ? 0.7 : 1,
+              ...btnHero,
+              position: "relative",
             }}
-            onMouseEnter={(e) => { if (!signingIn) e.currentTarget.style.opacity = "0.85"; }}
-            onMouseLeave={(e) => { if (!signingIn) e.currentTarget.style.opacity = "1"; }}
+            onMouseEnter={(e) => {
+              if (!signingIn) e.currentTarget.style.opacity = "0.8";
+            }}
+            onMouseLeave={(e) => {
+              if (!signingIn) e.currentTarget.style.opacity = "1";
+            }}
           >
-            {signingIn ? "Redirecting..." : "Sign In"}
+            {signingIn ? "Redirecting..." : "Get started"}
+            {!signingIn && <ArrowRightIcon />}
           </button>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* ─── Footer ─── */}
       <footer
         style={{
-          borderTop: "1px solid #262626",
-          padding: "32px 24px",
-          textAlign: "center",
+          borderTop: `1px solid ${colors.border}`,
+          padding: "24px",
         }}
       >
         <div
           style={{
-            maxWidth: 1200,
+            maxWidth: 1120,
             margin: "0 auto",
             display: "flex",
             justifyContent: "space-between",
@@ -644,15 +806,15 @@ const Login = () => {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <HanzoLogo />
-            <span style={{ fontSize: 14, color: "#737373" }}>
-              Hanzo AI Inc.
+            <HanzoMark size={18} />
+            <span style={{ fontSize: 12, color: colors.dim }}>
+              Hanzo AI
             </span>
           </div>
-          <div style={{ display: "flex", gap: 24 }}>
+          <div style={{ display: "flex", gap: 20 }}>
             {[
-              { label: "Hanzo AI", href: "https://hanzo.ai" },
-              { label: "Documentation", href: "https://docs.hanzo.ai/storage" },
+              { label: "Platform", href: "https://hanzo.ai" },
+              { label: "Docs", href: "https://docs.hanzo.ai/storage" },
               { label: "GitHub", href: "https://github.com/hanzoai" },
               { label: "Status", href: "https://status.hanzo.ai" },
             ].map((link) => (
@@ -662,13 +824,17 @@ const Login = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: "#525252",
+                  color: colors.dim,
                   textDecoration: "none",
-                  fontSize: 13,
-                  transition: "color 0.2s",
+                  fontSize: 12,
+                  transition: "color 0.15s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#a3a3a3")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#525252")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = colors.muted)
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = colors.dim)
+                }
               >
                 {link.label}
               </a>
