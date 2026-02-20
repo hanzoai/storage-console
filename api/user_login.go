@@ -35,8 +35,8 @@ import (
 
 func registerLoginHandlers(api *operations.ConsoleAPI) {
 	// GET login strategy
-	api.AuthLoginDetailHandler = authApi.LoginDetailHandlerFunc(func(_ authApi.LoginDetailParams) middleware.Responder {
-		loginDetails, err := getLoginDetailsResponse()
+	api.AuthLoginDetailHandler = authApi.LoginDetailHandlerFunc(func(params authApi.LoginDetailParams) middleware.Responder {
+		loginDetails, err := getLoginDetailsResponse(params.HTTPRequest)
 		if err != nil {
 			return authApi.NewLoginDetailDefault(err.Code).WithPayload(err.APIError)
 		}
@@ -159,9 +159,50 @@ func isKubernetes() bool {
 }
 
 // getLoginDetailsResponse returns information regarding the Console authentication mechanism.
-func getLoginDetailsResponse() (ld *models.LoginDetails, apiErr *CodedAPIError) {
+func getLoginDetailsResponse(r *http.Request) (ld *models.LoginDetails, apiErr *CodedAPIError) {
 	loginStrategy := models.LoginDetailsLoginStrategyForm
 	var redirectRules []*models.RedirectRule
+
+	if len(GlobalMinIOConfig.OpenIDProviders) > 0 {
+		clientIP := getClientIP(r)
+		httpClient := GetConsoleHTTPClient(clientIP)
+
+		for name, providerCfg := range GlobalMinIOConfig.OpenIDProviders {
+			scopes := []string{}
+			if providerCfg.Scopes != "" {
+				for _, s := range strings.Split(providerCfg.Scopes, ",") {
+					w := strings.TrimSpace(s)
+					if w != "" {
+						scopes = append(scopes, w)
+					}
+				}
+			}
+
+			provider, err := providerCfg.GetOauth2Provider(name, scopes, r, httpClient)
+			if err != nil {
+				LogError("error initializing OpenID provider %q: %v", name, err)
+				continue
+			}
+
+			keyFunc := providerCfg.GetStateKeyFunc()
+			loginURL := provider.GenerateLoginURL(keyFunc, name)
+
+			displayName := providerCfg.DisplayName
+			if displayName == "" {
+				displayName = name
+			}
+
+			redirectRules = append(redirectRules, &models.RedirectRule{
+				Redirect:    loginURL,
+				DisplayName: displayName,
+				ServiceType: "openid",
+			})
+		}
+
+		if len(redirectRules) > 0 {
+			loginStrategy = models.LoginDetailsLoginStrategyRedirectDashServiceDashAccount
+		}
+	}
 
 	loginDetails := &models.LoginDetails{
 		LoginStrategy: loginStrategy,
