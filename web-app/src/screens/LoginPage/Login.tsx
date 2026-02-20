@@ -297,7 +297,7 @@ const Login = () => {
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
             <a
-              href="https://docs.hanzo.ai/storage"
+              href="https://hanzo.space/docs"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -475,7 +475,7 @@ const Login = () => {
               {!signingIn && <ArrowRightIcon />}
             </button>
             <a
-              href="https://docs.hanzo.ai/storage"
+              href="https://hanzo.space/docs"
               target="_blank"
               rel="noopener noreferrer"
               style={btnOutline}
@@ -812,7 +812,7 @@ const Login = () => {
           <div style={{ display: "flex", gap: 20 }}>
             {[
               { label: "Platform", href: "https://hanzo.ai" },
-              { label: "Docs", href: "https://docs.hanzo.ai/storage" },
+              { label: "Docs", href: "https://hanzo.space/docs" },
               { label: "GitHub", href: "https://github.com/hanzoai" },
               { label: "Status", href: "https://status.hanzo.ai" },
             ].map((link) => (

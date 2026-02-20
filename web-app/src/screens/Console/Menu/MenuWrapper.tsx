@@ -60,7 +60,7 @@ const MenuWrapper = () => {
             name={"Documentation"}
             icon={<DocumentationIcon />}
             path={
-              "https://docs.hanzo.ai/storage"
+              "https://hanzo.space/docs"
             }
           />
           <MenuItem

@@ -196,7 +196,7 @@ const HelpMenu = () => {
         <MoreLink
           LeadingIcon={MinIOTierIcon}
           text={"Visit Hanzo Documentation"}
-          link={"https://docs.hanzo.ai/storage"}
+          link={"https://hanzo.space/docs"}
           color={"#fd4444"}
         />
       </div>
@@ -222,7 +222,7 @@ const HelpMenu = () => {
         <MoreLink
           LeadingIcon={MinIOTierIcon}
           text={"Visit Hanzo Resources"}
-          link={"https://docs.hanzo.ai/storage"}
+          link={"https://hanzo.space/docs"}
           color={"#fd4444"}
         />
       </div>
