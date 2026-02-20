@@ -2,7 +2,7 @@
 
 import { ApplicationLogoProps } from "mds";
 
-const MinIOPlan =
+const HanzoPlan =
   (
     document.head.querySelector(
       "[name~=hanzo-license][content]",

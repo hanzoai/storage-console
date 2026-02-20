@@ -66,9 +66,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -122,7 +122,7 @@
         {
           "img": "",
           "title": "Bucket Versioning",
-          "url": "https://hanzo.space/docs#administration/object-management/object-versioning.html#minio-bucket-versioning",
+          "url": "https://hanzo.space/docs#administration/object-management/object-versioning.html#storage-bucket-versioning",
           "body": "Hanzo Space supports keeping multiple “versions” of an object in a single bucket. Hanzo Space versioning protects from unintended overwrites and deletions while providing support for “undoing” a write operation."
         },
         {
@@ -205,7 +205,7 @@
         {
           "img": "",
           "title": "Bucket Versioning",
-          "url": "https://hanzo.space/docs#administration/object-management/object-versioning.html#minio-bucket-versioning",
+          "url": "https://hanzo.space/docs#administration/object-management/object-versioning.html#storage-bucket-versioning",
           "body": "Learn how versioning protects your data from unintended overwrites and deletions"
         },
         {
@@ -251,7 +251,7 @@
         {
           "img": "",
           "title": "Access Keys",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-user-management.html#access-keys",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-user-management.html#access-keys",
           "body": "Access Keys support providing applications authentication credentials which inherit permissions from the “parent” user."
         },
         {
@@ -284,9 +284,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -417,7 +417,7 @@
         {
           "img": "",
           "title": "Bucket Versioning",
-          "url": "https://hanzo.space/docs#administration/object-management/object-versioning.html#minio-bucket-versioning",
+          "url": "https://hanzo.space/docs#administration/object-management/object-versioning.html#storage-bucket-versioning",
           "body": "Hanzo Space versioning protects from unintended overwrites and deletions while providing support for “undoing” a write operation."
         },
         {
@@ -451,13 +451,13 @@
         {
           "img": "",
           "title": "Creating a New Bucket in a Specific Region",
-          "url": "https://hanzo.space/docs#reference/minio-mc/mc-mb.html#create-a-new-bucket-in-a-specific-region",
+          "url": "https://hanzo.space/docs#reference/storage-mc/mc-mb.html#create-a-new-bucket-in-a-specific-region",
           "body": "A Bucket can be created in a specified region"
         },
         {
           "img": "",
           "title": "What are Settings and Configurations?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#minio-console-settings",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
           "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
         },
         {
@@ -491,7 +491,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2021/09/denys-nevozhai-7nrsVjvALnA-unsplash.jpg",
           "title": "Multi-Site Active-Active Replication",
-          "url": "https://hanzo.space/docs#minio-multi-site-active-active-replication/",
+          "url": "https://hanzo.space/docs#storage-multi-site-active-active-replication/",
           "body": "Active-Active replication enables multi-primary topologies, fast hot-hot failover, and multi-geo resiliency."
         }
       ]
@@ -504,7 +504,7 @@
         {
           "img": "",
           "title": "What are Settings and Configurations?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#minio-console-settings",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
           "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
         },
         {
@@ -544,19 +544,19 @@
         {
           "img": "",
           "title": "How is failed replication handled?",
-          "url": "https://hanzo.space/docs#administration/bucket-replication.html#minio-replication-process",
+          "url": "https://hanzo.space/docs#administration/bucket-replication.html#storage-replication-process",
           "body": "Hanzo Space queues failed replication operations and retries those operations until replication succeeds."
         },
         {
           "img": "",
           "title": "What are Replication Workers?",
-          "url": "https://hanzo.space/docs#administration/bucket-replication.html#minio-replication-process",
+          "url": "https://hanzo.space/docs#administration/bucket-replication.html#storage-replication-process",
           "body": "Hanzo Space uses a replication queuing system with multiple concurrent replication workers operating on that queue."
         },
         {
           "img": "",
           "title": "What are Settings and Configurations?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#minio-console-settings",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
           "body": "These configuration settings define runtime behavior of the Hanzo Space server process,  comparable to the mc admin config command"
         },
         {
@@ -583,7 +583,7 @@
         {
           "img": "",
           "title": "Where can I see current Heal status?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#drives",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#drives",
           "body": "Check under Monitoring/Drives on the left hand  menu to see Drive and Bucket Healing status"
         },
         {
@@ -613,14 +613,14 @@
         {
           "img": "",
           "title": "What is Hanzo Space Healing?",
-          "url": "https://hanzo.space/docs#operations/concepts.html#minio-automatically-heals-corrupt-or-missing-data-on-the-fly",
+          "url": "https://hanzo.space/docs#operations/concepts.html#storage-automatically-heals-corrupt-or-missing-data-on-the-fly",
           "url": "",
           "body": "Healing is Hanzo Space\u2019s ability to restore data after some event causes data loss. Data loss can come from bit rot, drive loss, or node loss."
         },
         {
           "img": "",
           "title": "Understand Hanzo Space Healing Using mc",
-          "url": "https://hanzo.space/docs#reference/minio-mc-admin/mc-admin-heal.html#description",
+          "url": "https://hanzo.space/docs#reference/storage-mc-admin/mc-admin-heal.html#description",
           "body": "The mc admin heal command scans for objects that are damaged or corrupted and heals those objects."
         },
         {
@@ -632,7 +632,7 @@
         {
           "img": "",
           "title": "What are Settings and Configurations?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#minio-console-settings",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
           "body": "These configuration settings define runtime behavior of the Hanzo Space server process, comparable to the mc admin config command"
         },
         {
@@ -660,7 +660,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         },
         {
@@ -696,7 +696,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2020/08/Cohasset.png",
           "title": "Cohasset Associates Assessment for  \nObject Locking on Hanzo Space",
-          "url": "https://hanzo.space/docs#cohasset-associates-assessment-for-object-locking-on-minio/",
+          "url": "https://hanzo.space/docs#cohasset-associates-assessment-for-object-locking-on-storage/",
           "body": "Hanzo Space now has a positive assessment from Cohasset  Associates regarding our object locking capabilities"
         }
       ]
@@ -727,7 +727,7 @@
         {
           "img": "",
           "title": "What are Settings and Configurations?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#minio-console-settings",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
           "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
         },
         {
@@ -767,7 +767,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2020/07/1920px-Immeuble_du_Cre-dit_Lyonnais_-sie-ge-.jpg",
           "title": "Object Locking, Versioning, Holds and Modes in Hanzo Space",
-          "url": "https://hanzo.space/docs#object-locking-versioning-and-holds-in-minio/",
+          "url": "https://hanzo.space/docs#object-locking-versioning-and-holds-in-storage/",
           "body": "Learn how Hanzo Space supports a complete object locking framework supporting Lifecycle management, an increasingly critical element in the data ecosystem."
         },
         {
@@ -798,7 +798,7 @@
         {
           "img": "",
           "title": "What are Settings and Configurations?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#minio-console-settings",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
           "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
         },
         {
@@ -825,13 +825,13 @@
         {
           "img": "",
           "title": "What is the logger_webhook Environment Variable?",
-          "url": "https://hanzo.space/docs#reference/minio-mc-admin/mc-admin-config.html#minio-server-config-logging-logs",
+          "url": "https://hanzo.space/docs#reference/storage-mc-admin/mc-admin-config.html#storage-server-config-logging-logs",
           "body": "The top-level configuration key for defining an  HTTP webhook target for publishing Hanzo Space logs."
         },
         {
           "img": "",
           "title": "Publish Server Logs to HTTP Webhook",
-          "url": "https://hanzo.space/docs#operations/monitoring/minio-logging.html#minio-logging-publish-server-logs",
+          "url": "https://hanzo.space/docs#operations/monitoring/storage-logging.html#storage-logging-publish-server-logs",
           "body": "You can configure a new HTTP webhook endpoint to which Hanzo Space publishes server logs using either environment variables or by setting runtime configuration settings."
         },
         {
@@ -843,7 +843,7 @@
         {
           "img": "",
           "title": "What are Settings and Configurations?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#minio-console-settings",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
           "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
         },
         {
@@ -877,7 +877,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2023/04/PXL_20230417_154022040.jpg",
           "title": "Introducing Webhooks for Hanzo Space",
-          "url": "https://hanzo.space/docs#introducing-webhooks-for-minio/",
+          "url": "https://hanzo.space/docs#introducing-webhooks-for-storage/",
           "body": "Learn about Hanzo Space webhook support"
         }
       ]
@@ -890,19 +890,19 @@
         {
           "img": "",
           "title": "Publish Audit Logs to an HTTP webhook",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings/metrics-and-logging.html#webhook-audit-logs",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings/metrics-and-logging.html#webhook-audit-logs",
           "body": "You can configure a new HTTP webhook endpoint  to which Hanzo Space publishes audit logs using either  environment variables or by setting runtime  configuration settings"
         },
         {
           "img": "",
           "title": "What are Settings and Configurations?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#minio-console-settings",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
           "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
         },
         {
           "img": "",
           "title": "Publish Audit Logs to an External Service",
-          "url": "https://hanzo.space/docs#operations/monitoring/minio-logging.html",
+          "url": "https://hanzo.space/docs#operations/monitoring/storage-logging.html",
           "body": "Audit logs are granular descriptions of each operation  on the Hanzo Space deployment supporting security  standards and regulations which require  detailed tracking of operations."
         },
         {
@@ -923,7 +923,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2023/04/PXL_20230417_154022040.jpg",
           "title": "Introducing Webhooks for Hanzo Space",
-          "url": "https://hanzo.space/docs#introducing-webhooks-for-minio/",
+          "url": "https://hanzo.space/docs#introducing-webhooks-for-storage/",
           "body": "Learn about Hanzo Space webhook support"
         }
       ]
@@ -948,7 +948,7 @@
         {
           "img": "",
           "title": "Kafka Service Configuration Settings",
-          "url": "https://hanzo.space/docs#reference/minio-mc-admin/mc-admin-config.html#minio-server-config-bucket-notification-kafka",
+          "url": "https://hanzo.space/docs#reference/storage-mc-admin/mc-admin-config.html#storage-server-config-bucket-notification-kafka",
           "body": "Learn about environment variables for configuring a Kafka service as a target for Bucket Nofitications."
         },
         {
@@ -966,7 +966,7 @@
         {
           "img": "",
           "title": "What are Settings and Configurations?",
-          "url": "https://hanzo.space/docs#reference/minio-server/settings.html#minio-console-settings",
+          "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
           "body": "These configuration settings define runtime behavior of the Hanzo Space server process, comparable to the mc admin config command"
         },
         {
@@ -993,13 +993,13 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2023/04/Screen-Shot-2023-04-24-at-4.34.43-PM.png",
           "title": "How to Set up Kafka and Stream Data to  \nHanzo Space on Kubernetes",
-          "url": "https://hanzo.space/docs#stream-data-to-minio-using-kafka-kubernetes/",
+          "url": "https://hanzo.space/docs#stream-data-to-storage-using-kafka-kubernetes/",
           "body": "Set up Kafka on Kubernetes using Strimzi,  then use Kafka Connect to stream data to Hanzo Space."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2022/08/minioKafka-blogheader.png",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2022/08/storageKafka-blogheader.png",
           "title": "Orchestrate Complex Workflows  \nUsing Apache Kafka and Hanzo Space",
-          "url": "https://hanzo.space/docs#complex-workflows-apache-kafka-minio/",
+          "url": "https://hanzo.space/docs#complex-workflows-apache-kafka-storage/",
           "body": "Build an example workflow using Hanzo Space and  Kafka for a hypothetical image resizer app."
         }
       ]
@@ -1046,7 +1046,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         },
         {
@@ -1064,7 +1064,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2021/09/denys-nevozhai-7nrsVjvALnA-unsplash.jpg",
           "title": "Multi-Site Active-Active Replication",
-          "url": "https://hanzo.space/docs#minio-multi-site-active-active-replication/",
+          "url": "https://hanzo.space/docs#storage-multi-site-active-active-replication/",
           "body": "Active-Active replication enables multi-primary topologies, fast hot-hot failover, and multi-geo resiliency."
         },
         {
@@ -1124,7 +1124,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         },
         {
@@ -1142,7 +1142,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2021/09/denys-nevozhai-7nrsVjvALnA-unsplash.jpg",
           "title": "Multi-Site Active-Active Replication",
-          "url": "https://hanzo.space/docs#minio-multi-site-active-active-replication/",
+          "url": "https://hanzo.space/docs#storage-multi-site-active-active-replication/",
           "body": "Active-Active replication enables multi-primary topologies, fast hot-hot failover, and multi-geo resiliency."
         },
         {
@@ -1201,7 +1201,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         },
         {
@@ -1219,7 +1219,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2021/09/denys-nevozhai-7nrsVjvALnA-unsplash.jpg",
           "title": "Multi-Site Active-Active Replication",
-          "url": "https://hanzo.space/docs#minio-multi-site-active-active-replication/",
+          "url": "https://hanzo.space/docs#storage-multi-site-active-active-replication/",
           "body": "Active-Active replication enables multi-primary topologies, fast hot-hot failover, and multi-geo resiliency."
         },
         {
@@ -1256,7 +1256,7 @@
         {
           "img": "",
           "title": "Transition to Remote Hanzo Space Deployment",
-          "url": "https://hanzo.space/docs#administration/object-management/transition-objects-to-minio.html",
+          "url": "https://hanzo.space/docs#administration/object-management/transition-objects-to-storage.html",
           "body": "See the procedure to create a new object lifecycle management rule that transitions objects from a bucket on a primary Hanzo Space deployment to a bucket on a remote Hanzo Space deployment. "
         },
         {
@@ -1399,7 +1399,7 @@
         {
           "img": "",
           "title": "Transition to Remote Hanzo Space Deployment",
-          "url": "https://hanzo.space/docs#administration/object-management/transition-objects-to-minio.html#minio-lifecycle-management-transition-to-minio",
+          "url": "https://hanzo.space/docs#administration/object-management/transition-objects-to-storage.html#storage-lifecycle-management-transition-to-storage",
           "body": "See the procedure to create a new object lifecycle management rule that transitions objects from a bucket on a primary Hanzo Space deployment to a bucket on a remote Hanzo Space deployment. "
         },
         {
@@ -1485,7 +1485,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         },
         {
@@ -1503,7 +1503,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2021/09/denys-nevozhai-7nrsVjvALnA-unsplash.jpg",
           "title": "Multi-Site Active-Active Replication",
-          "url": "https://hanzo.space/docs#minio-multi-site-active-active-replication/",
+          "url": "https://hanzo.space/docs#storage-multi-site-active-active-replication/",
           "body": "Active-Active replication enables multi-primary topologies, fast hot-hot failover, and multi-geo resiliency."
         },
         {
@@ -1522,7 +1522,7 @@
         {
           "img": "",
           "title": "Console Metrics Dashboard",
-          "url": "https://hanzo.space/docs#operations/monitoring/metrics-and-alerts.html#minio-console-metrics-dashboard",
+          "url": "https://hanzo.space/docs#operations/monitoring/metrics-and-alerts.html#storage-console-metrics-dashboard",
           "body": "The Hanzo Space Console provides a point-in-time metrics dashboard by default, and also supports displaying time-series and historical data by querying a Prometheus service configured to scrape data from the Hanzo Space deployment."
         },
         {
@@ -1580,13 +1580,13 @@
         {
           "img": "",
           "title": "User Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-user-management.html#",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-user-management.html#",
           "body": "Each user can have one or more assigned policies that explicitly list the actions and resources to which that user has access. Users can also inherit policies from the groups in which they have membership."
         },
         {
           "img": "",
           "title": "Group Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-group-management.html",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-group-management.html",
           "body": "A group is a collection of users. Each group can have one or more assigned policies that explicitly list the actions and resources to which group members are allowed or denied access."
         },
         {
@@ -1611,9 +1611,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -1638,13 +1638,13 @@
         {
           "img": "",
           "title": "Group Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-group-management.html",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-group-management.html",
           "body": "A group is a collection of users. Each group can have one or more assigned policies that explicitly list the actions and resources to which group members are allowed or denied access."
         },
         {
           "img": "",
           "title": "User Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-user-management.html#",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-user-management.html#",
           "body": "Each user can have one or more assigned policies that explicitly list the actions and resources to which that user has access. Users can also inherit policies from the groups in which they have membership."
         },
         {
@@ -1694,9 +1694,9 @@
       "header": null,
       "links": [
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         }
       ]
@@ -1727,7 +1727,7 @@
         {
           "img": "",
           "title": "Healing",
-          "url": "https://hanzo.space/docs#operations/concepts.html#minio-automatically-heals-corrupt-or-missing-data-on-the-fly",
+          "url": "https://hanzo.space/docs#operations/concepts.html#storage-automatically-heals-corrupt-or-missing-data-on-the-fly",
           "body": "Hanzo Space Automatically Heals Corrupt or Missing Data On-the-fly"
         },
         {
@@ -1761,7 +1761,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         },
         {
@@ -1785,7 +1785,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2021/09/denys-nevozhai-7nrsVjvALnA-unsplash.jpg",
           "title": "Multi-Site Active-Active Replication",
-          "url": "https://hanzo.space/docs#minio-multi-site-active-active-replication/",
+          "url": "https://hanzo.space/docs#storage-multi-site-active-active-replication/",
           "body": "Active-Active replication enables multi-primary topologies, fast hot-hot failover, and multi-geo resiliency."
         },
         {
@@ -1816,7 +1816,7 @@
         {
           "img": "",
           "title": "Healing",
-          "url": "https://hanzo.space/docs#operations/concepts.html#minio-automatically-heals-corrupt-or-missing-data-on-the-fly",
+          "url": "https://hanzo.space/docs#operations/concepts.html#storage-automatically-heals-corrupt-or-missing-data-on-the-fly",
           "body": "Hanzo Space Automatically Heals Corrupt or Missing Data On-the-fly"
         },
         {
@@ -1874,13 +1874,13 @@
         {
           "img": "",
           "title": "User Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-user-management.html#",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-user-management.html#",
           "body": "Each user can have one or more assigned policies that explicitly list the actions and resources to which that user has access. Users can also inherit policies from the groups in which they have membership."
         },
         {
           "img": "",
           "title": "Built-in Hanzo Space IDP",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-identity-management.html",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-identity-management.html",
           "body": "Hanzo Space includes a built-in IDentity Provider (IDP) that provides core identity management functionality."
         },
         {
@@ -1960,9 +1960,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         }
       ]
@@ -1975,7 +1975,7 @@
         {
           "img": "",
           "title": "Built-in Hanzo Space IDP",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-identity-management.html",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-identity-management.html",
           "body": "Hanzo Space includes a built-in IDentity Provider (IDP) that provides core identity management functionality."
         },
         {
@@ -1993,7 +1993,7 @@
         {
           "img": "",
           "title": "User Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-user-management.html#",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-user-management.html#",
           "body": "Each user can have one or more assigned policies that explicitly list the actions and resources to which that user has access. Users can also inherit policies from the groups in which they have membership."
         },
         {
@@ -2079,9 +2079,9 @@
       "header": null,
       "links": [
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -2100,7 +2100,7 @@
         {
           "img": "",
           "title": "Built-in Hanzo Space IDP",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-identity-management.html",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-identity-management.html",
           "body": "Hanzo Space includes a built-in IDentity Provider (IDP) that provides core identity management functionality."
         },
         {
@@ -2118,7 +2118,7 @@
         {
           "img": "",
           "title": "User Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-user-management.html#",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-user-management.html#",
           "body": "Each user can have one or more assigned policies that explicitly list the actions and resources to which that user has access. Users can also inherit policies from the groups in which they have membership."
         },
         {
@@ -2210,9 +2210,9 @@
       "header": null,
       "links": [
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -2499,7 +2499,7 @@
         {
           "img": "",
           "title": "Audit Logs",
-          "url": "https://hanzo.space/docs#operations/monitoring/minio-logging.html",
+          "url": "https://hanzo.space/docs#operations/monitoring/storage-logging.html",
           "body": "You can configure an HTTP webhook endpoint to which Hanzo Space publishes audit logs using either environment variables or by setting runtime configuration settings."
         },
         {
@@ -2541,19 +2541,19 @@
         {
           "img": "",
           "title": "Hanzo Space available on GCP marketplace",
-          "url": "https://hanzo.space/docs#minio-gcp-marketplace/",
+          "url": "https://hanzo.space/docs#storage-gcp-marketplace/",
           "body": "Text snippet that will be relevant to the user will  go here  made to look nice in the helpitem size  on two-three lines"
         },
         {
           "img": "",
           "title": "Hanzo Space available on AWS marketplace",
-          "url": "https://hanzo.space/docs#minio-multi-cloud-object-storage-available-on-aws-marketplace/",
+          "url": "https://hanzo.space/docs#storage-multi-cloud-object-storage-available-on-aws-marketplace/",
           "body": "Text snippet that will be relevant to the user will  go here  made to look nice in the helpitem size  on two-three lines"
         },
         {
           "img": "",
           "title": "Hanzo Space available on Azure marketplace",
-          "url": "https://hanzo.space/docs#minio-multi-cloud-azure-marketplace/",
+          "url": "https://hanzo.space/docs#storage-multi-cloud-azure-marketplace/",
           "body": "Text snippet that will be relevant to the user will  go here  made to look nice in the helpitem size  on two-three lines"
         },
         {
@@ -2624,13 +2624,13 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/IMG_7378.jpeg",
           "title": "Event-Driven Architecture: Hanzo Space Event Notification Webhooks using Flask",
-          "url": "https://hanzo.space/docs#minio-webhook-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-webhook-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications and integrate them with a Flask webhook to enable real-time data processing."
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/david-blog.jpeg",
           "title": "Streamlining Data Events with Hanzo Space and PostgreSQL",
-          "url": "https://hanzo.space/docs#minio-postgres-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-postgres-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications to PostgreSQL to trigger real-time responses to storage events."
         },
         {
@@ -2713,13 +2713,13 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/IMG_7378.jpeg",
           "title": "Event-Driven Architecture: Hanzo Space Event Notification Webhooks using Flask",
-          "url": "https://hanzo.space/docs#minio-webhook-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-webhook-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications and integrate them with a Flask webhook to enable real-time data processing."
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/david-blog.jpeg",
           "title": "Streamlining Data Events with Hanzo Space and PostgreSQL",
-          "url": "https://hanzo.space/docs#minio-postgres-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-postgres-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications to PostgreSQL to trigger real-time responses to storage events."
         },
         {
@@ -2802,13 +2802,13 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/IMG_7378.jpeg",
           "title": "Event-Driven Architecture: Hanzo Space Event Notification Webhooks using Flask",
-          "url": "https://hanzo.space/docs#minio-webhook-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-webhook-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications and integrate them with a Flask webhook to enable real-time data processing."
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/david-blog.jpeg",
           "title": "Streamlining Data Events with Hanzo Space and PostgreSQL",
-          "url": "https://hanzo.space/docs#minio-postgres-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-postgres-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications to PostgreSQL to trigger real-time responses to storage events."
         },
         {
@@ -2845,7 +2845,7 @@
         {
           "img": "",
           "title": "Managing Objects with the Object Browser",
-          "url": "https://hanzo.space/docs#administration/console/managing-objects.html#minio-console-managing-objects",
+          "url": "https://hanzo.space/docs#administration/console/managing-objects.html#storage-console-managing-objects",
           "body": "Learn how to use the Console Object Browser  to manage your Objects"
         },
         {
@@ -2891,7 +2891,7 @@
         {
           "img": "https://images.unsplash.com/photo-1611783569248-a82ec2e72c67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDIxfHxzcGVlZHxlbnwwfHx8fDE2NDEyMjY2MDI&ixlib=rb-1.2.1&q=80&w=1000",
           "title": "Versioning, Metadata and Storage",
-          "url": "https://hanzo.space/docs#minio-versioning-metadata-deep-dive/",
+          "url": "https://hanzo.space/docs#storage-versioning-metadata-deep-dive/",
           "body": "Learn how Hanzo Space supports Lifecycle management through a complete object locking framework."
         },
         {
@@ -2984,9 +2984,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -3079,9 +3079,9 @@
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -3168,9 +3168,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -3195,7 +3195,7 @@
         {
           "img": "",
           "title": "Group Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-group-management.html",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-group-management.html",
           "body": "A group is a collection of users. Each group can have one or more assigned policies that explicitly list the actions and resources to which group members are allowed or denied access."
         },
         {
@@ -3263,9 +3263,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -3382,9 +3382,9 @@
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -3424,13 +3424,13 @@
         {
           "img": "https://images.unsplash.com/photo-1531185907801-2771c11ab782?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fHNwZWVkJTIwZ2F1Z2UlMjBhYnN0cmFjdHxlbnwwfHx8fDE2MzcyODAxMjQ&ixlib=rb-1.2.1&q=80&w=1000",
           "title": "Performance Test",
-          "url": "https://hanzo.space/docs#introducing-speedtest-for-minio/",
+          "url": "https://hanzo.space/docs#introducing-speedtest-for-storage/",
           "body": "We developed Performance Test to streamline and automate performance testing so you can proactively identify potential trouble-spots before they cause bottlenecks."
         },
         {
           "img": "https://images.unsplash.com/photo-1611783569248-a82ec2e72c67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDIxfHxzcGVlZHxlbnwwfHx8fDE2NDEyMjY2MDI&ixlib=rb-1.2.1&q=80&w=1000",
           "title": "Versioning, Metadata and Storage",
-          "url": "https://hanzo.space/docs#minio-versioning-metadata-deep-dive/",
+          "url": "https://hanzo.space/docs#storage-versioning-metadata-deep-dive/",
           "body": "Learn how Hanzo Space supports Lifecycle management through a complete object locking framework."
         },
         {
@@ -3568,7 +3568,7 @@
         {
           "img": "",
           "title": "What is Trace?",
-          "url": "https://hanzo.space/docs#reference/minio-mc-admin/mc-admin-trace.html",
+          "url": "https://hanzo.space/docs#reference/storage-mc-admin/mc-admin-trace.html",
           "body": "The trace section provides HTTP trace functionality for a bucket or buckets on the deployment."
         },
         {
@@ -3657,9 +3657,9 @@
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         }
       ]
@@ -3761,7 +3761,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2023/03/faststreaming-03.jpg",
           "title": "Users",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-user-management.html#",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-user-management.html#",
           "body": "Each user can have one or more assigned policies that explicitly list the actions and resources to which that user has access. Users can also inherit policies from the groups in which they have membership."
         },
         {
@@ -3829,9 +3829,9 @@
       "header": null,
       "links": [
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         }
       ]
@@ -3844,7 +3844,7 @@
         {
           "img": "",
           "title": "What is Watch?",
-          "url": "https://hanzo.space/docs#reference/minio-mc/mc-watch.html",
+          "url": "https://hanzo.space/docs#reference/storage-mc/mc-watch.html",
           "body": "The Watch section displays S3 events as they occur on the selected bucket."
         },
         {
@@ -3871,7 +3871,7 @@
         {
           "img": "",
           "title": "Group Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-group-management.html",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-group-management.html",
           "body": "A group is a collection of users. Each group can have one or more assigned policies that explicitly list the actions and resources to which group members are allowed or denied access."
         },
         {
@@ -3945,9 +3945,9 @@
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         }
       ]
@@ -3997,9 +3997,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -4018,7 +4018,7 @@
         {
           "img": "",
           "title": "Access Managemnt",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#minio-policy-actions",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#storage-policy-actions",
           "body": "Text snippet that will be relevant to the user will  go here  made to look nice in the helpitem size  on two-three lines"
         },
         {
@@ -4086,9 +4086,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -4107,13 +4107,13 @@
         {
           "img": "",
           "title": "Group Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-group-management.html",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-group-management.html",
           "body": "A group is a collection of users. Each group can have one or more assigned policies that explicitly list the actions and resources to which group members are allowed or denied access."
         },
         {
           "img": "",
           "title": "Access Managemnt",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#minio-policy-actions",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#storage-policy-actions",
           "body": "Text snippet that will be relevant to the user will  go here  made to look nice in the helpitem size  on two-three lines"
         },
         {
@@ -4169,9 +4169,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -4196,7 +4196,7 @@
         {
           "img": "",
           "title": "Group Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-group-management.html",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-group-management.html",
           "body": "A group is a collection of users. Each group can have one or more assigned policies that explicitly list the actions and resources to which group members are allowed or denied access."
         },
         {
@@ -4264,9 +4264,9 @@
           "body": "This blog covers the Hanzo Space best practices with respect to S3 security and access controls."
         },
         {
-          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-minio.jpg",
+          "img": "https://hanzo.space/docs#content/images/size/w2000/2023/10/openid-storage.jpg",
           "title": "Hanzo Space's OpenID Connect Integration Explained",
-          "url": "https://hanzo.space/docs#minio-openid-connect-integration",
+          "url": "https://hanzo.space/docs#storage-openid-connect-integration",
           "body": "Learn more about connecting Hanzo Space to OpenID for access management."
         },
         {
@@ -4297,7 +4297,7 @@
         {
           "img": "",
           "title": "Bucket Versioning",
-          "url": "https://hanzo.space/docs#administration/object-management/object-versioning.html#minio-bucket-versioning",
+          "url": "https://hanzo.space/docs#administration/object-management/object-versioning.html#storage-bucket-versioning",
           "body": "Hanzo Space versioning protects from unintended overwrites and deletions while providing support for “undoing” a write operation."
         },
         {
@@ -4309,7 +4309,7 @@
         {
           "img": "",
           "title": "Bucket Replication",
-          "url": "https://hanzo.space/docs#administration/bucket-replication.html#minio-bucket-replication-serverside",
+          "url": "https://hanzo.space/docs#administration/bucket-replication.html#storage-bucket-replication-serverside",
           "body": "Hanzo Space server-side bucket replication is an automatic bucket-level configuration that synchronizes objects between a source and destination bucket."
         },
         {
@@ -4373,7 +4373,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         },
         {
@@ -4409,7 +4409,7 @@
         {
           "img": "https://images.unsplash.com/photo-1611783569248-a82ec2e72c67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDIxfHxzcGVlZHxlbnwwfHx8fDE2NDEyMjY2MDI&ixlib=rb-1.2.1&q=80&w=1000",
           "title": "Versioning, Metadata and Storage",
-          "url": "https://hanzo.space/docs#minio-versioning-metadata-deep-dive/",
+          "url": "https://hanzo.space/docs#storage-versioning-metadata-deep-dive/",
           "body": "Learn how Hanzo Space supports Lifecycle management through a complete object locking framework."
         },
         {
@@ -4486,13 +4486,13 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/IMG_7378.jpeg",
           "title": "Event-Driven Architecture: Hanzo Space Event Notification Webhooks using Flask",
-          "url": "https://hanzo.space/docs#minio-webhook-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-webhook-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications and integrate them with a Flask webhook to enable real-time data processing."
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/david-blog.jpeg",
           "title": "Streamlining Data Events with Hanzo Space and PostgreSQL",
-          "url": "https://hanzo.space/docs#minio-postgres-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-postgres-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications to PostgreSQL to trigger real-time responses to storage events."
         },
         {
@@ -4529,7 +4529,7 @@
         {
           "img": "",
           "title": "Bucket Replication",
-          "url": "https://hanzo.space/docs#administration/bucket-replication.html#minio-bucket-replication-serverside",
+          "url": "https://hanzo.space/docs#administration/bucket-replication.html#storage-bucket-replication-serverside",
           "body": "Hanzo Space server-side bucket replication is an automatic bucket-level configuration that synchronizes objects between a source and destination bucket."
         },
         {
@@ -4575,7 +4575,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         },
         {
@@ -4600,7 +4600,7 @@
         {
           "img": "",
           "title": "Object Lifecycle Management",
-          "url": "https://hanzo.space/docs#administration/object-management/object-lifecycle-management.html#minio-lifecycle-management",
+          "url": "https://hanzo.space/docs#administration/object-management/object-lifecycle-management.html#storage-lifecycle-management",
           "body": "Use Hanzo Space Object Lifecycle Management to create rules for time or date based automatic transition or expiry of objects."
         },
         {
@@ -4640,7 +4640,7 @@
         {
           "img": "https://images.unsplash.com/photo-1611783569248-a82ec2e72c67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDIxfHxzcGVlZHxlbnwwfHx8fDE2NDEyMjY2MDI&ixlib=rb-1.2.1&q=80&w=1000",
           "title": "Versioning, Metadata and Storage",
-          "url": "https://hanzo.space/docs#minio-versioning-metadata-deep-dive/",
+          "url": "https://hanzo.space/docs#storage-versioning-metadata-deep-dive/",
           "body": "Learn how Hanzo Space supports Lifecycle management through a complete object locking framework."
         }
       ]
@@ -4653,13 +4653,13 @@
         {
           "img": "",
           "title": "Access Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#minio-policy",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#storage-policy",
           "body": "Hanzo Space uses Policy-Based Access Control (PBAC) to define the authorized actions and resources to which an authenticated user has access."
         },
         {
           "img": "",
           "title": "User Management",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/minio-user-management.html#",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/storage-user-management.html#",
           "body": "Each user can have one or more assigned policies that explicitly list the actions and resources to which that user has access. Users can also inherit policies from the groups in which they have membership."
         },
         {
@@ -4862,13 +4862,13 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/IMG_7378.jpeg",
           "title": "Event-Driven Architecture: Hanzo Space Event Notification Webhooks using Flask",
-          "url": "https://hanzo.space/docs#minio-webhook-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-webhook-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications and integrate them with a Flask webhook to enable real-time data processing."
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2024/01/david-blog.jpeg",
           "title": "Streamlining Data Events with Hanzo Space and PostgreSQL",
-          "url": "https://hanzo.space/docs#minio-postgres-event-notifications/",
+          "url": "https://hanzo.space/docs#storage-postgres-event-notifications/",
           "body": "Learn how to set up Hanzo Space event notifications to PostgreSQL to trigger real-time responses to storage events."
         },
         {
@@ -5000,7 +5000,7 @@
         {
           "img": "",
           "title": "Login help",
-          "url": "https://hanzo.space/docs#administration/minio-console.html#logging-in",
+          "url": "https://hanzo.space/docs#administration/storage-console.html#logging-in",
           "body": "Text snippet that will be relevant to the user will go here made to look nice in the helpitem size on two-three lines"
         },
         {
@@ -5012,7 +5012,7 @@
         {
           "img": "",
           "title": "Login help",
-          "url": "https://hanzo.space/docs#administration/minio-console.html#configuration",
+          "url": "https://hanzo.space/docs#administration/storage-console.html#configuration",
           "body": "Text snippet that will be relevant to the user will  go here  made to look nice in the helpitem size  on two-three lines"
         },
         {
@@ -5045,14 +5045,14 @@
         {
           "img": "",
           "title": "Bucket Replication",
-          "url": "https://hanzo.space/docs#administration/bucket-replication.html#minio-bucket-replication-serverside",
+          "url": "https://hanzo.space/docs#administration/bucket-replication.html#storage-bucket-replication-serverside",
           "body": "Hanzo Space server-side bucket replication is an automatic bucket-level configuration that synchronizes objects between a source and destination bucket."
         },
 
         {
           "img": "",
           "title": "Replication Internals",
-          "url": "https://hanzo.space/docs#administration/bucket-replication.html#minio-replication-process",
+          "url": "https://hanzo.space/docs#administration/bucket-replication.html#storage-replication-process",
           "body": "Learn details of the Hanzo Space replication process."
         },
 
@@ -5094,7 +5094,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         },
         {
@@ -5132,14 +5132,14 @@
         {
           "img": "",
           "title": "Bucket Replication",
-          "url": "https://hanzo.space/docs#administration/bucket-replication.html#minio-bucket-replication-serverside",
+          "url": "https://hanzo.space/docs#administration/bucket-replication.html#storage-bucket-replication-serverside",
           "body": "Hanzo Space server-side bucket replication is an automatic bucket-level configuration that synchronizes objects between a source and destination bucket."
         },
 
         {
           "img": "",
           "title": "Replication Internals",
-          "url": "https://hanzo.space/docs#administration/bucket-replication.html#minio-replication-process",
+          "url": "https://hanzo.space/docs#administration/bucket-replication.html#storage-replication-process",
           "body": "Learn details of the Hanzo Space replication process."
         },
 
@@ -5181,7 +5181,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/12/replication-bestpractices.jpg",
           "title": "Replication Best Practices",
-          "url": "https://hanzo.space/docs#minio-replication-best-practices/",
+          "url": "https://hanzo.space/docs#storage-replication-best-practices/",
           "body": "A detailed tutorial guiding you through setting up Hanzo Space with a well-configured replication architecture."
         }
       ]

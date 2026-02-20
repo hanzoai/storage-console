@@ -47,9 +47,9 @@ const sections = [
   {
     title: "SDKs & Tools",
     items: [
-      { label: "JavaScript SDK", href: "https://hanzo.space/docs#developers/javascript/javascript-sdk.html", desc: "npm install minio" },
-      { label: "Python SDK", href: "https://hanzo.space/docs#developers/python/python-sdk.html", desc: "pip install minio" },
-      { label: "Go SDK", href: "https://hanzo.space/docs#developers/go/go-sdk.html", desc: "go get github.com/minio/minio-go/v7" },
+      { label: "JavaScript SDK", href: "https://hanzo.space/docs#developers/javascript/javascript-sdk.html", desc: "npm install @hanzo/storage" },
+      { label: "Python SDK", href: "https://hanzo.space/docs#developers/python/python-sdk.html", desc: "pip install hanzo-storage" },
+      { label: "Go SDK", href: "https://hanzo.space/docs#developers/go/go-sdk.html", desc: "go get github.com/hanzoai/storage-go/v7" },
       { label: "mc CLI", href: "https://hanzo.space/docs#reference/mc.html", desc: "Command-line client for S3 operations" },
     ],
   },
@@ -192,7 +192,7 @@ aws configure set default.s3.endpoint_url https://s3.hanzo.space
 aws s3 ls
 
 # JavaScript
-import { Client } from 'minio'
+import { Client } from '@hanzo/storage'
 const client = new Client({
   endPoint: 's3.hanzo.space',
   useSSL: true,
