@@ -122,7 +122,7 @@ const LicenseConsentModal = () => {
                 marginBottom: "27px",
               }}
             >
-              By using this software, you acknowledge that MinIO software is
+              By using this software, you acknowledge that Hanzo Space software is
               licensed under the <LicenseLink />, for which, the full text can
               be found here:{" "}
               <a

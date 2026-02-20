@@ -5,7 +5,7 @@ import { ApplicationLogoProps } from "mds";
 const MinIOPlan =
   (
     document.head.querySelector(
-      "[name~=minio-license][content]",
+      "[name~=hanzo-license][content]",
     ) as HTMLMetaElement
   )?.content || "AGPL";
 
