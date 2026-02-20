@@ -1,0 +1,5 @@
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="40" height="40" rx="8" fill="#fd4444"/>
+  <path d="M12 10v20M28 10v20M12 20h16" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="50" y="27" font-family="Inter, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#fafafa" letter-spacing="-0.02em">Hanzo Space</text>
+</svg>

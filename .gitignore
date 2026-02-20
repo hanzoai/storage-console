@@ -51,5 +51,4 @@ public.crt
 
 # Ignore Bin files
 bin/
-web-app/build/
-images/
+# web-app/build/ must be tracked for go:embed
