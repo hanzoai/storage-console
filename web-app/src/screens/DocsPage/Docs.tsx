@@ -259,7 +259,7 @@ sudo mv s3-linux-amd64 /usr/local/bin/s3
 S3_ROOT_USER=admin S3_ROOT_PASSWORD=changeme123 \\
   s3 server /data --console-address ":9001"`}</Code>
 
-    <Code title="macOS">{`brew install hanzoai/tap/storage
+    <Code title="macOS">{`brew install hanzoai/tap/s3
 
 # Start server
 S3_ROOT_USER=admin S3_ROOT_PASSWORD=changeme123 \\
@@ -572,7 +572,7 @@ func main() {
       <code style={{ fontFamily: mono, fontSize: 12, color: c.text, backgroundColor: c.codeBg, padding: "2px 6px", borderRadius: 4 }}>mc</code> is the official command-line client for S3-compatible storage. It provides Unix-like commands (ls, cp, rm, cat, diff, mirror) for object storage.
     </P>
     <Code title="Install">{`# macOS
-brew install hanzoai/tap/mc
+brew install hanzoai/tap/s3-mc
 
 # Linux
 curl -fsSL https://github.com/hanzoai/storage/releases/latest/download/mc-linux-amd64 -o mc

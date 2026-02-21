@@ -74,7 +74,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
@@ -292,7 +292,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -381,7 +381,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -987,7 +987,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2021/09/1_kqpVTzo8b0e2oKdOjWQxZA.png",
           "title": "Publish from Kafka, Persist on Hanzo Space",
-          "url": "https://hanzo.space/docs#kafka_and_minio/",
+          "url": "https://hanzo.space/docs#kafka_and_s3/",
           "body": "Learn how Kafka and Hanzo Space can be used together  for ingress, management and finally storing  huge volumes of streaming data."
         },
         {
@@ -1619,7 +1619,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -2459,7 +2459,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/08/Supportability-blogpost-1.png",
           "title": "Supportability as Software with Hanzo Space Support",
-          "url": "https://hanzo.space/docs#supportability-minio-subnet/",
+          "url": "https://hanzo.space/docs#supportability-s3-support/",
           "body": "In the same way that DevOps and Cloud Native require a rethinking of old paradigms of development, Hanzo Space’s approach to supportability is driving new thinking on support."
         },
         {
@@ -2642,7 +2642,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2023/11/Regulatory-Compliance-with-Hanzo Space-Object-Lambdas--1-.jpg",
           "title": "Regulatory Compliance with Hanzo Space Object Lambdas",
-          "url": "https://hanzo.space/docs#regulatory-compliance-with-minio-object-lambdas/",
+          "url": "https://hanzo.space/docs#regulatory-compliance-with-s3-object-lambdas/",
           "body": "Learn how Hanzo Space event notifications can be used to modify data on-the-fly to maintain compliance without maintaining separate datasets."
         },
         {
@@ -2731,7 +2731,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2023/11/Regulatory-Compliance-with-Hanzo Space-Object-Lambdas--1-.jpg",
           "title": "Regulatory Compliance with Hanzo Space Object Lambdas",
-          "url": "https://hanzo.space/docs#regulatory-compliance-with-minio-object-lambdas/",
+          "url": "https://hanzo.space/docs#regulatory-compliance-with-s3-object-lambdas/",
           "body": "Learn how Hanzo Space event notifications can be used to modify data on-the-fly to maintain compliance without maintaining separate datasets."
         },
         {
@@ -2820,7 +2820,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2023/11/Regulatory-Compliance-with-Hanzo Space-Object-Lambdas--1-.jpg",
           "title": "Regulatory Compliance with Hanzo Space Object Lambdas",
-          "url": "https://hanzo.space/docs#regulatory-compliance-with-minio-object-lambdas/",
+          "url": "https://hanzo.space/docs#regulatory-compliance-with-s3-object-lambdas/",
           "body": "Learn how Hanzo Space event notifications can be used to modify data on-the-fly to maintain compliance without maintaining separate datasets."
         },
         {
@@ -2992,7 +2992,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -3075,7 +3075,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
@@ -3176,7 +3176,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -3271,7 +3271,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -3378,7 +3378,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
@@ -3522,7 +3522,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2022/08/Supportability-blogpost-1.png",
           "title": "Supportability as Software with Hanzo Space Support",
-          "url": "https://hanzo.space/docs#supportability-minio-subnet/",
+          "url": "https://hanzo.space/docs#supportability-s3-support/",
           "body": "In the same way that DevOps and Cloud Native require a rethinking of old paradigms of development, Hanzo Space’s approach to supportability is driving new thinking on support."
         }
       ]
@@ -3653,7 +3653,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
@@ -3748,7 +3748,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -3941,7 +3941,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
@@ -4005,7 +4005,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -4094,7 +4094,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -4177,7 +4177,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -4272,7 +4272,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -4391,7 +4391,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         },
         {
@@ -4504,7 +4504,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2023/11/Regulatory-Compliance-with-Hanzo Space-Object-Lambdas--1-.jpg",
           "title": "Regulatory Compliance with Hanzo Space Object Lambdas",
-          "url": "https://hanzo.space/docs#regulatory-compliance-with-minio-object-lambdas/",
+          "url": "https://hanzo.space/docs#regulatory-compliance-with-s3-object-lambdas/",
           "body": "Learn how Hanzo Space event notifications can be used to modify data on-the-fly to maintain compliance without maintaining separate datasets."
         },
         {
@@ -4729,7 +4729,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2022/06/pexels-pixabay-210158.jpg",
           "title": "Securing Hybrid Cloud Storage with Hanzo Space IAM",
-          "url": "https://hanzo.space/docs#secure-hybrid-cloud-minio-iam/",
+          "url": "https://hanzo.space/docs#secure-hybrid-cloud-s3-iam/",
           "body": "This blog post focuses on the role of Identity Access Management (IAM) in protecting cloud resources and data."
         }
       ]
@@ -4880,7 +4880,7 @@
         {
           "img": "https://hanzo.space/docs#content/images/size/w2000/2023/11/Regulatory-Compliance-with-Hanzo Space-Object-Lambdas--1-.jpg",
           "title": "Regulatory Compliance with Hanzo Space Object Lambdas",
-          "url": "https://hanzo.space/docs#regulatory-compliance-with-minio-object-lambdas/",
+          "url": "https://hanzo.space/docs#regulatory-compliance-with-s3-object-lambdas/",
           "body": "Learn how Hanzo Space event notifications can be used to modify data on-the-fly to maintain compliance without maintaining separate datasets."
         },
         {
