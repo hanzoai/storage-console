@@ -123,9 +123,9 @@ const hashRoutes: Record<string, string> = {
   "administration/bucket-notifications": "admin-notifications",
   "administration/monitoring": "console-monitoring",
   "administration/server-side-encryption": "auth-encryption",
-  "operations/install-deploy-manage/deploy-minio/deploy-minio-single-node-single-drive": "single-node",
-  "operations/install-deploy-manage/deploy-minio/deploy-minio-single-node-multi-drive": "single-node-multi-drive",
-  "operations/install-deploy-manage/deploy-minio/deploy-minio-multi-node-multi-drive": "deploy-distributed",
+  "operations/install-deploy-manage/deploy-s3/deploy-s3-single-node-single-drive": "single-node",
+  "operations/install-deploy-manage/deploy-s3/deploy-s3-single-node-multi-drive": "single-node-multi-drive",
+  "operations/install-deploy-manage/deploy-s3/deploy-s3-multi-node-multi-drive": "deploy-distributed",
   "operations/monitoring": "ops-metrics",
   "operations/server-side-encryption": "auth-encryption",
   "operations/data-recovery": "ops-recovery",
@@ -135,7 +135,7 @@ const hashRoutes: Record<string, string> = {
   "operations/scaling": "ops-scaling",
   "operations/decommissioning": "ops-scaling",
   "operations/manage-existing-deployments/migrate-fs-gateway": "admin-config",
-  "operations/install-deploy-manage/upgrade-minio-deployment": "ops-upgrade",
+  "operations/install-deploy-manage/upgrade-s3-deployment": "ops-upgrade",
   "integrations/event-notifications/event-notification-targets/publish-events-to-webhook": "admin-notifications",
   "integrations/event-notifications/event-notification-targets/publish-events-to-kafka": "admin-notifications",
   "integrations/event-notifications/event-notification-targets/publish-events-to-amqp": "admin-notifications",
@@ -301,7 +301,7 @@ const DocsContent = () => (
     volumes:
       - storage-data:/data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      test: ["CMD", "curl", "-f", "http://localhost:9000/s3/health/live"]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -381,13 +381,13 @@ spec:
               mountPath: /data
           readinessProbe:
             httpGet:
-              path: /minio/health/ready
+              path: /s3/health/ready
               port: 9000
             initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
             httpGet:
-              path: /minio/health/live
+              path: /s3/health/live
               port: 9000
             initialDelaySeconds: 30
             periodSeconds: 30
@@ -1162,7 +1162,7 @@ mc ilm tier add azure hanzo ARCHIVE-AZURE \\
   --bucket my-container
 
 # Add remote Hanzo Space tier
-mc ilm tier add minio hanzo REMOTE-STORAGE \\
+mc ilm tier add s3 hanzo REMOTE-STORAGE \\
   --endpoint https://remote.example.com \\
   --access-key REMOTE_KEY \\
   --secret-key REMOTE_SECRET \\
@@ -1227,21 +1227,21 @@ mc admin replicate remove site1`}</Code>
 mc admin service restart hanzo
 
 # Subscribe bucket to events
-mc event add hanzo/my-bucket arn:minio:sqs::primary:webhook \\
+mc event add hanzo/my-bucket arn:s3:sqs::primary:webhook \\
   --event put,delete
 
 # List configured events
 mc event list hanzo/my-bucket
 
 # Remove event subscription
-mc event remove hanzo/my-bucket arn:minio:sqs::primary:webhook`}</Code>
+mc event remove hanzo/my-bucket arn:s3:sqs::primary:webhook`}</Code>
     <Code title="Configure Kafka notifications">{`mc admin config set hanzo notify_kafka:primary \\
   brokers="kafka1:9092,kafka2:9092" \\
   topic="storage-events" \\
   queue_limit="10000"
 
 mc admin service restart hanzo
-mc event add hanzo/my-bucket arn:minio:sqs::primary:kafka --event put`}</Code>
+mc event add hanzo/my-bucket arn:s3:sqs::primary:kafka --event put`}</Code>
 
     <H3 id="admin-versioning">Versioning</H3>
     <P>Bucket versioning keeps all versions of an object, allowing you to recover from accidental deletes or overwrites.</P>
@@ -1360,10 +1360,10 @@ mc legalhold clear hanzo/compliance-data/document.pdf`}</Code>
     <Table
       headers={["Endpoint", "Description"]}
       rows={[
-        ["/minio/v2/metrics/cluster", "Cluster-wide aggregated metrics"],
-        ["/minio/v2/metrics/node", "Per-node metrics"],
-        ["/minio/v2/metrics/bucket", "Per-bucket metrics"],
-        ["/minio/v2/metrics/resource", "Resource utilization metrics"],
+        ["/s3/v2/metrics/cluster", "Cluster-wide aggregated metrics"],
+        ["/s3/v2/metrics/node", "Per-node metrics"],
+        ["/s3/v2/metrics/bucket", "Per-bucket metrics"],
+        ["/s3/v2/metrics/resource", "Resource utilization metrics"],
       ]}
     />
     <Code title="Generate Prometheus config">{`# Auto-generate prometheus.yml scrape config
@@ -1372,7 +1372,7 @@ mc admin prometheus generate hanzo
 # Or configure manually in prometheus.yml:
 # scrape_configs:
 #   - job_name: hanzo-storage
-#     metrics_path: /minio/v2/metrics/cluster
+#     metrics_path: /s3/v2/metrics/cluster
 #     bearer_token: <mc admin prometheus generate output>
 #     static_configs:
 #       - targets: ['storage.example.com:9000']`}</Code>
@@ -1382,21 +1382,21 @@ mc admin prometheus generate hanzo
     <Table
       headers={["Metric", "Description"]}
       rows={[
-        ["minio_node_disk_total_bytes", "Total disk capacity"],
-        ["minio_node_disk_used_bytes", "Used disk space"],
-        ["minio_node_disk_free_bytes", "Free disk space"],
-        ["minio_s3_requests_total", "Total S3 requests by API and status"],
-        ["minio_s3_requests_errors_total", "Failed S3 requests"],
-        ["minio_s3_traffic_received_bytes", "Total bytes received"],
-        ["minio_s3_traffic_sent_bytes", "Total bytes sent"],
-        ["minio_bucket_objects_count", "Number of objects per bucket"],
-        ["minio_bucket_usage_total_bytes", "Total size per bucket"],
-        ["minio_cluster_nodes_online_total", "Number of online nodes"],
-        ["minio_cluster_nodes_offline_total", "Number of offline nodes"],
-        ["minio_cluster_disk_online_total", "Number of online drives"],
-        ["minio_cluster_disk_offline_total", "Number of offline drives"],
-        ["minio_heal_objects_total", "Objects healed"],
-        ["minio_node_scanner_objects_scanned", "Objects scanned for bitrot"],
+        ["s3_node_disk_total_bytes", "Total disk capacity"],
+        ["s3_node_disk_used_bytes", "Used disk space"],
+        ["s3_node_disk_free_bytes", "Free disk space"],
+        ["s3_requests_total", "Total S3 requests by API and status"],
+        ["s3_requests_errors_total", "Failed S3 requests"],
+        ["s3_traffic_received_bytes", "Total bytes received"],
+        ["s3_traffic_sent_bytes", "Total bytes sent"],
+        ["s3_bucket_objects_count", "Number of objects per bucket"],
+        ["s3_bucket_usage_total_bytes", "Total size per bucket"],
+        ["s3_cluster_nodes_online_total", "Number of online nodes"],
+        ["s3_cluster_nodes_offline_total", "Number of offline nodes"],
+        ["s3_cluster_disk_online_total", "Number of online drives"],
+        ["s3_cluster_disk_offline_total", "Number of offline drives"],
+        ["s3_heal_objects_total", "Objects healed"],
+        ["s3_node_scanner_objects_scanned", "Objects scanned for bitrot"],
       ]}
     />
     <Callout type="tip">
@@ -1513,11 +1513,11 @@ kubectl -n storage rollout status deployment/storage`}</Code>
 replicate:
   apiVersion: v1
   source:
-    type: minio
+    type: s3
     bucket: source-bucket
     prefix: data/
   target:
-    type: minio
+    type: s3
     bucket: target-bucket
     endpoint: https://remote.example.com
     credentials:
@@ -1647,33 +1647,33 @@ mc replicate resync start hanzo/my-bucket`}</Code>
     <Table
       headers={["Endpoint", "Method", "Description"]}
       rows={[
-        ["/minio/health/live", "GET", "Returns 200 if the server process is running. Use as a liveness probe."],
-        ["/minio/health/ready", "GET", "Returns 200 if the server is ready to accept requests. Use as a readiness probe."],
-        ["/minio/health/cluster", "GET", "Returns 200 if the cluster has write quorum. Use for load balancer health checks."],
-        ["/minio/health/cluster?maintenance=true", "GET", "Returns 200 if cluster can tolerate one node going down. Use before maintenance."],
+        ["/s3/health/live", "GET", "Returns 200 if the server process is running. Use as a liveness probe."],
+        ["/s3/health/ready", "GET", "Returns 200 if the server is ready to accept requests. Use as a readiness probe."],
+        ["/s3/health/cluster", "GET", "Returns 200 if the cluster has write quorum. Use for load balancer health checks."],
+        ["/s3/health/cluster?maintenance=true", "GET", "Returns 200 if cluster can tolerate one node going down. Use before maintenance."],
       ]}
     />
     <Code title="Docker healthcheck">{`healthcheck:
-  test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+  test: ["CMD", "curl", "-f", "http://localhost:9000/s3/health/live"]
   interval: 30s
   timeout: 5s
   retries: 3
   start_period: 30s`}</Code>
     <Code title="Kubernetes probes">{`readinessProbe:
   httpGet:
-    path: /minio/health/ready
+    path: /s3/health/ready
     port: 9000
   initialDelaySeconds: 10
   periodSeconds: 10
 livenessProbe:
   httpGet:
-    path: /minio/health/live
+    path: /s3/health/live
     port: 9000
   initialDelaySeconds: 30
   periodSeconds: 30
 startupProbe:
   httpGet:
-    path: /minio/health/live
+    path: /s3/health/live
     port: 9000
   failureThreshold: 30
   periodSeconds: 10`}</Code>
