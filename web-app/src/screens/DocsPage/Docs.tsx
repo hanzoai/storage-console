@@ -184,8 +184,8 @@ const DocsContent = () => (
     </P>
     <Code title="Docker — single node">{`docker run -d --name hanzo-space \\
   -p 9000:9000 -p 9001:9001 \\
-  -e MINIO_ROOT_USER=admin \\
-  -e MINIO_ROOT_PASSWORD=changeme123 \\
+  -e S3_ROOT_USER=admin \\
+  -e S3_ROOT_PASSWORD=changeme123 \\
   -v /data:/data \\
   ghcr.io/hanzoai/storage:latest \\
   server /data --console-address ":9001"`}</Code>
@@ -204,8 +204,8 @@ const DocsContent = () => (
     <P>For development, testing, or small workloads:</P>
     <Code>{`docker run -d --name hanzo-space \\
   -p 9000:9000 -p 9001:9001 \\
-  -e MINIO_ROOT_USER=admin \\
-  -e MINIO_ROOT_PASSWORD=changeme123 \\
+  -e S3_ROOT_USER=admin \\
+  -e S3_ROOT_PASSWORD=changeme123 \\
   -v ~/hanzo-data:/data \\
   ghcr.io/hanzoai/storage:latest \\
   server /data --console-address ":9001"`}</Code>
@@ -214,8 +214,8 @@ const DocsContent = () => (
     <P>For production with erasure coding (requires at least 4 drives):</P>
     <Code>{`docker run -d --name hanzo-space \\
   -p 9000:9000 -p 9001:9001 \\
-  -e MINIO_ROOT_USER=admin \\
-  -e MINIO_ROOT_PASSWORD=changeme123 \\
+  -e S3_ROOT_USER=admin \\
+  -e S3_ROOT_PASSWORD=changeme123 \\
   -v /mnt/disk1:/data1 \\
   -v /mnt/disk2:/data2 \\
   -v /mnt/disk3:/data3 \\
@@ -236,12 +236,12 @@ const DocsContent = () => (
       - "9000:9000"
       - "9001:9001"
     environment:
-      MINIO_ROOT_USER: admin
-      MINIO_ROOT_PASSWORD: changeme123
+      S3_ROOT_USER: admin
+      S3_ROOT_PASSWORD: changeme123
     volumes:
       - storage-data:/data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      test: ["CMD", "curl", "-f", "http://localhost:9000/s3/health/live"]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -251,19 +251,19 @@ volumes:
 
     <H3 id="deploy-binary">Deploy Binary</H3>
     <P>Download and run directly on Linux, macOS, or Windows:</P>
-    <Code title="Linux (amd64)">{`wget https://github.com/hanzoai/storage/releases/latest/download/minio-linux-amd64
-chmod +x minio-linux-amd64
-sudo mv minio-linux-amd64 /usr/local/bin/minio
+    <Code title="Linux (amd64)">{`wget https://github.com/hanzoai/storage/releases/latest/download/s3-linux-amd64
+chmod +x s3-linux-amd64
+sudo mv s3-linux-amd64 /usr/local/bin/s3
 
 # Start server
-MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=changeme123 \\
-  minio server /data --console-address ":9001"`}</Code>
+S3_ROOT_USER=admin S3_ROOT_PASSWORD=changeme123 \\
+  s3 server /data --console-address ":9001"`}</Code>
 
     <Code title="macOS">{`brew install hanzoai/tap/storage
 
 # Start server
-MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=changeme123 \\
-  minio server ~/hanzo-data --console-address ":9001"`}</Code>
+S3_ROOT_USER=admin S3_ROOT_PASSWORD=changeme123 \\
+  s3 server ~/hanzo-data --console-address ":9001"`}</Code>
 
     <H3 id="deploy-kubernetes">Deploy on Kubernetes</H3>
     <P>Hanzo Space runs on any Kubernetes cluster. Here is a minimal deployment:</P>
@@ -292,12 +292,12 @@ spec:
             - containerPort: 9001
               name: console
           env:
-            - name: MINIO_ROOT_USER
+            - name: S3_ROOT_USER
               valueFrom:
                 secretKeyRef:
                   name: storage-credentials
                   key: root-user
-            - name: MINIO_ROOT_PASSWORD
+            - name: S3_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: storage-credentials
@@ -390,7 +390,7 @@ spec:
 
     <H3 id="console-monitoring">Monitoring</H3>
     <P>
-      The console dashboard shows real-time server metrics: total storage, number of objects, bucket count, uptime, network I/O, and drive health. For production monitoring, export Prometheus metrics from the <code style={{ fontFamily: mono, fontSize: 12, color: c.text, backgroundColor: c.codeBg, padding: "2px 6px", borderRadius: 4 }}>/minio/v2/metrics/cluster</code> endpoint.
+      The console dashboard shows real-time server metrics: total storage, number of objects, bucket count, uptime, network I/O, and drive health. For production monitoring, export Prometheus metrics from the <code style={{ fontFamily: mono, fontSize: 12, color: c.text, backgroundColor: c.codeBg, padding: "2px 6px", borderRadius: 4 }}>/s3/v2/metrics/cluster</code> endpoint.
     </P>
 
     {/* ═══ S3 API ═══ */}
@@ -650,21 +650,21 @@ aws s3 ls s3://my-bucket/ --recursive`}</Code>
     <Table
       headers={["Variable", "Description"]}
       rows={[
-        ["MINIO_IDENTITY_OPENID_CONFIG_URL", "OIDC discovery URL, e.g. https://hanzo.id/.well-known/openid-configuration"],
-        ["MINIO_IDENTITY_OPENID_CLIENT_ID", "OAuth2 client ID"],
-        ["MINIO_IDENTITY_OPENID_CLIENT_SECRET", "OAuth2 client secret"],
-        ["MINIO_IDENTITY_OPENID_CLAIM_NAME", "JWT claim for policy mapping (default: policy)"],
-        ["MINIO_IDENTITY_OPENID_SCOPES", "Scopes to request (default: openid,profile,email)"],
-        ["MINIO_IDENTITY_OPENID_REDIRECT_URI", "Callback URL for the console (e.g. https://storage.example.com/oauth_callback)"],
-        ["MINIO_IDENTITY_OPENID_DISPLAY_NAME", "Display name shown on the login page (e.g. Hanzo)"],
+        ["S3_IDENTITY_OPENID_CONFIG_URL", "OIDC discovery URL, e.g. https://hanzo.id/.well-known/openid-configuration"],
+        ["S3_IDENTITY_OPENID_CLIENT_ID", "OAuth2 client ID"],
+        ["S3_IDENTITY_OPENID_CLIENT_SECRET", "OAuth2 client secret"],
+        ["S3_IDENTITY_OPENID_CLAIM_NAME", "JWT claim for policy mapping (default: policy)"],
+        ["S3_IDENTITY_OPENID_SCOPES", "Scopes to request (default: openid,profile,email)"],
+        ["S3_IDENTITY_OPENID_REDIRECT_URI", "Callback URL for the console (e.g. https://storage.example.com/oauth_callback)"],
+        ["S3_IDENTITY_OPENID_DISPLAY_NAME", "Display name shown on the login page (e.g. Hanzo)"],
       ]}
     />
-    <Code title="Example: Hanzo ID OIDC">{`MINIO_IDENTITY_OPENID_CONFIG_URL=https://hanzo.id/.well-known/openid-configuration
-MINIO_IDENTITY_OPENID_CLIENT_ID=hanzo-storage-client-id
-MINIO_IDENTITY_OPENID_CLIENT_SECRET=hanzo-storage-client-secret
-MINIO_IDENTITY_OPENID_SCOPES=openid,profile,email
-MINIO_IDENTITY_OPENID_REDIRECT_URI=https://hanzo.space/oauth_callback
-MINIO_IDENTITY_OPENID_DISPLAY_NAME=Hanzo`}</Code>
+    <Code title="Example: Hanzo ID OIDC">{`S3_IDENTITY_OPENID_CONFIG_URL=https://hanzo.id/.well-known/openid-configuration
+S3_IDENTITY_OPENID_CLIENT_ID=hanzo-storage-client-id
+S3_IDENTITY_OPENID_CLIENT_SECRET=hanzo-storage-client-secret
+S3_IDENTITY_OPENID_SCOPES=openid,profile,email
+S3_IDENTITY_OPENID_REDIRECT_URI=https://hanzo.space/oauth_callback
+S3_IDENTITY_OPENID_DISPLAY_NAME=Hanzo`}</Code>
 
     <H3 id="auth-iam">IAM Policies</H3>
     <P>
@@ -715,7 +715,7 @@ MINIO_IDENTITY_OPENID_DISPLAY_NAME=Hanzo`}</Code>
         ["SSE-C", "Client provides the encryption key with each request."],
       ]}
     />
-    <P>For TLS (encryption in transit), place a TLS certificate at <code style={{ fontFamily: mono, fontSize: 12, color: c.text, backgroundColor: c.codeBg, padding: "2px 6px", borderRadius: 4 }}>~/.minio/certs/public.crt</code> and <code style={{ fontFamily: mono, fontSize: 12, color: c.text, backgroundColor: c.codeBg, padding: "2px 6px", borderRadius: 4 }}>~/.minio/certs/private.key</code>. The server will automatically use HTTPS.</P>
+    <P>For TLS (encryption in transit), place a TLS certificate at <code style={{ fontFamily: mono, fontSize: 12, color: c.text, backgroundColor: c.codeBg, padding: "2px 6px", borderRadius: 4 }}>~/.s3/certs/public.crt</code> and <code style={{ fontFamily: mono, fontSize: 12, color: c.text, backgroundColor: c.codeBg, padding: "2px 6px", borderRadius: 4 }}>~/.s3/certs/private.key</code>. The server will automatically use HTTPS.</P>
 
     <H3 id="auth-bucket-policy">Bucket Policies</H3>
     <P>Bucket policies control anonymous and cross-account access. Common use cases:</P>
@@ -738,19 +738,19 @@ MINIO_IDENTITY_OPENID_DISPLAY_NAME=Hanzo`}</Code>
     <Table
       headers={["Variable", "Default", "Description"]}
       rows={[
-        ["MINIO_ROOT_USER", "(required)", "Root username (minimum 3 characters)"],
-        ["MINIO_ROOT_PASSWORD", "(required)", "Root password (minimum 8 characters)"],
-        ["MINIO_VOLUMES", "/data", "Data directory or drive paths"],
-        ["MINIO_SERVER_URL", "", "Public URL for the S3 API (for presigned URLs)"],
-        ["MINIO_BROWSER_REDIRECT_URL", "", "Public URL for the console"],
-        ["MINIO_REGION", "us-east-1", "Server region (used in S3 responses)"],
-        ["MINIO_DOMAIN", "", "Virtual-hosted-style domain (e.g., s3.example.com)"],
-        ["MINIO_COMPRESSION_ENABLE", "off", "Enable transparent compression"],
-        ["MINIO_PROMETHEUS_AUTH_TYPE", "jwt", "Prometheus metrics auth (jwt or public)"],
+        ["S3_ROOT_USER", "(required)", "Root username (minimum 3 characters)"],
+        ["S3_ROOT_PASSWORD", "(required)", "Root password (minimum 8 characters)"],
+        ["S3_VOLUMES", "/data", "Data directory or drive paths"],
+        ["S3_SERVER_URL", "", "Public URL for the S3 API (for presigned URLs)"],
+        ["S3_BROWSER_REDIRECT_URL", "", "Public URL for the console"],
+        ["S3_REGION", "us-east-1", "Server region (used in S3 responses)"],
+        ["S3_DOMAIN", "", "Virtual-hosted-style domain (e.g., s3.example.com)"],
+        ["S3_COMPRESSION_ENABLE", "off", "Enable transparent compression"],
+        ["S3_PROMETHEUS_AUTH_TYPE", "jwt", "Prometheus metrics auth (jwt or public)"],
       ]}
     />
     <Callout type="warning">
-      Use a config file for complex deployments. Create <code style={{ fontFamily: mono, fontSize: 12 }}>/etc/default/minio</code> with one <code style={{ fontFamily: mono, fontSize: 12 }}>KEY=VALUE</code> per line.
+      Use a config file for complex deployments. Create <code style={{ fontFamily: mono, fontSize: 12 }}>/etc/default/s3</code> with one <code style={{ fontFamily: mono, fontSize: 12 }}>KEY=VALUE</code> per line.
     </Callout>
 
     <H3 id="admin-lifecycle">Lifecycle Rules</H3>
@@ -791,7 +791,7 @@ mc replicate add hanzo/my-bucket \\
   endpoint="https://api.example.com/hooks/storage" \\
   queue_limit="10000"
 
-mc event add hanzo/my-bucket arn:minio:sqs::primary:webhook \\
+mc event add hanzo/my-bucket arn:s3:sqs::primary:webhook \\
   --event put,delete`}</Code>
 
     <H3 id="admin-versioning">Versioning</H3>
