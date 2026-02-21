@@ -434,9 +434,9 @@ spec:
 
     <H3 id="s3-presigned">Presigned URLs</H3>
     <P>Generate temporary URLs that allow unauthenticated access to private objects. Supported by all SDKs:</P>
-    <Code title="JavaScript">{`import { Client } from 'minio'
+    <Code title="JavaScript">{`import { S3Client } from 'hanzo-s3'
 
-const client = new Client({
+const client = new S3Client({
   endPoint: 's3.hanzo.space',
   useSSL: true,
   accessKey: 'YOUR_ACCESS_KEY',
@@ -447,10 +447,10 @@ const client = new Client({
 const url = await client.presignedGetObject('my-bucket', 'photo.jpg', 3600)
 console.log(url)`}</Code>
 
-    <Code title="Python">{`from minio import Minio
+    <Code title="Python">{`from hanzo.s3 import S3Client
 from datetime import timedelta
 
-client = Minio(
+client = S3Client(
     "s3.hanzo.space",
     access_key="YOUR_ACCESS_KEY",
     secret_key="YOUR_SECRET_KEY",
@@ -468,10 +468,10 @@ print(url)`}</Code>
 
     {/* ═══ SDKs ═══ */}
     <H2 id="sdk-javascript">JavaScript SDK</H2>
-    <Code title="Install">{`npm install minio`}</Code>
-    <Code title="Usage">{`import { Client } from 'minio'
+    <Code title="Install">{`npm install hanzo-s3`}</Code>
+    <Code title="Usage">{`import { S3Client } from 'hanzo-s3'
 
-const client = new Client({
+const client = new S3Client({
   endPoint: 's3.hanzo.space',
   port: 443,
   useSSL: true,
@@ -498,10 +498,10 @@ stream.on('end', () => console.log('done'))
 await client.removeObject('my-bucket', 'hello.txt')`}</Code>
 
     <H2 id="sdk-python">Python SDK</H2>
-    <Code title="Install">{`pip install minio`}</Code>
-    <Code title="Usage">{`from minio import Minio
+    <Code title="Install">{`pip install hanzo-s3`}</Code>
+    <Code title="Usage">{`from hanzo.s3 import S3Client
 
-client = Minio(
+client = S3Client(
     "s3.hanzo.space",
     access_key="YOUR_ACCESS_KEY",
     secret_key="YOUR_SECRET_KEY",
@@ -531,7 +531,7 @@ for obj in objects:
 client.remove_object("my-bucket", "hello.txt")`}</Code>
 
     <H2 id="sdk-go">Go SDK</H2>
-    <Code title="Install">{`go get github.com/minio/minio-go/v7`}</Code>
+    <Code title="Install">{`go get github.com/hanzoai/s3-go/v7`}</Code>
     <Code title="Usage">{`package main
 
 import (
@@ -539,12 +539,12 @@ import (
     "fmt"
     "log"
 
-    "github.com/minio/minio-go/v7"
-    "github.com/minio/minio-go/v7/pkg/credentials"
+    "github.com/hanzoai/s3-go/v7"
+    "github.com/hanzoai/s3-go/v7/pkg/credentials"
 )
 
 func main() {
-    client, err := minio.New("s3.hanzo.space", &minio.Options{
+    client, err := s3.New("s3.hanzo.space", &s3.Options{
         Creds:  credentials.NewStaticV4("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY", ""),
         Secure: true,
     })
@@ -561,7 +561,7 @@ func main() {
     // Upload a file
     _, err = client.FPutObject(context.Background(),
         "my-bucket", "hello.txt", "/path/to/hello.txt",
-        minio.PutObjectOptions{ContentType: "text/plain"})
+        s3.PutObjectOptions{ContentType: "text/plain"})
     if err != nil {
         log.Fatal(err)
     }
@@ -572,10 +572,10 @@ func main() {
       <code style={{ fontFamily: mono, fontSize: 12, color: c.text, backgroundColor: c.codeBg, padding: "2px 6px", borderRadius: 4 }}>mc</code> is the official command-line client for S3-compatible storage. It provides Unix-like commands (ls, cp, rm, cat, diff, mirror) for object storage.
     </P>
     <Code title="Install">{`# macOS
-brew install minio/stable/mc
+brew install hanzoai/tap/mc
 
 # Linux
-wget https://dl.min.io/client/mc/release/linux-amd64/mc
+curl -fsSL https://github.com/hanzoai/storage/releases/latest/download/mc-linux-amd64 -o mc
 chmod +x mc && sudo mv mc /usr/local/bin/`}</Code>
     <Code title="Configure">{`# Add your Hanzo Space server
 mc alias set hanzo https://s3.hanzo.space YOUR_ACCESS_KEY YOUR_SECRET_KEY`}</Code>
@@ -937,8 +937,8 @@ aws configure set default.s3.endpoint_url https://s3.hanzo.space
 aws s3 ls
 
 # JavaScript
-import { Client } from 'minio'
-const client = new Client({
+import { S3Client } from 'hanzo-s3'
+const client = new S3Client({
   endPoint: 's3.hanzo.space',
   useSSL: true,
   accessKey: 'YOUR_ACCESS_KEY',
