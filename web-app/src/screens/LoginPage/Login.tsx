@@ -90,50 +90,50 @@ const ArrowRightIcon = () => (
 /* ─── data ─── */
 
 const stats = [
-  { value: "S3", label: "API Compatible", sub: "Every tool, SDK, and client" },
-  { value: "11×9s", label: "Durability", sub: "99.999999999% data protection" },
-  { value: "<50ms", label: "Latency", sub: "Low-latency reads and writes" },
-  { value: "∞", label: "Scalable", sub: "Bytes to petabytes" },
+  { value: "S3", label: "API Compatible", sub: "Any SDK, CLI, or client" },
+  { value: "11×9s", label: "Durability", sub: "99.999999999% protection" },
+  { value: "<50ms", label: "Latency", sub: "P99 reads and writes" },
+  { value: "∞", label: "Scalable", sub: "Bytes to exabytes" },
 ];
 
 const features = [
   {
     icon: <BucketIcon />,
     title: "S3-Compatible API",
-    desc: "Drop-in replacement for Amazon S3. Use the same SDKs, CLI tools, and integrations you already rely on — zero migration friction.",
+    desc: "Drop-in replacement for Amazon S3. Same SDKs, same CLI, zero migration.",
   },
   {
     icon: <ShieldCheckIcon />,
     title: "Enterprise SSO",
-    desc: "Authenticate with Hanzo ID via OIDC. Centralized identity, fine-grained access policies, and audit logging out of the box.",
+    desc: "OIDC login with Hanzo ID. Fine-grained policies and audit logging built in.",
   },
   {
     icon: <LayersIcon />,
     title: "Multi-Tenant Isolation",
-    desc: "Per-organization buckets with independent access controls, quotas, and lifecycle policies. Built for teams and platforms.",
+    desc: "Per-org buckets, independent access controls, quotas, and lifecycle rules.",
   },
   {
     icon: <ZapIcon />,
-    title: "AI-Optimized Workloads",
-    desc: "Purpose-built for model weights, training datasets, embeddings, and inference artifacts. High-throughput parallel uploads.",
+    title: "AI-Native Workloads",
+    desc: "Optimized for model weights, datasets, embeddings, and checkpoints at any scale.",
   },
   {
     icon: <LockIcon />,
     title: "Encryption & Compliance",
-    desc: "AES-256 server-side encryption at rest, TLS in transit, and KMS-managed keys. SOC 2 and GDPR ready.",
+    desc: "AES-256 at rest, TLS in transit, KMS-managed keys. SOC 2 and GDPR ready.",
   },
   {
     icon: <GlobeIcon />,
     title: "Edge Delivery",
-    desc: "Serve assets globally through Cloudflare's edge network. Automatic caching, custom domains, and signed URLs.",
+    desc: "Global CDN via Cloudflare. Automatic caching, custom domains, signed URLs.",
   },
 ];
 
 const useCases = [
-  { title: "AI & ML", desc: "Store and version training data, model checkpoints, and embeddings at any scale." },
-  { title: "Media & Assets", desc: "Host images, video, and documents with CDN delivery and on-the-fly transforms." },
-  { title: "Data Lakes", desc: "Centralize structured and unstructured data for analytics and batch processing." },
-  { title: "Backup & Archive", desc: "Durable, cost-effective long-term storage with lifecycle management." },
+  { title: "AI & ML", desc: "Training data, model weights, and embeddings — versioned and parallelized." },
+  { title: "Media & Assets", desc: "Images, video, and documents with CDN delivery and signed URLs." },
+  { title: "Data Lakes", desc: "Structured and unstructured data for analytics and batch pipelines." },
+  { title: "Backup & Archive", desc: "Durable long-term storage with automatic lifecycle management." },
 ];
 
 /* ─── styles ─── */
@@ -298,9 +298,7 @@ const Login = () => {
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
             <a
-              href="https://hanzo.space/docs"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/docs"
               style={{
                 color: colors.muted,
                 textDecoration: "none",
@@ -417,9 +415,9 @@ const Login = () => {
                 fontWeight: 600,
               }}
             >
-              S3
+              Open Source
             </span>
-            Fully compatible with Amazon S3 API
+            S3-compatible object storage &middot; AGPL-3.0
           </div>
 
           <h1
@@ -434,9 +432,9 @@ const Login = () => {
               marginRight: "auto",
             }}
           >
-            Object storage built for
+            The storage layer for
             <br />
-            <span style={{ color: colors.muted }}>scale, speed, and security</span>
+            <span style={{ color: colors.muted }}>AI infrastructure</span>
           </h1>
 
           <p
@@ -448,9 +446,8 @@ const Login = () => {
               lineHeight: 1.65,
             }}
           >
-            Store and retrieve any amount of data, anytime, from anywhere.
-            S3-compatible, enterprise-grade, with SSO and multi-tenant
-            isolation built in.
+            Enterprise-grade object storage for model weights, datasets, and
+            artifacts. S3-compatible, SSO-ready, multi-tenant by default.
           </p>
 
           <div
@@ -476,9 +473,7 @@ const Login = () => {
               {!signingIn && <ArrowRightIcon />}
             </button>
             <a
-              href="https://hanzo.space/docs"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/docs"
               style={btnOutline}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.borderColor = colors.borderHover)
@@ -560,7 +555,7 @@ const Login = () => {
               margin: "0 0 12px",
             }}
           >
-            Everything you need to store data at scale
+            Built for AI, ready for everything
           </h2>
           <p
             style={{
@@ -571,8 +566,7 @@ const Login = () => {
               lineHeight: 1.6,
             }}
           >
-            Industry-leading durability, security, and performance —
-            without the complexity.
+            Enterprise durability and security. No complexity tax.
           </p>
         </div>
         <div
@@ -661,8 +655,7 @@ const Login = () => {
               lineHeight: 1.6,
             }}
           >
-            From training data to production assets,
-            Hanzo Space handles it all.
+            From training pipelines to production CDN.
           </p>
         </div>
         <div
@@ -761,11 +754,31 @@ const Login = () => {
               position: "relative",
               fontSize: 14,
               color: colors.dim,
-              margin: "0 0 28px",
+              margin: "0 0 24px",
             }}
           >
             Sign in with your Hanzo ID. No credit card, no setup wizard.
           </p>
+          <div
+            style={{
+              position: "relative",
+              maxWidth: 480,
+              margin: "0 auto 28px",
+              backgroundColor: colors.bg,
+              borderRadius: 10,
+              padding: "16px 20px",
+              textAlign: "left",
+              fontFamily: "'Geist Mono', 'SF Mono', 'Fira Code', monospace",
+              fontSize: 12,
+              lineHeight: 1.7,
+              color: colors.muted,
+              border: `1px solid ${colors.border}`,
+            }}
+          >
+            <div><span style={{ color: colors.dim }}>$</span> mc alias set hanzo https://s3.hanzo.space ACCESS SECRET</div>
+            <div><span style={{ color: colors.dim }}>$</span> mc mb hanzo/my-bucket</div>
+            <div><span style={{ color: colors.dim }}>$</span> mc cp model.safetensors hanzo/my-bucket/</div>
+          </div>
           <button
             onClick={handleSignIn}
             disabled={signingIn}
@@ -807,13 +820,14 @@ const Login = () => {
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <HanzoMark size={18} />
             <span style={{ fontSize: 12, color: colors.dim }}>
-              Hanzo AI
+              &copy; 2026 Hanzo AI, Inc.
             </span>
           </div>
           <div style={{ display: "flex", gap: 20 }}>
             {[
               { label: "Platform", href: "https://hanzo.ai" },
-              { label: "Docs", href: "https://hanzo.space/docs" },
+              { label: "Docs", href: "/docs" },
+              { label: "Open Source", href: "https://github.com/hanzoai/storage" },
               { label: "GitHub", href: "https://github.com/hanzoai" },
               { label: "Status", href: "https://status.hanzo.ai" },
             ].map((link) => (

@@ -34,17 +34,43 @@ const inlineCode = { fontFamily: mono, fontSize: 12, color: c.text, backgroundCo
 /* ─── Code block ─── */
 const Code = ({ children, title }: { children: string; title?: string }) => (
   <div style={{ margin: "16px 0" }}>
-    {title && (
-      <div style={{ fontSize: 11, fontWeight: 600, color: c.dim, marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-        {title}
-      </div>
-    )}
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "6px 14px",
+        backgroundColor: "rgba(255,255,255,0.03)",
+        borderTopLeftRadius: 8,
+        borderTopRightRadius: 8,
+        border: `1px solid ${c.border}`,
+        borderBottom: "none",
+      }}
+    >
+      <span style={{ fontSize: 11, fontWeight: 600, color: c.dim, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+        {title || "code"}
+      </span>
+      <span
+        style={{
+          fontSize: 11,
+          color: c.dim,
+          cursor: "pointer",
+          padding: "2px 8px",
+          borderRadius: 4,
+          border: `1px solid ${c.border}`,
+          userSelect: "none",
+        }}
+      >
+        Copy
+      </span>
+    </div>
     <pre
       style={{
         margin: 0,
         padding: "16px 20px",
         backgroundColor: c.codeBg,
-        borderRadius: 8,
+        borderBottomLeftRadius: 8,
+        borderBottomRightRadius: 8,
         border: `1px solid ${c.border}`,
         fontSize: 13,
         lineHeight: 1.7,
@@ -97,10 +123,44 @@ const Table = ({ headers, rows }: { headers: string[]; rows: string[][] }) => (
   </div>
 );
 
+/* ─── Section badge colors ─── */
+const sectionBadgeMap: Record<string, { label: string; color: string }> = {
+  quickstart: { label: "GETTING STARTED", color: "#22c55e" },
+  "console-overview": { label: "CONSOLE GUIDE", color: "#3b82f6" },
+  "s3-compatibility": { label: "S3 API", color: "#a855f7" },
+  "sdk-javascript": { label: "SDKs & TOOLS", color: "#f59e0b" },
+  "auth-oidc": { label: "SECURITY", color: "#ef4444" },
+  "admin-config": { label: "ADMINISTRATION", color: "#06b6d4" },
+  "ops-erasure-coding": { label: "OPERATIONS", color: "#ec4899" },
+};
+
 /* ─── Headings ─── */
-const H2 = ({ id, children }: { id: string; children: React.ReactNode }) => (
-  <h2 id={id} style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-0.03em", margin: "48px 0 16px", paddingTop: 16, borderTop: `1px solid ${c.border}`, color: c.text }}>{children}</h2>
-);
+const H2 = ({ id, children }: { id: string; children: React.ReactNode }) => {
+  const badge = sectionBadgeMap[id];
+  return (
+    <div style={{ marginTop: 64, paddingTop: 24, borderTop: `1px solid ${c.border}` }}>
+      {badge && (
+        <span
+          style={{
+            display: "inline-block",
+            fontSize: 10,
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            color: badge.color,
+            backgroundColor: `${badge.color}14`,
+            border: `1px solid ${badge.color}30`,
+            borderRadius: 100,
+            padding: "3px 10px",
+            marginBottom: 12,
+          }}
+        >
+          {badge.label}
+        </span>
+      )}
+      <h2 id={id} style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-0.03em", margin: "0 0 16px", color: c.text }}>{children}</h2>
+    </div>
+  );
+};
 const H3 = ({ id, children }: { id: string; children: React.ReactNode }) => (
   <h3 id={id} style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-0.02em", margin: "32px 0 12px", color: c.text }}>{children}</h3>
 );
@@ -123,9 +183,9 @@ const hashRoutes: Record<string, string> = {
   "administration/bucket-notifications": "admin-notifications",
   "administration/monitoring": "console-monitoring",
   "administration/server-side-encryption": "auth-encryption",
-  "operations/install-deploy-manage/deploy-s3/deploy-s3-single-node-single-drive": "single-node",
-  "operations/install-deploy-manage/deploy-s3/deploy-s3-single-node-multi-drive": "single-node-multi-drive",
-  "operations/install-deploy-manage/deploy-s3/deploy-s3-multi-node-multi-drive": "deploy-distributed",
+  "operations/install-deploy-manage/deploy-minio/deploy-minio-single-node-single-drive": "single-node",
+  "operations/install-deploy-manage/deploy-minio/deploy-minio-single-node-multi-drive": "single-node-multi-drive",
+  "operations/install-deploy-manage/deploy-minio/deploy-minio-multi-node-multi-drive": "deploy-distributed",
   "operations/monitoring": "ops-metrics",
   "operations/server-side-encryption": "auth-encryption",
   "operations/data-recovery": "ops-recovery",
@@ -135,7 +195,7 @@ const hashRoutes: Record<string, string> = {
   "operations/scaling": "ops-scaling",
   "operations/decommissioning": "ops-scaling",
   "operations/manage-existing-deployments/migrate-fs-gateway": "admin-config",
-  "operations/install-deploy-manage/upgrade-s3-deployment": "ops-upgrade",
+  "operations/install-deploy-manage/upgrade-minio-deployment": "ops-upgrade",
   "integrations/event-notifications/event-notification-targets/publish-events-to-webhook": "admin-notifications",
   "integrations/event-notifications/event-notification-targets/publish-events-to-kafka": "admin-notifications",
   "integrations/event-notifications/event-notification-targets/publish-events-to-amqp": "admin-notifications",
@@ -240,23 +300,25 @@ const DocsContent = () => (
   <div>
     {/* ═══ GETTING STARTED ═══ */}
     <H2 id="quickstart">Quick Start</H2>
-    <P>
-      Hanzo Space is a high-performance, S3-compatible object storage system. It runs as a single binary, supports distributed deployments with erasure coding, and is fully compatible with the Amazon S3 API. All existing S3 tools, SDKs, and integrations work out of the box.
-    </P>
-    <P>The fastest way to get started is with Docker:</P>
-    <Code title="Docker — single node">{`docker run -d --name hanzo-space \\
+    <div style={{ backgroundColor: c.card, borderRadius: 12, padding: "20px 24px", marginBottom: 8, border: `1px solid ${c.border}` }}>
+      <P>
+        Hanzo Space is a high-performance, S3-compatible object storage system. It runs as a single binary, supports distributed deployments with erasure coding, and is fully compatible with the Amazon S3 API. All existing S3 tools, SDKs, and integrations work out of the box.
+      </P>
+      <P>The fastest way to get started is with Docker:</P>
+      <Code title="Docker — single node">{`docker run -d --name hanzo-space \\
   -p 9000:9000 -p 9001:9001 \\
   -e S3_ROOT_USER=admin \\
   -e S3_ROOT_PASSWORD=changeme123 \\
   -v /data:/data \\
   ghcr.io/hanzoai/storage:latest \\
   server /data --console-address ":9001"`}</Code>
-    <P>
-      After starting, access the console at <strong style={{ color: c.text }}>http://localhost:9001</strong> and the S3 API at <strong style={{ color: c.text }}>http://localhost:9000</strong>.
-    </P>
-    <Callout type="tip">
-      For production, use a strong password (at least 12 characters) and configure TLS. See the <a href="#ops-tls" style={{ color: c.brand }}>TLS / Network Encryption</a> section.
-    </Callout>
+      <P>
+        After starting, access the console at <strong style={{ color: c.text }}>http://localhost:9001</strong> and the S3 API at <strong style={{ color: c.text }}>http://localhost:9000</strong>.
+      </P>
+      <Callout type="tip">
+        For production, use a strong password (at least 12 characters) and configure TLS. See the <a href="#ops-tls" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>TLS / Network Encryption</a> section.
+      </Callout>
+    </div>
 
     <H3 id="deploy-docker">Deploy with Docker</H3>
     <P>Hanzo Space ships as a single container image at <code style={inlineCode}>ghcr.io/hanzoai/storage:latest</code>.</P>
@@ -284,7 +346,7 @@ const DocsContent = () => (
   ghcr.io/hanzoai/storage:latest \\
   server /data{1...4} --console-address ":9001"`}</Code>
     <Callout type="info">
-      Erasure coding provides data redundancy. With 4 drives, you can lose up to 2 drives and still recover all data. See <a href="#ops-erasure-coding" style={{ color: c.brand }}>Erasure Coding</a> for details.
+      Erasure coding provides data redundancy. With 4 drives, you can lose up to 2 drives and still recover all data. See <a href="#ops-erasure-coding" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>Erasure Coding</a> for details.
     </Callout>
 
     <H3 id="compose">Docker Compose</H3>
@@ -301,7 +363,7 @@ const DocsContent = () => (
     volumes:
       - storage-data:/data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/s3/health/live"]
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -381,13 +443,13 @@ spec:
               mountPath: /data
           readinessProbe:
             httpGet:
-              path: /s3/health/ready
+              path: /minio/health/ready
               port: 9000
             initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
             httpGet:
-              path: /s3/health/live
+              path: /minio/health/live
               port: 9000
             initialDelaySeconds: 30
             periodSeconds: 30
@@ -439,8 +501,8 @@ S3_ROOT_USER=admin S3_ROOT_PASSWORD=changeme123 \\
     <P><strong style={{ color: c.text }}>2. Create a bucket</strong> — Click "Create Bucket", enter a name, and choose options (versioning, locking, quota).</P>
     <P><strong style={{ color: c.text }}>3. Upload objects</strong> — Drag and drop files into the bucket, or use the S3 API / CLI.</P>
     <P><strong style={{ color: c.text }}>4. Create access keys</strong> — Go to Access Keys → Create Access Key. These are your S3 credentials for API access.</P>
-    <P><strong style={{ color: c.text }}>5. Connect with a client</strong> — Use any S3 SDK or the mc CLI (see <a href="#sdk-cli" style={{ color: c.brand }}>SDKs</a> section).</P>
-    <P><strong style={{ color: c.text }}>6. Configure TLS</strong> — For production, enable <a href="#ops-tls" style={{ color: c.brand }}>TLS encryption</a> and <a href="#auth-oidc" style={{ color: c.brand }}>OIDC SSO</a>.</P>
+    <P><strong style={{ color: c.text }}>5. Connect with a client</strong> — Use any S3 SDK or the mc CLI (see <a href="#sdk-cli" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>SDKs</a> section).</P>
+    <P><strong style={{ color: c.text }}>6. Configure TLS</strong> — For production, enable <a href="#ops-tls" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>TLS encryption</a> and <a href="#auth-oidc" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>OIDC SSO</a>.</P>
 
     {/* ═══ CONSOLE GUIDE ═══ */}
     <H2 id="console-overview">Console Guide</H2>
@@ -499,13 +561,13 @@ S3_ROOT_USER=admin S3_ROOT_PASSWORD=changeme123 \\
 
     <H3 id="console-monitoring">Monitoring</H3>
     <P>
-      The console dashboard shows real-time server metrics: total storage, number of objects, bucket count, uptime, network I/O, and drive health. For production monitoring, see <a href="#ops-metrics" style={{ color: c.brand }}>Metrics & Monitoring</a>.
+      The console dashboard shows real-time server metrics: total storage, number of objects, bucket count, uptime, network I/O, and drive health. For production monitoring, see <a href="#ops-metrics" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>Metrics & Monitoring</a>.
     </P>
 
     {/* ═══ S3 API ═══ */}
     <H2 id="s3-compatibility">S3 API Compatibility</H2>
     <P>
-      Hanzo Space implements the Amazon S3 API. All S3 SDKs, CLIs, and tools work without modification. The S3 API endpoint is on port 9000 (default) or at <strong style={{ color: c.text }}>https://s3.hanzo.space</strong> for the hosted service.
+      Hanzo Space implements the Amazon S3 API. All S3 SDKs, CLIs, and tools work without modification. The S3 API endpoint is on port 9000 (default) or at <strong style={{ color: c.text }}>https://s3.hanzo.ai</strong> for the hosted service.
     </P>
 
     <H3 id="s3-buckets">Bucket Operations</H3>
@@ -556,7 +618,7 @@ S3_ROOT_USER=admin S3_ROOT_PASSWORD=changeme123 \\
     <Code title="JavaScript">{`import { S3Client } from 'hanzo-s3'
 
 const client = new S3Client({
-  endPoint: 's3.hanzo.space',
+  endPoint: 's3.hanzo.ai',
   useSSL: true,
   accessKey: 'YOUR_ACCESS_KEY',
   secretKey: 'YOUR_SECRET_KEY',
@@ -570,7 +632,7 @@ const uploadUrl = await client.presignedPutObject('my-bucket', 'upload.txt', 360
     <Code title="Python">{`from hanzo_s3 import S3Client
 from datetime import timedelta
 
-client = S3Client("s3.hanzo.space", access_key="YOUR_ACCESS_KEY",
+client = S3Client("s3.hanzo.ai", access_key="YOUR_ACCESS_KEY",
                secret_key="YOUR_SECRET_KEY", secure=True)
 
 url = client.presigned_get_object("my-bucket", "photo.jpg", expires=timedelta(hours=1))
@@ -604,7 +666,7 @@ mc rm --incomplete --older-than 7d hanzo/backups/`}</Code>
     <Code title="Usage">{`import { S3Client } from 'hanzo-s3'
 
 const client = new S3Client({
-  endPoint: 's3.hanzo.space',
+  endPoint: 's3.hanzo.ai',
   port: 443,
   useSSL: true,
   accessKey: 'YOUR_ACCESS_KEY',
@@ -638,7 +700,7 @@ await client.removeObject('my-bucket', 'hello.txt')`}</Code>
 from hanzo_s3.error import S3Error
 
 client = S3Client(
-    "s3.hanzo.space",
+    "s3.hanzo.ai",
     access_key="YOUR_ACCESS_KEY",
     secret_key="YOUR_SECRET_KEY",
     secure=True,
@@ -685,7 +747,7 @@ import (
 )
 
 func main() {
-    client, err := s3.New("s3.hanzo.space", &s3.Options{
+    client, err := s3.New("s3.hanzo.ai", &s3.Options{
         Creds:  credentials.NewStaticV4("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY", ""),
         Secure: true,
     })
@@ -734,7 +796,7 @@ func main() {
 public class StorageExample {
     public static void main(String[] args) throws Exception {
         HanzoS3Client client = HanzoS3Client.builder()
-            .endpoint("https://s3.hanzo.space")
+            .endpoint("https://s3.hanzo.ai")
             .credentials("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY")
             .build();
 
@@ -773,7 +835,7 @@ chmod +x s3-mc-linux-amd64 && sudo mv s3-mc-linux-amd64 /usr/local/bin/mc
 # Windows (PowerShell)
 Invoke-WebRequest -Uri "https://github.com/hanzoai/storage/releases/latest/download/s3-mc-windows-amd64.exe" -OutFile "mc.exe"`}</Code>
     <Code title="Configure">{`# Add your Hanzo Space server
-mc alias set hanzo https://s3.hanzo.space YOUR_ACCESS_KEY YOUR_SECRET_KEY`}</Code>
+mc alias set hanzo https://s3.hanzo.ai YOUR_ACCESS_KEY YOUR_SECRET_KEY`}</Code>
     <Code title="Common commands">{`# List buckets
 mc ls hanzo
 
@@ -862,8 +924,8 @@ mc admin prometheus generate hanzo`}</Code>
 # Default output format: json
 
 # Set endpoint
-aws configure set default.s3.endpoint_url https://s3.hanzo.space
-aws configure set default.s3api.endpoint_url https://s3.hanzo.space`}</Code>
+aws configure set default.s3.endpoint_url https://s3.hanzo.ai
+aws configure set default.s3api.endpoint_url https://s3.hanzo.ai`}</Code>
     <Code title="Usage">{`# List buckets
 aws s3 ls
 
@@ -1030,7 +1092,7 @@ S3_KMS_KES_KEY_NAME=my-encryption-key
 
 # Enable SSE-KMS on a bucket
 mc encrypt set sse-kms my-encryption-key hanzo/secure-bucket`}</Code>
-    <P>For TLS configuration, see <a href="#ops-tls" style={{ color: c.brand }}>TLS / Network Encryption</a>.</P>
+    <P>For TLS configuration, see <a href="#ops-tls" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>TLS / Network Encryption</a>.</P>
 
     <H3 id="auth-bucket-policy">Bucket Policies</H3>
     <P>Bucket policies control anonymous and cross-account access. Common use cases:</P>
@@ -1138,7 +1200,7 @@ mc admin service restart hanzo`}</Code>
     <Code title="Expire delete markers">{`mc ilm rule add hanzo/data --expire-delete-marker`}</Code>
     <Code title="Abort incomplete multipart uploads">{`mc ilm rule add hanzo/uploads --expire-all-object-size-less-than 1MB`}</Code>
     <Code title="List lifecycle rules">{`mc ilm rule list hanzo/my-bucket`}</Code>
-    <P>Lifecycle rules can also transition objects to a remote tier. See <a href="#admin-tiering" style={{ color: c.brand }}>Tiering</a>.</P>
+    <P>Lifecycle rules can also transition objects to a remote tier. See <a href="#admin-tiering" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>Tiering</a>.</P>
 
     <H3 id="admin-tiering">Tiering & Transitions</H3>
     <P>Tier objects to cheaper storage (AWS S3, GCS, Azure Blob, or another Hanzo Space instance) after a specified number of days:</P>
@@ -1162,7 +1224,7 @@ mc ilm tier add azure hanzo ARCHIVE-AZURE \\
   --bucket my-container
 
 # Add remote Hanzo Space tier
-mc ilm tier add s3 hanzo REMOTE-STORAGE \\
+mc ilm tier add minio hanzo REMOTE-STORAGE \\
   --endpoint https://remote.example.com \\
   --access-key REMOTE_KEY \\
   --secret-key REMOTE_SECRET \\
@@ -1227,21 +1289,21 @@ mc admin replicate remove site1`}</Code>
 mc admin service restart hanzo
 
 # Subscribe bucket to events
-mc event add hanzo/my-bucket arn:s3:sqs::primary:webhook \\
+mc event add hanzo/my-bucket arn:minio:sqs::primary:webhook \\
   --event put,delete
 
 # List configured events
 mc event list hanzo/my-bucket
 
 # Remove event subscription
-mc event remove hanzo/my-bucket arn:s3:sqs::primary:webhook`}</Code>
+mc event remove hanzo/my-bucket arn:minio:sqs::primary:webhook`}</Code>
     <Code title="Configure Kafka notifications">{`mc admin config set hanzo notify_kafka:primary \\
   brokers="kafka1:9092,kafka2:9092" \\
   topic="storage-events" \\
   queue_limit="10000"
 
 mc admin service restart hanzo
-mc event add hanzo/my-bucket arn:s3:sqs::primary:kafka --event put`}</Code>
+mc event add hanzo/my-bucket arn:minio:sqs::primary:kafka --event put`}</Code>
 
     <H3 id="admin-versioning">Versioning</H3>
     <P>Bucket versioning keeps all versions of an object, allowing you to recover from accidental deletes or overwrites.</P>
@@ -1263,7 +1325,7 @@ mc rm --version-id VERSION_ID hanzo/my-bucket/file.txt
 # Suspend versioning (existing versions are preserved)
 mc version suspend hanzo/my-bucket`}</Code>
     <Callout type="info">
-      Versioning is required for bucket replication and object locking. Once enabled, it can be suspended but not fully disabled. Use <a href="#admin-lifecycle" style={{ color: c.brand }}>lifecycle rules</a> to expire old versions automatically.
+      Versioning is required for bucket replication and object locking. Once enabled, it can be suspended but not fully disabled. Use <a href="#admin-lifecycle" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>lifecycle rules</a> to expire old versions automatically.
     </Callout>
 
     {/* ═══ OPERATIONS ═══ */}
@@ -1360,10 +1422,10 @@ mc legalhold clear hanzo/compliance-data/document.pdf`}</Code>
     <Table
       headers={["Endpoint", "Description"]}
       rows={[
-        ["/s3/v2/metrics/cluster", "Cluster-wide aggregated metrics"],
-        ["/s3/v2/metrics/node", "Per-node metrics"],
-        ["/s3/v2/metrics/bucket", "Per-bucket metrics"],
-        ["/s3/v2/metrics/resource", "Resource utilization metrics"],
+        ["/minio/v2/metrics/cluster", "Cluster-wide aggregated metrics"],
+        ["/minio/v2/metrics/node", "Per-node metrics"],
+        ["/minio/v2/metrics/bucket", "Per-bucket metrics"],
+        ["/minio/v2/metrics/resource", "Resource utilization metrics"],
       ]}
     />
     <Code title="Generate Prometheus config">{`# Auto-generate prometheus.yml scrape config
@@ -1372,7 +1434,7 @@ mc admin prometheus generate hanzo
 # Or configure manually in prometheus.yml:
 # scrape_configs:
 #   - job_name: hanzo-storage
-#     metrics_path: /s3/v2/metrics/cluster
+#     metrics_path: /minio/v2/metrics/cluster
 #     bearer_token: <mc admin prometheus generate output>
 #     static_configs:
 #       - targets: ['storage.example.com:9000']`}</Code>
@@ -1382,21 +1444,21 @@ mc admin prometheus generate hanzo
     <Table
       headers={["Metric", "Description"]}
       rows={[
-        ["s3_node_disk_total_bytes", "Total disk capacity"],
-        ["s3_node_disk_used_bytes", "Used disk space"],
-        ["s3_node_disk_free_bytes", "Free disk space"],
-        ["s3_requests_total", "Total S3 requests by API and status"],
-        ["s3_requests_errors_total", "Failed S3 requests"],
-        ["s3_traffic_received_bytes", "Total bytes received"],
-        ["s3_traffic_sent_bytes", "Total bytes sent"],
-        ["s3_bucket_objects_count", "Number of objects per bucket"],
-        ["s3_bucket_usage_total_bytes", "Total size per bucket"],
-        ["s3_cluster_nodes_online_total", "Number of online nodes"],
-        ["s3_cluster_nodes_offline_total", "Number of offline nodes"],
-        ["s3_cluster_disk_online_total", "Number of online drives"],
-        ["s3_cluster_disk_offline_total", "Number of offline drives"],
-        ["s3_heal_objects_total", "Objects healed"],
-        ["s3_node_scanner_objects_scanned", "Objects scanned for bitrot"],
+        ["minio_node_disk_total_bytes", "Total disk capacity"],
+        ["minio_node_disk_used_bytes", "Used disk space"],
+        ["minio_node_disk_free_bytes", "Free disk space"],
+        ["minio_s3_requests_total", "Total S3 requests by API and status"],
+        ["minio_s3_requests_errors_total", "Failed S3 requests"],
+        ["minio_s3_traffic_received_bytes", "Total bytes received"],
+        ["minio_s3_traffic_sent_bytes", "Total bytes sent"],
+        ["minio_bucket_objects_count", "Number of objects per bucket"],
+        ["minio_bucket_usage_total_bytes", "Total size per bucket"],
+        ["minio_cluster_nodes_online_total", "Number of online nodes"],
+        ["minio_cluster_nodes_offline_total", "Number of offline nodes"],
+        ["minio_cluster_disk_online_total", "Number of online drives"],
+        ["minio_cluster_disk_offline_total", "Number of offline drives"],
+        ["minio_heal_objects_total", "Objects healed"],
+        ["minio_node_scanner_objects_scanned", "Objects scanned for bitrot"],
       ]}
     />
     <Callout type="tip">
@@ -1513,11 +1575,11 @@ kubectl -n storage rollout status deployment/storage`}</Code>
 replicate:
   apiVersion: v1
   source:
-    type: s3
+    type: minio
     bucket: source-bucket
     prefix: data/
   target:
-    type: s3
+    type: minio
     bucket: target-bucket
     endpoint: https://remote.example.com
     credentials:
@@ -1647,33 +1709,33 @@ mc replicate resync start hanzo/my-bucket`}</Code>
     <Table
       headers={["Endpoint", "Method", "Description"]}
       rows={[
-        ["/s3/health/live", "GET", "Returns 200 if the server process is running. Use as a liveness probe."],
-        ["/s3/health/ready", "GET", "Returns 200 if the server is ready to accept requests. Use as a readiness probe."],
-        ["/s3/health/cluster", "GET", "Returns 200 if the cluster has write quorum. Use for load balancer health checks."],
-        ["/s3/health/cluster?maintenance=true", "GET", "Returns 200 if cluster can tolerate one node going down. Use before maintenance."],
+        ["/minio/health/live", "GET", "Returns 200 if the server process is running. Use as a liveness probe."],
+        ["/minio/health/ready", "GET", "Returns 200 if the server is ready to accept requests. Use as a readiness probe."],
+        ["/minio/health/cluster", "GET", "Returns 200 if the cluster has write quorum. Use for load balancer health checks."],
+        ["/minio/health/cluster?maintenance=true", "GET", "Returns 200 if cluster can tolerate one node going down. Use before maintenance."],
       ]}
     />
     <Code title="Docker healthcheck">{`healthcheck:
-  test: ["CMD", "curl", "-f", "http://localhost:9000/s3/health/live"]
+  test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
   interval: 30s
   timeout: 5s
   retries: 3
   start_period: 30s`}</Code>
     <Code title="Kubernetes probes">{`readinessProbe:
   httpGet:
-    path: /s3/health/ready
+    path: /minio/health/ready
     port: 9000
   initialDelaySeconds: 10
   periodSeconds: 10
 livenessProbe:
   httpGet:
-    path: /s3/health/live
+    path: /minio/health/live
     port: 9000
   initialDelaySeconds: 30
   periodSeconds: 30
 startupProbe:
   httpGet:
-    path: /s3/health/live
+    path: /minio/health/live
     port: 9000
   failureThreshold: 30
   periodSeconds: 10`}</Code>
@@ -1682,7 +1744,7 @@ startupProbe:
 
 /* ─── Main Docs Page ─── */
 const Docs = () => {
-  const [, setActiveHash] = useState(window.location.hash);
+  const [activeHash, setActiveHash] = useState(window.location.hash.replace(/^#/, ""));
 
   /* Hash-fragment routing: resolve helpTopics hash paths to doc section anchors */
   useEffect(() => {
@@ -1798,32 +1860,63 @@ const Docs = () => {
             overflowY: "auto",
           }}
         >
-          {sidebar.map((section) => (
-            <div key={section.title} style={{ marginBottom: 24 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: c.dim, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>
-                {section.title}
-              </div>
-              {section.items.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
+          {sidebar.map((section, sectionIdx) => {
+            const sectionIds = section.items.map((i) => i.id);
+            const isSectionActive = sectionIds.includes(activeHash);
+            return (
+              <div key={section.title} style={{ marginBottom: 20, paddingBottom: sectionIdx < sidebar.length - 1 ? 16 : 0, borderBottom: sectionIdx < sidebar.length - 1 ? `1px solid ${c.border}` : "none" }}>
+                <div
                   style={{
-                    display: "block",
-                    padding: "5px 12px",
-                    fontSize: 13,
-                    color: c.muted,
-                    textDecoration: "none",
-                    borderRadius: 6,
-                    lineHeight: 1.5,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    color: isSectionActive ? c.text : c.dim,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    marginBottom: 8,
+                    transition: "color 0.15s",
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = c.text; e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.04)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = c.muted; e.currentTarget.style.backgroundColor = "transparent"; }}
                 >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          ))}
+                  {section.title}
+                </div>
+                {section.items.map((item) => {
+                  const isActive = activeHash === item.id;
+                  return (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      onClick={() => setActiveHash(item.id)}
+                      style={{
+                        display: "block",
+                        padding: "5px 12px",
+                        fontSize: 13,
+                        color: isActive ? c.text : c.muted,
+                        textDecoration: "none",
+                        borderRadius: 6,
+                        lineHeight: 1.5,
+                        backgroundColor: isActive ? "rgba(255,255,255,0.06)" : "transparent",
+                        borderLeft: isActive ? `2px solid ${c.brand}` : "2px solid transparent",
+                        transition: "all 0.15s",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isActive) {
+                          e.currentTarget.style.color = c.text;
+                          e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.04)";
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isActive) {
+                          e.currentTarget.style.color = c.muted;
+                          e.currentTarget.style.backgroundColor = "transparent";
+                        }
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </div>
+            );
+          })}
         </aside>
 
         {/* Content */}
@@ -1831,24 +1924,36 @@ const Docs = () => {
           <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: "-0.035em", margin: "0 0 8px" }}>
             Hanzo Space Documentation
           </h1>
-          <p style={{ fontSize: 15, color: c.dim, margin: "0 0 32px", lineHeight: 1.6 }}>
+          <p style={{ fontSize: 15, color: c.dim, margin: "0 0 8px", lineHeight: 1.6 }}>
             S3-compatible object storage. Deploy anywhere, use any AWS S3 SDK, CLI, or integration.
+          </p>
+          <p style={{ fontSize: 12, color: c.dim, margin: "0 0 32px", letterSpacing: "0.01em" }}>
+            7 sections &middot; 40+ topics
           </p>
 
           {/* Quick connect */}
-          <div style={{ backgroundColor: c.card, borderRadius: 12, padding: "24px 28px", marginBottom: 32 }}>
+          <div
+            style={{
+              backgroundColor: c.card,
+              borderRadius: 12,
+              padding: "24px 28px",
+              marginBottom: 32,
+              borderLeft: `3px solid ${c.brand}`,
+              boxShadow: `0 0 24px ${c.brandDim}`,
+            }}
+          >
             <h3 style={{ fontSize: 14, fontWeight: 600, margin: "0 0 12px", letterSpacing: "-0.01em" }}>Quick Connect</h3>
             <Code>{`# Configure mc CLI
-mc alias set hanzo https://s3.hanzo.space ACCESS_KEY SECRET_KEY
+mc alias set hanzo https://s3.hanzo.ai ACCESS_KEY SECRET_KEY
 
 # Or use AWS CLI
-aws configure set default.s3.endpoint_url https://s3.hanzo.space
+aws configure set default.s3.endpoint_url https://s3.hanzo.ai
 aws s3 ls
 
 # JavaScript
 import { S3Client } from 'hanzo-s3'
 const client = new S3Client({
-  endPoint: 's3.hanzo.space',
+  endPoint: 's3.hanzo.ai',
   useSSL: true,
   accessKey: 'YOUR_ACCESS_KEY',
   secretKey: 'YOUR_SECRET_KEY',
