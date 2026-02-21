@@ -251,8 +251,8 @@ const sidebar = [
       { id: "sdk-python", label: "Python" },
       { id: "sdk-go", label: "Go" },
       { id: "sdk-java", label: "Java" },
-      { id: "sdk-cli", label: "mc CLI" },
-      { id: "sdk-cli-admin", label: "mc Admin" },
+      { id: "sdk-cli", label: "s3 CLI" },
+      { id: "sdk-cli-admin", label: "s3 Admin" },
       { id: "sdk-aws", label: "AWS CLI" },
     ],
   },
@@ -501,7 +501,7 @@ S3_ROOT_USER=admin S3_ROOT_PASSWORD=changeme123 \\
     <P><strong style={{ color: c.text }}>2. Create a bucket</strong> — Click "Create Bucket", enter a name, and choose options (versioning, locking, quota).</P>
     <P><strong style={{ color: c.text }}>3. Upload objects</strong> — Drag and drop files into the bucket, or use the S3 API / CLI.</P>
     <P><strong style={{ color: c.text }}>4. Create access keys</strong> — Go to Access Keys → Create Access Key. These are your S3 credentials for API access.</P>
-    <P><strong style={{ color: c.text }}>5. Connect with a client</strong> — Use any S3 SDK or the mc CLI (see <a href="#sdk-cli" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>SDKs</a> section).</P>
+    <P><strong style={{ color: c.text }}>5. Connect with a client</strong> — Use any S3 SDK or the s3 CLI (see <a href="#sdk-cli" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>SDKs</a> section).</P>
     <P><strong style={{ color: c.text }}>6. Configure TLS</strong> — For production, enable <a href="#ops-tls" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>TLS encryption</a> and <a href="#auth-oidc" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>OIDC SSO</a>.</P>
 
     {/* ═══ CONSOLE GUIDE ═══ */}
@@ -525,7 +525,7 @@ S3_ROOT_USER=admin S3_ROOT_PASSWORD=changeme123 \\
         ["Retention", "Set default retention period for new objects (governance or compliance mode)."],
       ]}
     />
-    <P><strong style={{ color: c.text }}>Delete buckets</strong> — A bucket must be empty before deletion. Use lifecycle rules or <code style={inlineCode}>mc rm --recursive</code> to empty it first.</P>
+    <P><strong style={{ color: c.text }}>Delete buckets</strong> — A bucket must be empty before deletion. Use lifecycle rules or <code style={inlineCode}>s3 rm --recursive</code> to empty it first.</P>
     <P><strong style={{ color: c.text }}>Bucket settings</strong> — Click a bucket, then the Settings tab to configure: versioning, encryption (SSE-S3/SSE-KMS), access policies, replication rules, lifecycle rules, and event notifications.</P>
 
     <H3 id="console-objects">Browsing Objects</H3>
@@ -651,14 +651,14 @@ print(url)`}</Code>
         ["Maximum object size", "5 TB"],
       ]}
     />
-    <Code title="Manual multipart (mc)">{`# Upload a 10 GB file — mc handles multipart automatically
-mc cp large-file.zip hanzo/backups/
+    <Code title="Manual multipart (s3)">{`# Upload a 10 GB file — s3 handles multipart automatically
+s3 cp large-file.zip hanzo/backups/
 
 # Monitor in-progress uploads
-mc ls --incomplete hanzo/backups/
+s3 ls --incomplete hanzo/backups/
 
 # Abort stale multipart uploads older than 7 days
-mc rm --incomplete --older-than 7d hanzo/backups/`}</Code>
+s3 rm --incomplete --older-than 7d hanzo/backups/`}</Code>
 
     {/* ═══ SDKs ═══ */}
     <H2 id="sdk-javascript">JavaScript SDK</H2>
@@ -821,99 +821,99 @@ public class StorageExample {
     }
 }`}</Code>
 
-    <H2 id="sdk-cli">mc CLI</H2>
+    <H2 id="sdk-cli">s3 CLI</H2>
     <P>
-      <code style={inlineCode}>mc</code> is the official command-line client for S3-compatible storage. It provides Unix-like commands (ls, cp, rm, cat, diff, mirror) for object storage.
+      <code style={inlineCode}>s3</code> is the official command-line client for S3-compatible storage. It provides Unix-like commands (ls, cp, rm, cat, diff, mirror) for object storage.
     </P>
     <Code title="Install">{`# macOS
-brew install hanzoai/tap/s3-mc
+brew install hanzoai/tap/s3
 
 # Linux
-curl -O https://github.com/hanzoai/storage/releases/latest/download/s3-mc-linux-amd64
-chmod +x s3-mc-linux-amd64 && sudo mv s3-mc-linux-amd64 /usr/local/bin/mc
+curl -O https://github.com/hanzoai/storage/releases/latest/download/s3-linux-amd64
+chmod +x s3-linux-amd64 && sudo mv s3-linux-amd64 /usr/local/bin/s3
 
 # Windows (PowerShell)
-Invoke-WebRequest -Uri "https://github.com/hanzoai/storage/releases/latest/download/s3-mc-windows-amd64.exe" -OutFile "mc.exe"`}</Code>
+Invoke-WebRequest -Uri "https://github.com/hanzoai/storage/releases/latest/download/s3-windows-amd64.exe" -OutFile "s3.exe"`}</Code>
     <Code title="Configure">{`# Add your Hanzo Space server
-mc alias set hanzo https://s3.hanzo.ai YOUR_ACCESS_KEY YOUR_SECRET_KEY`}</Code>
+s3 alias set hanzo https://s3.hanzo.ai YOUR_ACCESS_KEY YOUR_SECRET_KEY`}</Code>
     <Code title="Common commands">{`# List buckets
-mc ls hanzo
+s3 ls hanzo
 
 # Create a bucket
-mc mb hanzo/my-bucket
+s3 mb hanzo/my-bucket
 
 # Upload a file
-mc cp file.txt hanzo/my-bucket/
+s3 cp file.txt hanzo/my-bucket/
 
 # Upload a directory recursively
-mc cp --recursive ./data/ hanzo/my-bucket/data/
+s3 cp --recursive ./data/ hanzo/my-bucket/data/
 
 # Download a file
-mc cp hanzo/my-bucket/file.txt ./
+s3 cp hanzo/my-bucket/file.txt ./
 
 # List objects
-mc ls hanzo/my-bucket/
+s3 ls hanzo/my-bucket/
 
 # Remove an object
-mc rm hanzo/my-bucket/file.txt
+s3 rm hanzo/my-bucket/file.txt
 
 # Mirror a directory (sync)
-mc mirror ./local-dir/ hanzo/my-bucket/
+s3 mirror ./local-dir/ hanzo/my-bucket/
 
 # View object contents
-mc cat hanzo/my-bucket/config.json
+s3 cat hanzo/my-bucket/config.json
 
 # Get bucket/object info
-mc stat hanzo/my-bucket
-mc stat hanzo/my-bucket/file.txt
+s3 stat hanzo/my-bucket
+s3 stat hanzo/my-bucket/file.txt
 
 # Set bucket policy to public read
-mc anonymous set download hanzo/my-bucket
+s3 anonymous set download hanzo/my-bucket
 
 # Find objects matching a pattern
-mc find hanzo/my-bucket --name "*.log" --older 30d
+s3 find hanzo/my-bucket --name "*.log" --older 30d
 
 # Calculate disk usage
-mc du hanzo/my-bucket`}</Code>
+s3 du hanzo/my-bucket`}</Code>
 
-    <H2 id="sdk-cli-admin">mc Admin Commands</H2>
+    <H2 id="sdk-cli-admin">s3 Admin Commands</H2>
     <P>Administrative commands for server management:</P>
     <Code>{`# Server info
-mc admin info hanzo
+s3 admin info hanzo
 
 # View server configuration
-mc admin config get hanzo
+s3 admin config get hanzo
 
 # Set a configuration key
-mc admin config set hanzo compression enable=on
+s3 admin config set hanzo compression enable=on
 
 # Restart server (applies config changes)
-mc admin service restart hanzo
+s3 admin service restart hanzo
 
 # View real-time server logs
-mc admin trace hanzo
+s3 admin trace hanzo
 
 # View audit logs
-mc admin trace hanzo --call s3
+s3 admin trace hanzo --call s3
 
 # User management
-mc admin user add hanzo newuser newpassword
-mc admin user list hanzo
-mc admin user remove hanzo newuser
+s3 admin user add hanzo newuser newpassword
+s3 admin user list hanzo
+s3 admin user remove hanzo newuser
 
 # Group management
-mc admin group add hanzo developers user1 user2
-mc admin group list hanzo
+s3 admin group add hanzo developers user1 user2
+s3 admin group list hanzo
 
 # Policy management
-mc admin policy create hanzo my-policy policy.json
-mc admin policy attach hanzo my-policy --user=newuser
+s3 admin policy create hanzo my-policy policy.json
+s3 admin policy attach hanzo my-policy --user=newuser
 
 # Healing (data repair)
-mc admin heal hanzo --recursive
+s3 admin heal hanzo --recursive
 
 # Prometheus metrics
-mc admin prometheus generate hanzo`}</Code>
+s3 admin prometheus generate hanzo`}</Code>
 
     <H2 id="sdk-aws">AWS CLI</H2>
     <P>Hanzo Space is fully compatible with the AWS CLI. Configure it to point to your Hanzo Space endpoint:</P>
@@ -1002,8 +1002,8 @@ S3_IDENTITY_LDAP_USER_DN_SEARCH_FILTER="(&(objectCategory=person)(sAMAccountName
 S3_IDENTITY_LDAP_GROUP_SEARCH_BASE_DN="ou=Groups,dc=example,dc=com"
 S3_IDENTITY_LDAP_GROUP_SEARCH_FILTER="(&(objectclass=group)(member=%d))"`}</Code>
     <P>After configuring LDAP, map LDAP groups to policies:</P>
-    <Code>{`mc admin policy attach hanzo readwrite --group="cn=developers,ou=Groups,dc=example,dc=com"
-mc admin policy attach hanzo consoleAdmin --group="cn=admins,ou=Groups,dc=example,dc=com"`}</Code>
+    <Code>{`s3 admin policy attach hanzo readwrite --group="cn=developers,ou=Groups,dc=example,dc=com"
+s3 admin policy attach hanzo consoleAdmin --group="cn=admins,ou=Groups,dc=example,dc=com"`}</Code>
 
     <H3 id="auth-iam">IAM Policies</H3>
     <P>
@@ -1044,13 +1044,13 @@ mc admin policy attach hanzo consoleAdmin --group="cn=admins,ou=Groups,dc=exampl
   ]
 }`}</Code>
     <Code title="Apply a custom policy">{`# Create policy
-mc admin policy create hanzo upload-only upload-policy.json
+s3 admin policy create hanzo upload-only upload-policy.json
 
 # Attach to user
-mc admin policy attach hanzo upload-only --user=uploader
+s3 admin policy attach hanzo upload-only --user=uploader
 
 # Attach to group
-mc admin policy attach hanzo upload-only --group=uploaders`}</Code>
+s3 admin policy attach hanzo upload-only --group=uploaders`}</Code>
     <P><strong style={{ color: c.text }}>Supported IAM policy actions:</strong></P>
     <Table
       headers={["Action", "Description"]}
@@ -1082,7 +1082,7 @@ mc admin policy attach hanzo upload-only --group=uploaders`}</Code>
         ["SSE-C", "Client provides the encryption key with each request."],
       ]}
     />
-    <Code title="Enable SSE-S3 on a bucket">{`mc encrypt set sse-s3 hanzo/my-bucket`}</Code>
+    <Code title="Enable SSE-S3 on a bucket">{`s3 encrypt set sse-s3 hanzo/my-bucket`}</Code>
     <Code title="Enable SSE-KMS">{`# Configure KMS
 S3_KMS_KES_ENDPOINT=https://kes.example.com:7373
 S3_KMS_KES_KEY_FILE=/path/to/client.key
@@ -1091,7 +1091,7 @@ S3_KMS_KES_CAPATH=/path/to/ca.crt
 S3_KMS_KES_KEY_NAME=my-encryption-key
 
 # Enable SSE-KMS on a bucket
-mc encrypt set sse-kms my-encryption-key hanzo/secure-bucket`}</Code>
+s3 encrypt set sse-kms my-encryption-key hanzo/secure-bucket`}</Code>
     <P>For TLS configuration, see <a href="#ops-tls" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>TLS / Network Encryption</a>.</P>
 
     <H3 id="auth-bucket-policy">Bucket Policies</H3>
@@ -1123,14 +1123,14 @@ mc encrypt set sse-kms my-encryption-key hanzo/secure-bucket`}</Code>
     }
   ]
 }`}</Code>
-    <Code title="Set via mc CLI">{`# Public download access
-mc anonymous set download hanzo/public-assets
+    <Code title="Set via s3 CLI">{`# Public download access
+s3 anonymous set download hanzo/public-assets
 
 # Upload-only (drop box)
-mc anonymous set upload hanzo/uploads
+s3 anonymous set upload hanzo/uploads
 
 # Apply custom JSON policy
-mc anonymous set-json policy.json hanzo/my-bucket`}</Code>
+s3 anonymous set-json policy.json hanzo/my-bucket`}</Code>
 
     {/* ═══ ADMINISTRATION ═══ */}
     <H2 id="admin-config">Server Configuration</H2>
@@ -1177,35 +1177,35 @@ S3_COMPRESSION_ENABLE=on
 S3_IDENTITY_OPENID_CONFIG_URL=https://hanzo.id/.well-known/openid-configuration
 S3_IDENTITY_OPENID_CLIENT_ID=my-client-id
 S3_IDENTITY_OPENID_DISPLAY_NAME=Hanzo`}</Code>
-    <P>Runtime configuration changes via mc:</P>
+    <P>Runtime configuration changes via s3 CLI:</P>
     <Code>{`# View all configuration
-mc admin config get hanzo
+s3 admin config get hanzo
 
 # Enable compression
-mc admin config set hanzo compression enable=on
+s3 admin config set hanzo compression enable=on
 
 # Configure scanner speed
-mc admin config set hanzo scanner speed=fast
+s3 admin config set hanzo scanner speed=fast
 
 # Set API rate limits
-mc admin config set hanzo api requests_max=500
+s3 admin config set hanzo api requests_max=500
 
 # Apply changes (requires restart)
-mc admin service restart hanzo`}</Code>
+s3 admin service restart hanzo`}</Code>
 
     <H3 id="admin-lifecycle">Lifecycle Rules</H3>
     <P>Lifecycle rules automate object transitions and expiration:</P>
-    <Code title="Expire objects after 90 days">{`mc ilm rule add hanzo/logs --expiry-days 90`}</Code>
-    <Code title="Expire noncurrent versions after 30 days">{`mc ilm rule add hanzo/data --noncurrent-expire-days 30`}</Code>
-    <Code title="Expire delete markers">{`mc ilm rule add hanzo/data --expire-delete-marker`}</Code>
-    <Code title="Abort incomplete multipart uploads">{`mc ilm rule add hanzo/uploads --expire-all-object-size-less-than 1MB`}</Code>
-    <Code title="List lifecycle rules">{`mc ilm rule list hanzo/my-bucket`}</Code>
+    <Code title="Expire objects after 90 days">{`s3 ilm rule add hanzo/logs --expiry-days 90`}</Code>
+    <Code title="Expire noncurrent versions after 30 days">{`s3 ilm rule add hanzo/data --noncurrent-expire-days 30`}</Code>
+    <Code title="Expire delete markers">{`s3 ilm rule add hanzo/data --expire-delete-marker`}</Code>
+    <Code title="Abort incomplete multipart uploads">{`s3 ilm rule add hanzo/uploads --expire-all-object-size-less-than 1MB`}</Code>
+    <Code title="List lifecycle rules">{`s3 ilm rule list hanzo/my-bucket`}</Code>
     <P>Lifecycle rules can also transition objects to a remote tier. See <a href="#admin-tiering" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>Tiering</a>.</P>
 
     <H3 id="admin-tiering">Tiering & Transitions</H3>
     <P>Tier objects to cheaper storage (AWS S3, GCS, Azure Blob, or another Hanzo Space instance) after a specified number of days:</P>
     <Code title="Add a remote tier">{`# Add AWS S3 tier
-mc ilm tier add s3 hanzo WARM-S3 \\
+s3 ilm tier add s3 hanzo WARM-S3 \\
   --endpoint https://s3.amazonaws.com \\
   --access-key AWS_ACCESS_KEY \\
   --secret-key AWS_SECRET_KEY \\
@@ -1213,27 +1213,27 @@ mc ilm tier add s3 hanzo WARM-S3 \\
   --region us-east-1
 
 # Add Google Cloud Storage tier
-mc ilm tier add gcs hanzo COLD-GCS \\
+s3 ilm tier add gcs hanzo COLD-GCS \\
   --credentials-file /path/to/gcs-credentials.json \\
   --bucket my-gcs-archive
 
 # Add Azure Blob tier
-mc ilm tier add azure hanzo ARCHIVE-AZURE \\
+s3 ilm tier add azure hanzo ARCHIVE-AZURE \\
   --account-name myaccount \\
   --account-key mykey \\
   --bucket my-container
 
 # Add remote Hanzo Space tier
-mc ilm tier add minio hanzo REMOTE-STORAGE \\
+s3 ilm tier add s3 hanzo REMOTE-STORAGE \\
   --endpoint https://remote.example.com \\
   --access-key REMOTE_KEY \\
   --secret-key REMOTE_SECRET \\
   --bucket remote-archive`}</Code>
     <Code title="Create a transition rule">{`# Transition to WARM-S3 after 30 days
-mc ilm rule add hanzo/my-bucket --transition-days 30 --storage-class WARM-S3
+s3 ilm rule add hanzo/my-bucket --transition-days 30 --storage-class WARM-S3
 
 # Transition noncurrent versions after 7 days
-mc ilm rule add hanzo/my-bucket --noncurrent-transition-days 7 --noncurrent-storage-class COLD-GCS`}</Code>
+s3 ilm rule add hanzo/my-bucket --noncurrent-transition-days 7 --noncurrent-storage-class COLD-GCS`}</Code>
     <Callout type="info">
       Tiered objects appear in the bucket listing but their data is stored on the remote tier. Accessing a tiered object transparently retrieves it from the remote storage.
     </Callout>
@@ -1242,28 +1242,28 @@ mc ilm rule add hanzo/my-bucket --noncurrent-transition-days 7 --noncurrent-stor
     <P>Hanzo Space supports bucket-level and site-level replication for disaster recovery and geographic distribution:</P>
     <P><strong style={{ color: c.text }}>Bucket Replication</strong> — Replicate objects between buckets on different servers. Requires versioning on both buckets.</P>
     <Code>{`# Enable versioning on both source and target
-mc version enable source/my-bucket
-mc version enable target/my-bucket
+s3 version enable source/my-bucket
+s3 version enable target/my-bucket
 
 # Add replication target
-mc replicate add source/my-bucket \\
+s3 replicate add source/my-bucket \\
   --remote-bucket my-bucket \\
   --remote-target https://ACCESS_KEY:SECRET_KEY@remote.example.com
 
 # Check replication status
-mc replicate status source/my-bucket
+s3 replicate status source/my-bucket
 
 # View replication metrics
-mc replicate backlog source/my-bucket`}</Code>
+s3 replicate backlog source/my-bucket`}</Code>
     <P><strong style={{ color: c.text }}>Site Replication</strong> — Synchronize everything (buckets, objects, policies, IAM) across multiple sites for active-active HA.</P>
     <Code>{`# Set up site replication between two clusters
-mc admin replicate add site1 site2
+s3 admin replicate add site1 site2
 
 # Check replication status
-mc admin replicate info site1
+s3 admin replicate info site1
 
 # Remove site replication
-mc admin replicate remove site1`}</Code>
+s3 admin replicate remove site1`}</Code>
 
     <H3 id="admin-notifications">Event Notifications</H3>
     <P>Hanzo Space can publish bucket events (object created, deleted, accessed) to external services:</P>
@@ -1281,49 +1281,49 @@ mc admin replicate remove site1`}</Code>
         ["NSQ", "notify_nsq", "Real-time distributed messaging"],
       ]}
     />
-    <Code title="Configure webhook notifications">{`mc admin config set hanzo notify_webhook:primary \\
+    <Code title="Configure webhook notifications">{`s3 admin config set hanzo notify_webhook:primary \\
   endpoint="https://api.example.com/hooks/storage" \\
   queue_limit="10000"
 
 # Restart to apply
-mc admin service restart hanzo
+s3 admin service restart hanzo
 
 # Subscribe bucket to events
-mc event add hanzo/my-bucket arn:minio:sqs::primary:webhook \\
+s3 event add hanzo/my-bucket arn:minio:sqs::primary:webhook \\
   --event put,delete
 
 # List configured events
-mc event list hanzo/my-bucket
+s3 event list hanzo/my-bucket
 
 # Remove event subscription
-mc event remove hanzo/my-bucket arn:minio:sqs::primary:webhook`}</Code>
-    <Code title="Configure Kafka notifications">{`mc admin config set hanzo notify_kafka:primary \\
+s3 event remove hanzo/my-bucket arn:minio:sqs::primary:webhook`}</Code>
+    <Code title="Configure Kafka notifications">{`s3 admin config set hanzo notify_kafka:primary \\
   brokers="kafka1:9092,kafka2:9092" \\
   topic="storage-events" \\
   queue_limit="10000"
 
-mc admin service restart hanzo
-mc event add hanzo/my-bucket arn:minio:sqs::primary:kafka --event put`}</Code>
+s3 admin service restart hanzo
+s3 event add hanzo/my-bucket arn:minio:sqs::primary:kafka --event put`}</Code>
 
     <H3 id="admin-versioning">Versioning</H3>
     <P>Bucket versioning keeps all versions of an object, allowing you to recover from accidental deletes or overwrites.</P>
     <Code>{`# Enable versioning on a bucket
-mc version enable hanzo/my-bucket
+s3 version enable hanzo/my-bucket
 
 # Check versioning status
-mc version info hanzo/my-bucket
+s3 version info hanzo/my-bucket
 
 # List object versions
-mc ls --versions hanzo/my-bucket/file.txt
+s3 ls --versions hanzo/my-bucket/file.txt
 
 # Restore a previous version
-mc cp --version-id VERSION_ID hanzo/my-bucket/file.txt hanzo/my-bucket/file.txt
+s3 cp --version-id VERSION_ID hanzo/my-bucket/file.txt hanzo/my-bucket/file.txt
 
 # Permanently delete a specific version
-mc rm --version-id VERSION_ID hanzo/my-bucket/file.txt
+s3 rm --version-id VERSION_ID hanzo/my-bucket/file.txt
 
 # Suspend versioning (existing versions are preserved)
-mc version suspend hanzo/my-bucket`}</Code>
+s3 version suspend hanzo/my-bucket`}</Code>
     <Callout type="info">
       Versioning is required for bucket replication and object locking. Once enabled, it can be suspended but not fully disabled. Use <a href="#admin-lifecycle" style={{ color: c.brand, transition: "opacity 0.15s", cursor: "pointer" }}>lifecycle rules</a> to expire old versions automatically.
     </Callout>
@@ -1347,12 +1347,12 @@ mc version suspend hanzo/my-bucket`}</Code>
       ]}
     />
     <Code title="Configure erasure coding parity">{`# Set standard parity (for normal objects)
-mc admin config set hanzo storage_class standard=EC:4
+s3 admin config set hanzo storage_class standard=EC:4
 
 # Set reduced redundancy (for less critical data)
-mc admin config set hanzo storage_class rrs=EC:2
+s3 admin config set hanzo storage_class rrs=EC:2
 
-mc admin service restart hanzo`}</Code>
+s3 admin service restart hanzo`}</Code>
     <Callout type="warning">
       Erasure coding requires a minimum of 4 drives. Single-drive deployments have no data redundancy — use RAID or replicate to another server for protection.
     </Callout>
@@ -1365,19 +1365,19 @@ mc admin service restart hanzo`}</Code>
     <P><strong style={{ color: c.text }}>Automatic healing:</strong> A background scanner continuously checks data integrity (bitrot detection) and repairs any inconsistencies automatically.</P>
     <P><strong style={{ color: c.text }}>Manual healing:</strong></P>
     <Code>{`# Heal all objects in a bucket
-mc admin heal hanzo/my-bucket --recursive
+s3 admin heal hanzo/my-bucket --recursive
 
 # Heal a specific object
-mc admin heal hanzo/my-bucket/important-file.dat
+s3 admin heal hanzo/my-bucket/important-file.dat
 
 # Heal the entire server
-mc admin heal hanzo --recursive
+s3 admin heal hanzo --recursive
 
 # Dry-run to see what would be healed
-mc admin heal hanzo --recursive --dry-run
+s3 admin heal hanzo --recursive --dry-run
 
 # View healing status
-mc admin heal hanzo --recursive --verbose`}</Code>
+s3 admin heal hanzo --recursive --verbose`}</Code>
     <Callout type="info">
       After replacing a failed drive, healing runs automatically to reconstruct the missing shards onto the new drive. The scanner speed can be adjusted with <code style={inlineCode}>S3_SCANNER_SPEED</code>.
     </Callout>
@@ -1387,7 +1387,7 @@ mc admin heal hanzo --recursive --verbose`}</Code>
       Object Locking enables Write-Once-Read-Many (WORM) compliance, preventing objects from being deleted or overwritten for a specified retention period. This is required for regulatory compliance (SEC 17a-4, FINRA, HIPAA).
     </P>
     <P><strong style={{ color: c.text }}>Prerequisites:</strong> Object locking must be enabled at bucket creation time and cannot be added later. Versioning is automatically enabled on locked buckets.</P>
-    <Code title="Create a locked bucket">{`mc mb hanzo/compliance-data --with-lock`}</Code>
+    <Code title="Create a locked bucket">{`s3 mb hanzo/compliance-data --with-lock`}</Code>
     <P><strong style={{ color: c.text }}>Retention modes:</strong></P>
     <Table
       headers={["Mode", "Description"]}
@@ -1397,25 +1397,25 @@ mc admin heal hanzo --recursive --verbose`}</Code>
       ]}
     />
     <Code title="Set default retention">{`# Set 365-day governance retention on a bucket
-mc retention set --default governance 365d hanzo/compliance-data
+s3 retention set --default governance 365d hanzo/compliance-data
 
 # Set compliance retention on a specific object
-mc retention set compliance 180d hanzo/compliance-data/audit-log.csv
+s3 retention set compliance 180d hanzo/compliance-data/audit-log.csv
 
 # View retention settings
-mc retention info hanzo/compliance-data/audit-log.csv
+s3 retention info hanzo/compliance-data/audit-log.csv
 
 # Clear retention (governance mode only, with bypass permission)
-mc retention clear --default hanzo/compliance-data`}</Code>
+s3 retention clear --default hanzo/compliance-data`}</Code>
     <P><strong style={{ color: c.text }}>Legal Hold:</strong> Independently of retention, a legal hold prevents deletion indefinitely until explicitly removed. Used for litigation hold requirements.</P>
     <Code>{`# Enable legal hold
-mc legalhold set hanzo/compliance-data/document.pdf
+s3 legalhold set hanzo/compliance-data/document.pdf
 
 # Check legal hold status
-mc legalhold info hanzo/compliance-data/document.pdf
+s3 legalhold info hanzo/compliance-data/document.pdf
 
 # Remove legal hold
-mc legalhold clear hanzo/compliance-data/document.pdf`}</Code>
+s3 legalhold clear hanzo/compliance-data/document.pdf`}</Code>
 
     <H3 id="ops-metrics">Metrics & Monitoring</H3>
     <P>Hanzo Space exposes Prometheus-compatible metrics for monitoring:</P>
@@ -1429,13 +1429,13 @@ mc legalhold clear hanzo/compliance-data/document.pdf`}</Code>
       ]}
     />
     <Code title="Generate Prometheus config">{`# Auto-generate prometheus.yml scrape config
-mc admin prometheus generate hanzo
+s3 admin prometheus generate hanzo
 
 # Or configure manually in prometheus.yml:
 # scrape_configs:
 #   - job_name: hanzo-storage
 #     metrics_path: /minio/v2/metrics/cluster
-#     bearer_token: <mc admin prometheus generate output>
+#     bearer_token: <s3 admin prometheus generate output>
 #     static_configs:
 #       - targets: ['storage.example.com:9000']`}</Code>
     <P>For public access to metrics (no auth required):</P>
@@ -1516,13 +1516,13 @@ s3 server \\
   http://node{5...8}.example.com/data{1...4}`}</Code>
     <P><strong style={{ color: c.text }}>Decommissioning</strong> — Safely remove a server pool by migrating its data:</P>
     <Code>{`# Start decommissioning a pool
-mc admin decommission start hanzo http://node{1...4}.example.com/data{1...4}
+s3 admin decommission start hanzo http://node{1...4}.example.com/data{1...4}
 
 # Check decommission status
-mc admin decommission status hanzo
+s3 admin decommission status hanzo
 
 # Cancel decommission (if needed)
-mc admin decommission cancel hanzo http://node{1...4}.example.com/data{1...4}`}</Code>
+s3 admin decommission cancel hanzo http://node{1...4}.example.com/data{1...4}`}</Code>
     <Callout type="info">
       Decommissioning migrates all data from the old pool to the remaining pools. The cluster stays online and serves requests during migration. Do not remove nodes until decommissioning completes.
     </Callout>
@@ -1543,7 +1543,7 @@ sudo mv s3-linux-amd64 /usr/local/bin/s3
 sudo systemctl start hanzo-storage
 
 # 5. Verify
-mc admin info hanzo`}</Code>
+s3 admin info hanzo`}</Code>
     <Code title="Docker upgrade">{`# Pull latest image
 docker pull ghcr.io/hanzoai/storage:latest
 
@@ -1575,11 +1575,11 @@ kubectl -n storage rollout status deployment/storage`}</Code>
 replicate:
   apiVersion: v1
   source:
-    type: minio
+    type: s3
     bucket: source-bucket
     prefix: data/
   target:
-    type: minio
+    type: s3
     bucket: target-bucket
     endpoint: https://remote.example.com
     credentials:
@@ -1606,16 +1606,16 @@ keyrotate:
       endpoint: https://hooks.example.com/batch
       token: my-webhook-token`}</Code>
     <Code title="Run batch jobs">{`# Start a batch job
-mc batch start hanzo batch-replicate.yaml
+s3 batch start hanzo batch-replicate.yaml
 
 # List running jobs
-mc batch list hanzo
+s3 batch list hanzo
 
 # Check job status
-mc batch status hanzo JOB_ID
+s3 batch status hanzo JOB_ID
 
 # Cancel a job
-mc batch cancel hanzo JOB_ID`}</Code>
+s3 batch cancel hanzo JOB_ID`}</Code>
 
     <H3 id="ops-recovery">Data Recovery</H3>
     <P>Recovery procedures depend on the failure type:</P>
@@ -1623,7 +1623,7 @@ mc batch cancel hanzo JOB_ID`}</Code>
     <Code>{`# 1. Replace the failed drive with a new one (same mount point)
 # 2. Healing starts automatically
 # 3. Monitor healing progress
-mc admin heal hanzo --recursive --verbose`}</Code>
+s3 admin heal hanzo --recursive --verbose`}</Code>
 
     <P><strong style={{ color: c.text }}>Single node failure (distributed):</strong></P>
     <Code>{`# 1. The cluster continues serving requests (if quorum is maintained)
@@ -1634,18 +1634,18 @@ mc admin heal hanzo --recursive --verbose`}</Code>
     <P><strong style={{ color: c.text }}>Full cluster recovery from replication:</strong></P>
     <Code>{`# If site replication is configured, the surviving site has all data.
 # Deploy a new cluster and add it as a replication peer:
-mc admin replicate add surviving-site new-site
+s3 admin replicate add surviving-site new-site
 
 # Data syncs automatically from the surviving site.`}</Code>
 
     <Callout type="warning">
-      For single-drive, single-node deployments, there is no built-in redundancy. Use regular backups with <code style={inlineCode}>mc mirror</code> to protect against data loss.
+      For single-drive, single-node deployments, there is no built-in redundancy. Use regular backups with <code style={inlineCode}>s3 mirror</code> to protect against data loss.
     </Callout>
-    <Code title="Backup with mc mirror">{`# Full backup to another server
-mc mirror hanzo/my-bucket backup/my-bucket
+    <Code title="Backup with s3 mirror">{`# Full backup to another server
+s3 mirror hanzo/my-bucket backup/my-bucket
 
 # Incremental backup (only changed objects)
-mc mirror --watch hanzo/my-bucket backup/my-bucket`}</Code>
+s3 mirror --watch hanzo/my-bucket backup/my-bucket`}</Code>
 
     <H3 id="ops-troubleshooting">Troubleshooting</H3>
     <P>Common issues and solutions:</P>
@@ -1660,49 +1660,49 @@ journalctl -u hanzo-storage -f
 
     <P><strong style={{ color: c.text }}>Drive offline:</strong></P>
     <Code>{`# Check drive health
-mc admin info hanzo --json | jq '.info.backend'
+s3 admin info hanzo --json | jq '.info.backend'
 
 # Check disk usage
-mc admin info hanzo
+s3 admin info hanzo
 
 # Force heal if automatic healing is stalled
-mc admin heal hanzo --recursive --force-start`}</Code>
+s3 admin heal hanzo --recursive --force-start`}</Code>
 
     <P><strong style={{ color: c.text }}>Slow performance:</strong></P>
     <Code>{`# Check active connections and requests
-mc admin trace hanzo --verbose
+s3 admin trace hanzo --verbose
 
 # Check network bandwidth
-mc admin speedtest hanzo
+s3 admin speedtest hanzo
 
 # Check drive I/O performance
-mc admin speedtest hanzo --drive
+s3 admin speedtest hanzo --drive
 
 # Tune scanner speed for less background I/O
-mc admin config set hanzo scanner speed=slow`}</Code>
+s3 admin config set hanzo scanner speed=slow`}</Code>
 
     <P><strong style={{ color: c.text }}>Authentication errors:</strong></P>
     <Code>{`# Verify OIDC config
-mc admin config get hanzo identity_openid
+s3 admin config get hanzo identity_openid
 
 # Check access key permissions
-mc admin user info hanzo USERNAME
+s3 admin user info hanzo USERNAME
 
 # Verify bucket policy
-mc anonymous get hanzo/my-bucket
+s3 anonymous get hanzo/my-bucket
 
 # Debug S3 request signatures
-mc admin trace hanzo --call s3 --verbose`}</Code>
+s3 admin trace hanzo --call s3 --verbose`}</Code>
 
     <P><strong style={{ color: c.text }}>Replication lag:</strong></P>
     <Code>{`# Check replication backlog
-mc replicate backlog hanzo/my-bucket
+s3 replicate backlog hanzo/my-bucket
 
 # Check replication status
-mc replicate status hanzo/my-bucket
+s3 replicate status hanzo/my-bucket
 
 # Force resync
-mc replicate resync start hanzo/my-bucket`}</Code>
+s3 replicate resync start hanzo/my-bucket`}</Code>
 
     <H3 id="ops-healthcheck">Health Check API</H3>
     <P>Built-in health check endpoints for monitoring and load balancer integration:</P>
@@ -1745,6 +1745,24 @@ startupProbe:
 /* ─── Main Docs Page ─── */
 const Docs = () => {
   const [activeHash, setActiveHash] = useState(window.location.hash.replace(/^#/, ""));
+
+  // Intercept hash-only <a> clicks — <base href="/"> makes them resolve to /#anchor
+  // instead of /docs#anchor, which hits ProtectedRoute and redirects to /login.
+  useEffect(() => {
+    const handleHashClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement).closest("a");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        e.preventDefault();
+        const id = href.slice(1);
+        window.history.replaceState(null, "", `/docs#${id}`);
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+    document.addEventListener("click", handleHashClick);
+    return () => document.removeEventListener("click", handleHashClick);
+  }, []);
 
   /* Hash-fragment routing: resolve helpTopics hash paths to doc section anchors */
   useEffect(() => {
@@ -1943,8 +1961,8 @@ const Docs = () => {
             }}
           >
             <h3 style={{ fontSize: 14, fontWeight: 600, margin: "0 0 12px", letterSpacing: "-0.01em" }}>Quick Connect</h3>
-            <Code>{`# Configure mc CLI
-mc alias set hanzo https://s3.hanzo.ai ACCESS_KEY SECRET_KEY
+            <Code>{`# Configure s3 CLI
+s3 alias set hanzo https://s3.hanzo.ai ACCESS_KEY SECRET_KEY
 
 # Or use AWS CLI
 aws configure set default.s3.endpoint_url https://s3.hanzo.ai

@@ -775,9 +775,9 @@ const Login = () => {
               border: `1px solid ${colors.border}`,
             }}
           >
-            <div><span style={{ color: colors.dim }}>$</span> mc alias set hanzo https://s3.hanzo.space ACCESS SECRET</div>
-            <div><span style={{ color: colors.dim }}>$</span> mc mb hanzo/my-bucket</div>
-            <div><span style={{ color: colors.dim }}>$</span> mc cp model.safetensors hanzo/my-bucket/</div>
+            <div><span style={{ color: colors.dim }}>$</span> s3 alias set hanzo https://s3.hanzo.space ACCESS SECRET</div>
+            <div><span style={{ color: colors.dim }}>$</span> s3 mb hanzo/my-bucket</div>
+            <div><span style={{ color: colors.dim }}>$</span> s3 cp model.safetensors hanzo/my-bucket/</div>
           </div>
           <button
             onClick={handleSignIn}

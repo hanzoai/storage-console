@@ -328,13 +328,13 @@
         {
           "img": "",
           "title": "Admin Policy Action Keys",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#mc-admin-policy-action-keys",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#s3-admin-policy-action-keys",
           "body": "See actions supported in defining policies for Hanzo Space admin operations. These actions are only valid for Hanzo Space deployments and are not intended for use with other S3-compatible services."
         },
         {
           "img": "",
           "title": "Admin Policy Condition Keys",
-          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#mc-admin-policy-condition-keys",
+          "url": "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html#s3-admin-policy-condition-keys",
           "body": "See which conditions Hanzo Space supports for use with defining policies for admin actions."
         },
         {
@@ -451,14 +451,14 @@
         {
           "img": "",
           "title": "Creating a New Bucket in a Specific Region",
-          "url": "https://hanzo.space/docs#reference/storage-mc/mc-mb.html#create-a-new-bucket-in-a-specific-region",
+          "url": "https://hanzo.space/docs#reference/storage-s3/s3-mb.html#create-a-new-bucket-in-a-specific-region",
           "body": "A Bucket can be created in a specified region"
         },
         {
           "img": "",
           "title": "What are Settings and Configurations?",
           "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
-          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
+          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the s3 admin config command"
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2020/12/pay_banner-01-01-01-01-01.png",
@@ -505,7 +505,7 @@
           "img": "",
           "title": "What are Settings and Configurations?",
           "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
-          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
+          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the s3 admin config command"
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2020/12/pay_banner-01-01-01-01-01.png",
@@ -557,7 +557,7 @@
           "img": "",
           "title": "What are Settings and Configurations?",
           "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
-          "body": "These configuration settings define runtime behavior of the Hanzo Space server process,  comparable to the mc admin config command"
+          "body": "These configuration settings define runtime behavior of the Hanzo Space server process,  comparable to the s3 admin config command"
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2020/12/pay_banner-01-01-01-01-01.png",
@@ -619,9 +619,9 @@
         },
         {
           "img": "",
-          "title": "Understand Hanzo Space Healing Using mc",
-          "url": "https://hanzo.space/docs#reference/storage-mc-admin/mc-admin-heal.html#description",
-          "body": "The mc admin heal command scans for objects that are damaged or corrupted and heals those objects."
+          "title": "Understand Hanzo Space Healing Using s3 CLI",
+          "url": "https://hanzo.space/docs#reference/storage-s3-admin/s3-admin-heal.html#description",
+          "body": "The s3 admin heal command scans for objects that are damaged or corrupted and heals those objects."
         },
         {
           "img": "",
@@ -633,7 +633,7 @@
           "img": "",
           "title": "What are Settings and Configurations?",
           "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
-          "body": "These configuration settings define runtime behavior of the Hanzo Space server process, comparable to the mc admin config command"
+          "body": "These configuration settings define runtime behavior of the Hanzo Space server process, comparable to the s3 admin config command"
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2020/12/pay_banner-01-01-01-01-01.png",
@@ -728,7 +728,7 @@
           "img": "",
           "title": "What are Settings and Configurations?",
           "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
-          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
+          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the s3 admin config command"
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2020/12/pay_banner-01-01-01-01-01.png",
@@ -799,7 +799,7 @@
           "img": "",
           "title": "What are Settings and Configurations?",
           "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
-          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
+          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the s3 admin config command"
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2020/12/pay_banner-01-01-01-01-01.png",
@@ -825,7 +825,7 @@
         {
           "img": "",
           "title": "What is the logger_webhook Environment Variable?",
-          "url": "https://hanzo.space/docs#reference/storage-mc-admin/mc-admin-config.html#storage-server-config-logging-logs",
+          "url": "https://hanzo.space/docs#reference/storage-s3-admin/s3-admin-config.html#storage-server-config-logging-logs",
           "body": "The top-level configuration key for defining an  HTTP webhook target for publishing Hanzo Space logs."
         },
         {
@@ -844,7 +844,7 @@
           "img": "",
           "title": "What are Settings and Configurations?",
           "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
-          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
+          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the s3 admin config command"
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2020/12/pay_banner-01-01-01-01-01.png",
@@ -897,7 +897,7 @@
           "img": "",
           "title": "What are Settings and Configurations?",
           "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
-          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the mc admin config command"
+          "body": "These configuration settings define runtime  behavior of the Hanzo Space server process,  comparable to the s3 admin config command"
         },
         {
           "img": "",
@@ -948,7 +948,7 @@
         {
           "img": "",
           "title": "Kafka Service Configuration Settings",
-          "url": "https://hanzo.space/docs#reference/storage-mc-admin/mc-admin-config.html#storage-server-config-bucket-notification-kafka",
+          "url": "https://hanzo.space/docs#reference/storage-s3-admin/s3-admin-config.html#storage-server-config-bucket-notification-kafka",
           "body": "Learn about environment variables for configuring a Kafka service as a target for Bucket Nofitications."
         },
         {
@@ -967,7 +967,7 @@
           "img": "",
           "title": "What are Settings and Configurations?",
           "url": "https://hanzo.space/docs#reference/storage-server/settings.html#storage-console-settings",
-          "body": "These configuration settings define runtime behavior of the Hanzo Space server process, comparable to the mc admin config command"
+          "body": "These configuration settings define runtime behavior of the Hanzo Space server process, comparable to the s3 admin config command"
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2020/12/pay_banner-01-01-01-01-01.png",
@@ -1090,7 +1090,7 @@
           "img": "",
           "title": "Site Replication Tutorial",
           "url": "https://hanzo.space/docs#operations/replication/multi-site-replication.html#tutorials",
-          "body": "Learn how to set up site replication using Console and the Hanzo Space client (mc)"
+          "body": "Learn how to set up site replication using Console and the Hanzo Space client (s3 CLI)"
         },
         {
           "img": "",
@@ -2600,9 +2600,9 @@
         },
         {
           "img": "https://i.ytimg.com/an_webp/Yh_1grPSBjw/mqdefault_6s.webp?du=3000&sqp=CKSLtaoG&rs=AOn4CLDPnftE6KALzW1ghJWdRYWpt4BOtQ",
-          "title": "Managing Event Notifications Using Hanzo Space MC Commands",
+          "title": "Managing Event Notifications Using Hanzo Space s3 CLI Commands",
           "url": "https://www.youtube.com/watch?v=Yh_1grPSBjw",
-          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's mc commands."
+          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's s3 CLI commands."
         },
         {
           "img": "https://i.ytimg.com/an_webp/_ZEjm4bPgVI/mqdefault_6s.webp?du=3000&sqp=CPiHtaoG&rs=AOn4CLDuJYSDGLEFh7k_Y40c_PEMDxYilw",
@@ -2689,9 +2689,9 @@
         },
         {
           "img": "https://i.ytimg.com/an_webp/Yh_1grPSBjw/mqdefault_6s.webp?du=3000&sqp=CKSLtaoG&rs=AOn4CLDPnftE6KALzW1ghJWdRYWpt4BOtQ",
-          "title": "Managing Event Notifications Using Hanzo Space MC Commands",
+          "title": "Managing Event Notifications Using Hanzo Space s3 CLI Commands",
           "url": "https://www.youtube.com/watch?v=Yh_1grPSBjw",
-          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's mc commands."
+          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's s3 CLI commands."
         },
         {
           "img": "https://i.ytimg.com/an_webp/_ZEjm4bPgVI/mqdefault_6s.webp?du=3000&sqp=CPiHtaoG&rs=AOn4CLDuJYSDGLEFh7k_Y40c_PEMDxYilw",
@@ -2778,9 +2778,9 @@
         },
         {
           "img": "https://i.ytimg.com/an_webp/Yh_1grPSBjw/mqdefault_6s.webp?du=3000&sqp=CKSLtaoG&rs=AOn4CLDPnftE6KALzW1ghJWdRYWpt4BOtQ",
-          "title": "Managing Event Notifications Using Hanzo Space MC Commands",
+          "title": "Managing Event Notifications Using Hanzo Space s3 CLI Commands",
           "url": "https://www.youtube.com/watch?v=Yh_1grPSBjw",
-          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's mc commands."
+          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's s3 CLI commands."
         },
         {
           "img": "https://i.ytimg.com/an_webp/_ZEjm4bPgVI/mqdefault_6s.webp?du=3000&sqp=CPiHtaoG&rs=AOn4CLDuJYSDGLEFh7k_Y40c_PEMDxYilw",
@@ -3542,7 +3542,7 @@
           "img": "",
           "title": "Encrypt Inspect Output",
           "url": "https://hanzo.space/docs#operations/troubleshooting/encrypting-files.html",
-          "body": "You can encrypt the output of the mc support inspect command for enhanced security when transmitting the files to Hanzo Space Support."
+          "body": "You can encrypt the output of the s3 support inspect command for enhanced security when transmitting the files to Hanzo Space Support."
         },
         {
           "img": "https://hanzo.space/docs#content/images/size/w1000/2020/12/pay_banner-01-01-01-01-01.png",
@@ -3568,7 +3568,7 @@
         {
           "img": "",
           "title": "What is Trace?",
-          "url": "https://hanzo.space/docs#reference/storage-mc-admin/mc-admin-trace.html",
+          "url": "https://hanzo.space/docs#reference/storage-s3-admin/s3-admin-trace.html",
           "body": "The trace section provides HTTP trace functionality for a bucket or buckets on the deployment."
         },
         {
@@ -3844,7 +3844,7 @@
         {
           "img": "",
           "title": "What is Watch?",
-          "url": "https://hanzo.space/docs#reference/storage-mc/mc-watch.html",
+          "url": "https://hanzo.space/docs#reference/storage-s3/s3-watch.html",
           "body": "The Watch section displays S3 events as they occur on the selected bucket."
         },
         {
@@ -4462,9 +4462,9 @@
         },
         {
           "img": "https://i.ytimg.com/an_webp/Yh_1grPSBjw/mqdefault_6s.webp?du=3000&sqp=CKSLtaoG&rs=AOn4CLDPnftE6KALzW1ghJWdRYWpt4BOtQ",
-          "title": "Managing Event Notifications Using Hanzo Space MC Commands",
+          "title": "Managing Event Notifications Using Hanzo Space s3 CLI Commands",
           "url": "https://www.youtube.com/watch?v=Yh_1grPSBjw",
-          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's mc commands."
+          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's s3 CLI commands."
         },
         {
           "img": "https://i.ytimg.com/an_webp/_ZEjm4bPgVI/mqdefault_6s.webp?du=3000&sqp=CPiHtaoG&rs=AOn4CLDuJYSDGLEFh7k_Y40c_PEMDxYilw",
@@ -4838,9 +4838,9 @@
         },
         {
           "img": "https://i.ytimg.com/an_webp/Yh_1grPSBjw/mqdefault_6s.webp?du=3000&sqp=CKSLtaoG&rs=AOn4CLDPnftE6KALzW1ghJWdRYWpt4BOtQ",
-          "title": "Managing Event Notifications Using Hanzo Space MC Commands",
+          "title": "Managing Event Notifications Using Hanzo Space s3 CLI Commands",
           "url": "https://www.youtube.com/watch?v=Yh_1grPSBjw",
-          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's mc commands."
+          "body": "This video provides an overview of the types of event notifications and how to set them up using Hanzo Space's s3 CLI commands."
         },
         {
           "img": "https://i.ytimg.com/an_webp/_ZEjm4bPgVI/mqdefault_6s.webp?du=3000&sqp=CPiHtaoG&rs=AOn4CLDuJYSDGLEFh7k_Y40c_PEMDxYilw",
