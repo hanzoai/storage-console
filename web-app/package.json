@@ -12,7 +12,7 @@
     "local-storage-fallback": "^4.1.3",
     "lodash": "^4.17.21",
     "luxon": "^3.7.2",
-    "mds": "https://github.com/hanzoai/mds.git#400914d72cb3ffa27d600e0ae1f17ece2182ec22",
+    "mds": "https://github.com/hanzoai/mds.git#00d5532bcc9fe2761cb8a6fbdbff7189b8b323ff",
     "react": "^18.3.1",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.3.1",

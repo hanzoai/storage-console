@@ -25,7 +25,7 @@ import {
   HelpIcon,
   HelpIconFilled,
   IconButton,
-  MinIOTierIcon as StorageTierIcon,
+  StorageTierIcon,
   TabItemProps,
   Tabs,
 } from "mds";

@@ -80,7 +80,6 @@ const BucketFiltering = () => {
             dispatch(setFilterBucket(e.target.value));
           }}
           startIcon={<SearchIcon />}
-          ref={ref as unknown as RefObject<HTMLInputElement>}
         />
       </Box>
     </>
