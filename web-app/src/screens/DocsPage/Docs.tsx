@@ -31,34 +31,34 @@ const sections = [
   {
     title: "Getting Started",
     items: [
-      { label: "Quick Start Guide", href: "https://hanzo.space/docs#operations/install-deploy-manage/deploy-single-node-single-drive.html", desc: "Deploy in minutes with a single command" },
-      { label: "Console Guide", href: "https://hanzo.space/docs#administration/console.html", desc: "Navigate the web console" },
-      { label: "Authentication (SSO)", href: "https://hanzo.space/docs#operations/external-iam/configure-openid-external-identity-management.html", desc: "Configure Hanzo ID OIDC single sign-on" },
+      { label: "Quick Start Guide", href: "https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-single-node-single-drive.html", desc: "Deploy in minutes with a single command" },
+      { label: "Console Guide", href: "https://min.io/docs/minio/linux/administration/minio-console.html", desc: "Navigate the web console" },
+      { label: "Authentication (SSO)", href: "https://min.io/docs/minio/linux/operations/external-iam/configure-openid-external-identity-management.html", desc: "Configure OIDC single sign-on" },
     ],
   },
   {
     title: "S3 API Reference",
     items: [
-      { label: "Bucket Operations", href: "https://hanzo.space/docs#reference/s3-api/s3-api-operations.html", desc: "Create, list, delete buckets" },
-      { label: "Object Operations", href: "https://hanzo.space/docs#reference/s3-api/s3-api-operations.html#object-operations", desc: "Put, get, delete objects" },
-      { label: "Presigned URLs", href: "https://hanzo.space/docs#reference/s3-api/s3-api-operations.html#presigned-operations", desc: "Generate temporary access links" },
+      { label: "Bucket Operations", href: "https://min.io/docs/minio/linux/developers/minio-drivers.html", desc: "Create, list, delete buckets" },
+      { label: "Object Operations", href: "https://docs.aws.amazon.com/AmazonS3/latest/API/API_Operations_Amazon_Simple_Storage_Service.html", desc: "Full S3-compatible API reference" },
+      { label: "Presigned URLs", href: "https://min.io/docs/minio/linux/developers/minio-drivers.html#generate-a-presigned-url", desc: "Generate temporary access links" },
     ],
   },
   {
     title: "SDKs & Tools",
     items: [
-      { label: "JavaScript SDK", href: "https://hanzo.space/docs#developers/javascript/javascript-sdk.html", desc: "npm install @hanzo/storage" },
-      { label: "Python SDK", href: "https://hanzo.space/docs#developers/python/python-sdk.html", desc: "pip install hanzo-storage" },
-      { label: "Go SDK", href: "https://hanzo.space/docs#developers/go/go-sdk.html", desc: "go get github.com/hanzoai/storage-go/v7" },
-      { label: "mc CLI", href: "https://hanzo.space/docs#reference/mc.html", desc: "Command-line client for S3 operations" },
+      { label: "JavaScript SDK", href: "https://min.io/docs/minio/linux/developers/javascript/minio-javascript.html", desc: "npm install @hanzo/storage" },
+      { label: "Python SDK", href: "https://min.io/docs/minio/linux/developers/python/minio-py.html", desc: "pip install hanzo-storage" },
+      { label: "Go SDK", href: "https://min.io/docs/minio/linux/developers/go/minio-go.html", desc: "go get github.com/hanzoai/storage-go/v7" },
+      { label: "mc CLI", href: "https://min.io/docs/minio/linux/reference/minio-mc.html", desc: "Command-line client for S3 operations" },
     ],
   },
   {
     title: "Security & Access",
     items: [
-      { label: "Access Management", href: "https://hanzo.space/docs#administration/identity-access-management.html", desc: "IAM policies, users, and groups" },
-      { label: "Encryption", href: "https://hanzo.space/docs#operations/server-side-encryption.html", desc: "Server-side encryption at rest" },
-      { label: "Bucket Policies", href: "https://hanzo.space/docs#administration/identity-access-management/policy-based-access-control.html", desc: "Fine-grained access control" },
+      { label: "Access Management", href: "https://min.io/docs/minio/linux/administration/identity-access-management.html", desc: "IAM policies, users, and groups" },
+      { label: "Encryption", href: "https://min.io/docs/minio/linux/operations/server-side-encryption.html", desc: "Server-side encryption at rest" },
+      { label: "Bucket Policies", href: "https://min.io/docs/minio/linux/administration/identity-access-management/policy-based-access-control.html", desc: "Fine-grained access control" },
     ],
   },
 ];
