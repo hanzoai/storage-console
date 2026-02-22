@@ -195,7 +195,7 @@ const ShareFile = ({
                     You can increase the maximum configuration time by setting
                     the MINIO_STS_DURATION environment variable on all your
                     nodes. <br /> <br />
-                    You can use <b>mc share</b> as an alternative to this UI,
+                    You can use <b>s3 share</b> as an alternative to this UI,
                     where the session length does not limit the URL validity.
                   </span>
                 }

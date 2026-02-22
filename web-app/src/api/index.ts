@@ -33,7 +33,9 @@ export function CommonAPIValidation<D, E>(
 ): HttpResponse<D, E> {
   const err = res.error as ApiError;
   if (err && res.status === 403 && err.message === "invalid session") {
-    if (window.location.pathname !== "/login") {
+    const p = window.location.pathname;
+    const isPublic = p === "/login" || p.startsWith("/docs");
+    if (!isPublic) {
       document.location = "/login";
     }
   }
