@@ -1,5 +1,5 @@
-// This file is part of Hanzo Space
-// Copyright (c) 2022 Hanzo AI, Inc.
+// This file is part of MinIO Console Server
+// Copyright (c) 2022 MinIO, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -122,7 +122,7 @@ const LicenseConsentModal = () => {
                 marginBottom: "27px",
               }}
             >
-              By using this software, you acknowledge that Hanzo Space software is
+              By using this software, you acknowledge that MinIO software is
               licensed under the <LicenseLink />, for which, the full text can
               be found here:{" "}
               <a
@@ -143,11 +143,11 @@ const LicenseConsentModal = () => {
               satisfy the license obligations, we offer a commercial license
               which is available here:{" "}
               <a
-                href={`https://hanzo.ai`}
+                href={`https://min.io/signup?ref=con`}
                 rel="noopener"
                 className={"link-text"}
               >
-                hanzo.ai
+                https://min.io/signup.
               </a>
             </Box>
             <LicenseFAQ />

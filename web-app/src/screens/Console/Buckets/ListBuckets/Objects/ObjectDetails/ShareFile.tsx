@@ -1,5 +1,5 @@
-// This file is part of Hanzo Space
-// Copyright (c) 2021 Hanzo AI, Inc.
+// This file is part of MinIO Console Server
+// Copyright (c) 2021 MinIO, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -193,7 +193,7 @@ const ShareFile = ({
                     You can reset your session by logging out and logging back
                     in to the web UI. <br /> <br />
                     You can increase the maximum configuration time by setting
-                    the STS_DURATION environment variable on all your
+                    the MINIO_STS_DURATION environment variable on all your
                     nodes. <br /> <br />
                     You can use <b>mc share</b> as an alternative to this UI,
                     where the session length does not limit the URL validity.

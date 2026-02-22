@@ -29,9 +29,9 @@ import (
 	"github.com/minio/minio-go/v7/pkg/sse"
 	xnet "github.com/minio/pkg/v3/net"
 
-	"github.com/hanzoai/storage-console/models"
-	"github.com/hanzoai/storage-console/pkg"
-	xjwt "github.com/hanzoai/storage-console/pkg/auth/token"
+	"github.com/minio/console/models"
+	"github.com/minio/console/pkg"
+	xjwt "github.com/minio/console/pkg/auth/token"
 	mc "github.com/minio/mc/cmd"
 	"github.com/minio/mc/pkg/probe"
 	"github.com/minio/minio-go/v7"

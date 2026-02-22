@@ -31,7 +31,7 @@ import (
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/go-openapi/validate"
 
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/models"
 )
 
 // NewLoginParams creates a new LoginParams object

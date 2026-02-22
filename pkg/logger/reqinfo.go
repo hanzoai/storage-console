@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/hanzoai/storage-console/pkg/utils"
+	"github.com/minio/console/pkg/utils"
 )
 
 // KeyVal - appended to ReqInfo.Tags

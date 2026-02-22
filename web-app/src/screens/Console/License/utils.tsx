@@ -1,5 +1,5 @@
-// This file is part of Hanzo Space
-// Copyright (c) 2022 Hanzo AI, Inc.
+// This file is part of MinIO Console Server
+// Copyright (c) 2022 MinIO, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -141,7 +141,7 @@ export const LICENSE_PLANS_INFORMATION: LicensePlanOption[] = [
   },
 ];
 
-const LICENSE_CONSENT_STORE_KEY = "agpl_hanzo_license_consent";
+const LICENSE_CONSENT_STORE_KEY = "agpl_minio_license_consent";
 export const setLicenseConsent = () => {
   localStorage.setItem(LICENSE_CONSENT_STORE_KEY, "true");
 };

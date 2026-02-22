@@ -20,8 +20,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/hanzoai/storage-console/pkg/logger/target/http"
-	"github.com/hanzoai/storage-console/pkg/logger/target/types"
+	"github.com/minio/console/pkg/logger/target/http"
+	"github.com/minio/console/pkg/logger/target/types"
 )
 
 // Target is the entity that we will receive

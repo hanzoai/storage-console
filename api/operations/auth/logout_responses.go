@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime"
 
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/models"
 )
 
 // LogoutOKCode is the HTTP code returned for type LogoutOK

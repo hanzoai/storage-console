@@ -32,7 +32,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/models"
 )
 
 // NewDeleteMultipleObjectsParams creates a new DeleteMultipleObjectsParams object

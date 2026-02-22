@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/models"
 	"github.com/stretchr/testify/assert"
 )
 

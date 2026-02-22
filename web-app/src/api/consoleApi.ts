@@ -545,7 +545,7 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title Hanzo Space Server
+ * @title MinIO Console Server
  * @version 0.1.0
  * @baseUrl /api/v1
  */

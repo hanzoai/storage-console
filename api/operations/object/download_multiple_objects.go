@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/models"
 )
 
 // DownloadMultipleObjectsHandlerFunc turns a function with the right signature into a download multiple objects handler

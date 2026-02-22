@@ -1,5 +1,5 @@
-// This file is part of Hanzo Space
-// Copyright (c) 2021 Hanzo AI, Inc.
+// This file is part of MinIO Console Server
+// Copyright (c) 2021 MinIO, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-export interface ChainInfo {
+export interface SubnetInfo {
   account_id: number;
   email: string;
   expires_at: string;

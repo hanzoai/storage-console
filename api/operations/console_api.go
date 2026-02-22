@@ -36,13 +36,13 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/hanzoai/storage-console/api/operations/auth"
-	"github.com/hanzoai/storage-console/api/operations/bucket"
-	"github.com/hanzoai/storage-console/api/operations/license"
-	"github.com/hanzoai/storage-console/api/operations/object"
-	"github.com/hanzoai/storage-console/api/operations/public"
-	"github.com/hanzoai/storage-console/api/operations/system"
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/api/operations/auth"
+	"github.com/minio/console/api/operations/bucket"
+	"github.com/minio/console/api/operations/license"
+	"github.com/minio/console/api/operations/object"
+	"github.com/minio/console/api/operations/public"
+	"github.com/minio/console/api/operations/system"
+	"github.com/minio/console/models"
 )
 
 // NewConsoleAPI creates a new Console instance

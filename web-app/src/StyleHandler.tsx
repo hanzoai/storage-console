@@ -1,5 +1,5 @@
-// This file is part of Hanzo Space
-// Copyright (c) 2021 Hanzo AI, Inc.
+// This file is part of MinIO Console Server
+// Copyright (c) 2021 MinIO, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -27,24 +27,6 @@ interface IStyleHandler {
   children: React.ReactNode;
 }
 
-// Hanzo dark theme for landing page - subtle rgba borders instead of harsh grays
-const HANZO_DARK_THEME = {
-  bgColor: "#09090b",
-  fontColor: "#fafafa",
-  borderColor: "rgba(255,255,255,0.06)",
-  bulletColor: "#fafafa",
-  logoColor: "#fd4444",
-  logoLabelColor: "#fafafa",
-  logoLabelInverse: "#fff",
-  logoContrast: "#000",
-  logoContrastInverse: "#fafafa",
-  loaderColor: "#fd4444",
-  boxBackground: "#111113",
-  mutedText: "#a1a1aa",
-  secondaryText: "#a1a1aa",
-  linkColor: "#fd4444",
-};
-
 const StyleHandler = ({ children }: IStyleHandler) => {
   const colorVariants = useSelector(
     (state: AppState) => state.system.overrideStyles,
@@ -55,9 +37,6 @@ const StyleHandler = ({ children }: IStyleHandler) => {
 
   if (colorVariants) {
     thm = generateOverrideTheme(colorVariants);
-  } else if (!colorVariants) {
-    // Use Hanzo dark theme by default for landing page
-    thm = HANZO_DARK_THEME;
   }
 
   return (

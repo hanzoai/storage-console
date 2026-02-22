@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime"
 
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/models"
 )
 
 // DeleteMultipleObjectsOKCode is the HTTP code returned for type DeleteMultipleObjectsOK

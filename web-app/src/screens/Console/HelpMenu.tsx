@@ -1,5 +1,5 @@
-// This file is part of Hanzo Space
-// Copyright (c) 2023 Hanzo AI, Inc.
+// This file is part of MinIO Console Server
+// Copyright (c) 2023 MinIO, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -25,7 +25,7 @@ import {
   HelpIcon,
   HelpIconFilled,
   IconButton,
-  StorageTierIcon,
+  MinIOTierIcon,
   TabItemProps,
   Tabs,
 } from "mds";
@@ -194,10 +194,10 @@ const HelpMenu = () => {
         ))}
       <div style={{ padding: 16 }}>
         <MoreLink
-          LeadingIcon={StorageTierIcon}
-          text={"Visit Hanzo Documentation"}
-          link={"https://hanzo.space/docs"}
-          color={"#fd4444"}
+          LeadingIcon={MinIOTierIcon}
+          text={"Visit MinIO Documentation"}
+          link={"https://docs.min.io/?ref=con"}
+          color={"#C5293F"}
         />
       </div>
     </Box>
@@ -220,10 +220,10 @@ const HelpMenu = () => {
         ))}
       <div style={{ padding: 16 }}>
         <MoreLink
-          LeadingIcon={StorageTierIcon}
-          text={"Visit Hanzo Resources"}
-          link={"https://hanzo.space/docs"}
-          color={"#fd4444"}
+          LeadingIcon={MinIOTierIcon}
+          text={"Visit MinIO Videos"}
+          link={"https://resources.min.io/l/library?contentType=video"}
+          color={"#C5293F"}
         />
       </div>
     </Box>
@@ -246,10 +246,10 @@ const HelpMenu = () => {
         ))}
       <div style={{ padding: 16 }}>
         <MoreLink
-          LeadingIcon={StorageTierIcon}
-          text={"Visit Hanzo Blog"}
-          link={"https://hanzo.ai/blog"}
-          color={"#fd4444"}
+          LeadingIcon={MinIOTierIcon}
+          text={"Visit MinIO Blog"}
+          link={"https://blog.min.io/?ref=con"}
+          color={"#C5293F"}
         />
       </div>
     </Box>

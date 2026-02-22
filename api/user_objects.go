@@ -32,14 +32,14 @@ import (
 
 	"github.com/minio/minio-go/v7"
 
-	"github.com/hanzoai/storage-console/pkg/utils"
+	"github.com/minio/console/pkg/utils"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/klauspost/compress/zip"
-	"github.com/hanzoai/storage-console/api/operations"
-	objectApi "github.com/hanzoai/storage-console/api/operations/object"
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/api/operations"
+	objectApi "github.com/minio/console/api/operations/object"
+	"github.com/minio/console/models"
 	mc "github.com/minio/mc/cmd"
 	"github.com/minio/mc/pkg/probe"
 	"github.com/minio/minio-go/v7/pkg/tags"

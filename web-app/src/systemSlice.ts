@@ -1,5 +1,5 @@
-// This file is part of Hanzo Space
-// Copyright (c) 2022 Hanzo AI, Inc.
+// This file is part of MinIO Console Server
+// Copyright (c) 2022 MinIO, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -17,7 +17,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { snackBarMessage, SRInfoStateType } from "./types";
 import { ErrorResponseHandler, IEmbeddedCustomStyles } from "./common/types";
 import { AppState } from "./store";
-import { ChainInfo } from "./screens/Console/License/types";
+import { SubnetInfo } from "./screens/Console/License/types";
 import { isDarkModeOn } from "./utils/stylesUtils";
 import { addBucketAsync } from "./screens/Console/Buckets/ListBuckets/AddBucket/addBucketThunks";
 import { getLicenseConsent } from "./screens/Console/License/utils";
@@ -42,7 +42,7 @@ interface SystemState {
   serverDiagnosticStatus: string;
   distributedSetup: boolean;
   siteReplicationInfo: SRInfoStateType;
-  licenseInfo: null | ChainInfo;
+  licenseInfo: null | SubnetInfo;
   overrideStyles: null | IEmbeddedCustomStyles;
   anonymousMode: boolean;
   helpName: string;
@@ -156,7 +156,7 @@ const systemSlice = createSlice({
     setSiteReplicationInfo: (state, action: PayloadAction<SRInfoStateType>) => {
       state.siteReplicationInfo = action.payload;
     },
-    setSystemLicenseInfo: (state, action: PayloadAction<ChainInfo | null>) => {
+    setSystemLicenseInfo: (state, action: PayloadAction<SubnetInfo | null>) => {
       state.licenseInfo = action.payload;
     },
     setHelpName: (state, action: PayloadAction<string>) => {

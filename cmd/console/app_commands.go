@@ -23,10 +23,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/hanzoai/storage-console/pkg/logger"
+	"github.com/minio/console/pkg/logger"
 
 	"github.com/minio/cli"
-	"github.com/hanzoai/storage-console/api"
+	"github.com/minio/console/api"
 )
 
 var appCmds = []cli.Command{

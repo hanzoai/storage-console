@@ -1,5 +1,5 @@
-// This file is part of Hanzo Space
-// Copyright (c) 2025 Hanzo AI, Inc.
+// This file is part of MinIO Console Server
+// Copyright (c) 2025 MinIO, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -80,6 +80,7 @@ const BucketFiltering = () => {
             dispatch(setFilterBucket(e.target.value));
           }}
           startIcon={<SearchIcon />}
+          ref={ref as unknown as RefObject<HTMLInputElement>}
         />
       </Box>
     </>

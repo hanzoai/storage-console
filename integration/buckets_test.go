@@ -29,8 +29,8 @@ import (
 	"time"
 
 	"github.com/go-openapi/loads"
-	"github.com/hanzoai/storage-console/api"
-	"github.com/hanzoai/storage-console/api/operations"
+	"github.com/minio/console/api"
+	"github.com/minio/console/api/operations"
 )
 
 var token string

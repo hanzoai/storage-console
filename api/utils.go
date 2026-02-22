@@ -26,7 +26,7 @@ import (
 	"strings"
 	"time"
 
-	xjwt "github.com/hanzoai/storage-console/pkg/auth/token"
+	xjwt "github.com/minio/console/pkg/auth/token"
 )
 
 // Do not use:

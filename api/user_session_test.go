@@ -22,9 +22,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/hanzoai/storage-console/pkg/utils"
+	"github.com/minio/console/pkg/utils"
 
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/models"
 	"github.com/stretchr/testify/assert"
 )
 

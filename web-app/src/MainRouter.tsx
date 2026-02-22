@@ -1,5 +1,5 @@
-// This file is part of Hanzo Space
-// Copyright (c) 2021 Hanzo AI, Inc.
+// This file is part of MinIO Console Server
+// Copyright (c) 2021 MinIO, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -23,7 +23,6 @@ import { baseUrl } from "./history";
 
 const Login = React.lazy(() => import("./screens/LoginPage/Login"));
 const Logout = React.lazy(() => import("./screens/LogoutPage/LogoutPage"));
-const Docs = React.lazy(() => import("./screens/DocsPage/Docs"));
 
 const MainRouter = () => {
   return (
@@ -42,14 +41,6 @@ const MainRouter = () => {
           element={
             <Suspense fallback={<LoadingComponent />}>
               <Login />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/docs"
-          element={
-            <Suspense fallback={<LoadingComponent />}>
-              <Docs />
             </Suspense>
           }
         />

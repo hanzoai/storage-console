@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/hanzoai/storage-console/models"
+	"github.com/minio/console/models"
 )
 
 // PostBucketsBucketNameObjectsUploadHandlerFunc turns a function with the right signature into a post buckets bucket name objects upload handler

@@ -1,16 +1,9 @@
 body {
   margin: 0;
-  background-color: #0a0a0a;
-  color: #fafafa;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #fff;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Override mds global section/fieldset borders for dark theme */
-fieldset,
-section {
-  border: none !important;
 }
 
 #preload {
@@ -24,5 +17,4 @@ section {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color: #0a0a0a;
 }
